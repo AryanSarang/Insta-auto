@@ -1,0 +1,32 @@
+{
+  "title": "Monkey to Human 2026",
+  "hook": "Can 64 monkeys become a 2026 human?",
+  "tiers": [
+    { "name": "Monkey", "icon": "🐒" },
+    { "name": "Chimp", "icon": "🦍" },
+    { "name": "Caveman", "icon": "🧔" },
+    { "name": "Knight", "icon": "🤺" },
+    { "name": "Scientist", "icon": "🧑‍🔬" },
+    { "name": "Astronaut", "icon": "🧑‍🚀" },
+    { "name": "Human 2026", "icon": "🧍", "accessory": "📱" }
+  ],
+  "sounds": {
+    "merge": [
+      { "query": "cartoon pop bloop short", "style": "pop" },
+      { "query": "monkey chatter short", "style": "voice" },
+      { "query": "sword clash short", "style": "impact" },
+      { "query": "bubbling potion magic", "style": "magic" },
+      { "query": "rocket whoosh blast", "style": "impact" },
+      { "query": "phone notification ding", "style": "cartoon" }
+    ],
+    "final": { "query": "sad trombone cartoon", "style": "fanfare" }
+  },
+  "container": { "shape": "jar", "color": "#8B4513", "label": "Evolution" },
+  "palette": { "bg": "#1a1a2e", "text": "#ffffff", "accent": "#e94560" },
+  "physics": { "bounciness": 0.7, "gravity": "normal" },
+  "finalText": "Just scrolling... like the rest of us",
+  "mood": "light",
+  "caption": "64 monkeys walk into a jar... and only one walks out holding a phone 📱\n\nWatch as millions of years of evolution happen in 30 seconds. From swinging in trees to... scrolling through reels. Was it worth the wait?\n\nWhat would YOUR evolution look like? Drop your final form in the comments 👇\n\nFollow to see what evolves next.",
+  "hashtags": ["#evolution", "#satisfying", "#mergegame", "#oddlysatisfying", "#physics"],
+  "seed": 42
+}

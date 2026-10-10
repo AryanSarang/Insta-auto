@@ -1,0 +1,47 @@
+{
+  "account": {
+    "niche": "EDIT ME — e.g. satisfying merge evolution physics simulations",
+    "audience": "EDIT ME — e.g. teens and young adults who love oddly satisfying content",
+    "voice": "EDIT ME — e.g. playful, curious, a little absurd",
+    "language": "English",
+    "cta": "EDIT ME — e.g. Follow to see what evolves next."
+  },
+  "pillars": [
+    "EDIT ME — e.g. evolution of living things",
+    "EDIT ME — e.g. evolution of technology",
+    "EDIT ME — e.g. food and cooking",
+    "EDIT ME — e.g. money and economy",
+    "EDIT ME — e.g. space and nature",
+    "EDIT ME — e.g. everyday life and work"
+  ],
+  "video": {
+    "minSeconds": 25,
+    "maxSeconds": 45,
+    "fps": 30
+  },
+  "hashtags": {
+    "always": [],
+    "max": 8
+  },
+  "moods": ["light", "dark", "rock", "romantic", "loud"],
+  "assets": {
+    "allowAttribution": false,
+    "musicPerMood": 4
+  },
+  "review": {
+    "enabled": true,
+    "minScore": 7,
+    "ifUnavailable": "post"
+  },
+  "maxAttempts": 3,
+  "generation": {
+    "order": ["live", "queue"]
+  },
+  "queue": {
+    "lowWater": 3
+  },
+  "slots": {
+    "morning": "09:00",
+    "evening": "18:00"
+  }
+}
