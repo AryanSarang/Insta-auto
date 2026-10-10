@@ -15,8 +15,8 @@
     "EDIT ME — e.g. everyday life and work"
   ],
   "video": {
-    "minSeconds": 25,
-    "maxSeconds": 45,
+    "minSeconds": 30,
+    "maxSeconds": 90,
     "fps": 30
   },
   "hashtags": {

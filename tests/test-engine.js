@@ -22,7 +22,7 @@ async function testSpec(specPath, label) {
 
   page.on('pageerror', err => console.error('  PAGE ERROR:', err.message));
 
-  const enrichedSpec = { ...spec, maxSeconds: 45, minSeconds: 25 };
+  const enrichedSpec = { ...spec, maxSeconds: 90, minSeconds: 30 };
   await page.addInitScript(`window.SPEC = ${JSON.stringify(enrichedSpec)};`);
   await page.addInitScript(`window.ICON_DATA = {};`);
 
@@ -126,8 +126,8 @@ async function testRandomSeeds(numTests = 5) {
       caption: 'Test caption',
       hashtags: [],
       seed: Math.floor(Math.random() * 2147483647),
-      maxSeconds: 45,
-      minSeconds: 25,
+      maxSeconds: 90,
+      minSeconds: 30,
     };
 
     const page = await context.newPage();

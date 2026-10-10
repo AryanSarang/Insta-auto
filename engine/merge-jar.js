@@ -22,7 +22,7 @@
 
   const N = SPEC.tiers.length;
   const TOTAL = 1 << (N - 1);
-  const maxDur = SPEC.maxSeconds || 45;
+  const maxDur = SPEC.maxSeconds || 90;
   const maxSim = maxDur + 20;
 
   const GRAV = ({ low: 550, normal: 850, high: 1150 })[SPEC.physics?.gravity] || 850;

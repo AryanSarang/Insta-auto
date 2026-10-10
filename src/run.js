@@ -148,8 +148,8 @@ async function processSpec(spec, config, outDir, opts = {}) {
   log('Rendering simulation...');
   const renderResult = await renderSpec(spec, icons, outDir, {
     fps: config.video?.fps || 30,
-    maxSeconds: config.video?.maxSeconds || 45,
-    minSeconds: config.video?.minSeconds || 25,
+    maxSeconds: config.video?.maxSeconds || 90,
+    minSeconds: config.video?.minSeconds || 30,
   });
 
   log('Resolving music...');

@@ -37,7 +37,7 @@ Return ONLY one JSON object — no markdown, no explanation, no code fences.
 }
 
 ## Tier rules
-- 5 to 8 tiers. The first tier is what falls; the last is the payoff.
+- 5 to 8 tiers. The first tier is what falls; the last is the payoff. The video can be up to 90 seconds, so use 7-8 tiers for richer chains when the theme supports it.
 - Each chain must make sense step by step. The final form should be surprising, funny, or ironic.
 - Icons: use emoji (Unicode 14 or older) that are clearly recognisable. An optional "accessory" emoji is drawn small on the item for jokes.
 - No brand logos, real people, or copyrighted characters.

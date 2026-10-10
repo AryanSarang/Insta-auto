@@ -21,8 +21,8 @@ export async function renderSpec(spec, icons, outDir, opts = {}) {
 
   const enrichedSpec = {
     ...spec,
-    maxSeconds: opts.maxSeconds || 45,
-    minSeconds: opts.minSeconds || 25,
+    maxSeconds: opts.maxSeconds || 90,
+    minSeconds: opts.minSeconds || 30,
   };
 
   log('Launching Playwright browser...');
