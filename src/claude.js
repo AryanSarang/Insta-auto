@@ -29,8 +29,6 @@ async function askClaudeCode(systemPrompt, userPrompt, opts = {}) {
 
   args.push('--system-prompt', systemPrompt);
 
-  if (opts.cwd) args.push('--cwd', opts.cwd);
-
   log(`Claude Code: spawning (model=${model}, tools=${opts.tools || 'none'})`);
 
   return new Promise((resolve, reject) => {

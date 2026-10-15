@@ -13,7 +13,7 @@
     "fill-queue": "node src/run.js --fill-queue=2",
     "setup-assets": "node scripts/setup-assets.js",
     "chat-prompt": "node scripts/chat-prompt.js",
-    "test": "node --test tests/index.test.js"
+    "test": "node --test tests/test-engine.js"
   },
   "engines": {
     "node": ">=20.0.0"
