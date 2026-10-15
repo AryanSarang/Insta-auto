@@ -1,1 +1,74 @@
-[]
+[
+  {
+    "file": "assets/icons/1f9a0.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-15T18:38:51.947Z"
+  },
+  {
+    "file": "assets/icons/1f41f.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-15T18:38:52.042Z"
+  },
+  {
+    "file": "assets/icons/1f438.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-15T18:38:52.047Z"
+  },
+  {
+    "file": "assets/icons/1f98e.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-15T18:38:52.136Z"
+  },
+  {
+    "file": "assets/icons/1f400.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-15T18:38:52.181Z"
+  },
+  {
+    "file": "assets/icons/1f412.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-15T18:38:52.231Z"
+  },
+  {
+    "file": "assets/icons/1f9cd.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-15T18:38:52.277Z"
+  },
+  {
+    "file": "assets/icons/1f6cb.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-15T18:38:52.330Z"
+  },
+  {
+    "file": "assets/icons/1f954.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-15T18:38:52.380Z"
+  }
+]
