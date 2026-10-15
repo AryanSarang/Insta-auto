@@ -111,7 +111,7 @@ export async function mixAudio(videoPath, events, soundMap, musicTrack, outDir, 
 
   const finalPath = join(outDir, 'reel.mp4');
 
-  const moodVolumes = { light: 0.35, romantic: 0.35, dark: 0.4, rock: 0.45, loud: 0.5 };
+  const moodVolumes = { light: 0.35, romantic: 0.35, dark: 0.4, rock: 0.45, loud: 0.5, meme: 0.4, bouncy: 0.4, retro: 0.4 };
   const musicVol = moodVolumes[mood] || 0.35;
 
   if (musicTrack && existsSync(musicTrack.path)) {

@@ -1,18 +1,20 @@
 {
   "account": {
-    "niche": "EDIT ME — e.g. satisfying merge evolution physics simulations",
-    "audience": "EDIT ME — e.g. teens and young adults who love oddly satisfying content",
-    "voice": "EDIT ME — e.g. playful, curious, a little absurd",
+    "niche": "Satisfying bouncing ball merge evolution simulations — 2048 meets physics",
+    "audience": "Teens and young adults who love oddly satisfying, ASMR, and merge game content",
+    "voice": "Playful, curious, a little absurd — hooks with a question, pays off with a surprise",
     "language": "English",
-    "cta": "EDIT ME — e.g. Follow to see what evolves next."
+    "cta": "Follow to see what evolves next!"
   },
   "pillars": [
-    "EDIT ME — e.g. evolution of living things",
-    "EDIT ME — e.g. evolution of technology",
-    "EDIT ME — e.g. food and cooking",
-    "EDIT ME — e.g. money and economy",
-    "EDIT ME — e.g. space and nature",
-    "EDIT ME — e.g. everyday life and work"
+    "evolution of living things",
+    "evolution of technology",
+    "food chain and cooking",
+    "money and economy",
+    "space and nature",
+    "sports and games",
+    "everyday life to legend",
+    "meme culture and internet"
   ],
   "video": {
     "minSeconds": 30,
@@ -20,10 +22,10 @@
     "fps": 30
   },
   "hashtags": {
-    "always": [],
+    "always": ["#oddlysatisfying", "#mergegame", "#2048", "#asmr"],
     "max": 8
   },
-  "moods": ["light", "dark", "rock", "romantic", "loud"],
+  "moods": ["light", "dark", "rock", "romantic", "loud", "meme", "bouncy", "retro"],
   "assets": {
     "allowAttribution": false,
     "musicPerMood": 4
