@@ -270,5 +270,45 @@
     "author": "Microsoft",
     "license": "MIT",
     "fetchedAt": "2026-10-16T12:45:51.045Z"
+  },
+  {
+    "file": "assets/icons/1f420.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-16T19:45:01.930Z"
+  },
+  {
+    "file": "assets/icons/1f971.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-16T19:45:01.985Z"
+  },
+  {
+    "file": "assets/sfx/697500.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/kanyonwyvern/sounds/697500/",
+    "author": "kanyonwyvern",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-16T19:47:05.548Z"
+  },
+  {
+    "file": "assets/icons/1f422.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-16T19:49:00.570Z"
+  },
+  {
+    "file": "assets/sfx/540788.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/magnuswaker/sounds/540788/",
+    "author": "magnuswaker",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-16T19:49:07.747Z"
   }
 ]
