@@ -1,4 +1,4 @@
-/* Merge-Jar physics engine — deterministic, pre-simulated */
+/* Merge-Jar physics engine — circular flask, rainbow border */
 (function () {
   'use strict';
 
@@ -28,41 +28,26 @@
   const GRAV = ({ low: 550, normal: 850, high: 1150 })[SPEC.physics?.gravity] || 850;
   const REST = Math.min(SPEC.physics?.bounciness || 0.6, 0.7);
 
-  const SAFE = { l: 20, r: W - 20, t: 65, b: H - 145 };
-  const CL = SAFE.l + 15, CR = SAFE.r - 15, CB = SAFE.b - 10, CT = SAFE.t + 70;
-  const CW = CR - CL;
+  /* ── Circular flask layout ── */
+  const CX = W / 2;
+  const CY = 310;
+  const CRAD = 148;
+  const TUBE_HW = 17;
+  const TUBE_TOP = 15;
+  const TUBE_BOT = CY - Math.sqrt(CRAD * CRAD - TUBE_HW * TUBE_HW);
+  const TUBE_ANGLE = Math.asin(TUBE_HW / CRAD);
 
-  const baseR = Math.min(CW / (N + 8), 12);
-  const GR = 1.22;
+  /* ── Tier radii — dramatic size growth ── */
+  const GR = 1.42;
+  const targetMaxR = CRAD * 0.34;
+  const computedBase = targetMaxR / Math.pow(GR, N - 1);
+  const baseR = Math.max(4, computedBase);
   const R = [];
   for (let i = 0; i < N; i++) R.push(baseR * Math.pow(GR, i));
-  if (R[N - 1] > CW * 0.15) {
-    const s = (CW * 0.15) / R[N - 1];
+  if (R[N - 1] > targetMaxR) {
+    const s = targetMaxR / R[N - 1];
     for (let i = 0; i < N; i++) R[i] *= s;
   }
-
-  const segs = [];
-  const shape = SPEC.container?.shape || 'box';
-  const cr = shape === 'bowl' ? CW * 0.18 : shape === 'jar' ? CW * 0.06 : 0;
-  if (cr > 0) {
-    const st = 5;
-    for (let i = 0; i < st; i++) {
-      const a0 = Math.PI / 2 + (Math.PI / 2) * i / st;
-      const a1 = Math.PI / 2 + (Math.PI / 2) * (i + 1) / st;
-      segs.push({ x1: CL + cr + cr * Math.cos(a0), y1: CB - cr + cr * Math.sin(a0), x2: CL + cr + cr * Math.cos(a1), y2: CB - cr + cr * Math.sin(a1) });
-    }
-    segs.push({ x1: CL + cr, y1: CB, x2: CR - cr, y2: CB });
-    for (let i = 0; i < st; i++) {
-      const a0 = (Math.PI / 2) * i / st;
-      const a1 = (Math.PI / 2) * (i + 1) / st;
-      segs.push({ x1: CR - cr + cr * Math.cos(a0), y1: CB - cr + cr * Math.sin(a0), x2: CR - cr + cr * Math.cos(a1), y2: CB - cr + cr * Math.sin(a1) });
-    }
-  } else {
-    segs.push({ x1: CL, y1: CB, x2: CR, y2: CB });
-  }
-  segs.push({ x1: CL, y1: CT, x2: CL, y2: CB });
-  segs.push({ x1: CR, y1: CT, x2: CR, y2: CB });
-  const nSegs = segs.length;
 
   const rng = mulberry32(SPEC.seed);
   let bods = [], nid = 0, spawned = 0, merges = 0, done = false, doneT = -1;
@@ -71,14 +56,14 @@
   const sndT = {};
 
   function mkBody(tier, x, y, vx, vy, prot) {
-    return { id: nid++, t: tier, x: x, y: y, vx: vx || 0, vy: vy || 0, r: R[tier], pr: prot || 0, st: 0, sc: prot > 0 ? 0.3 : 0, dead: false };
+    return { id: nid++, t: tier, x, y, vx: vx || 0, vy: vy || 0, r: R[tier], pr: prot || 0, st: 0, sc: prot > 0 ? 0.3 : 0, dead: false, mt: 0 };
   }
 
-  const spawnDur = maxDur * 0.48;
+  const spawnDur = maxDur * 0.45;
   const spawnInt = spawnDur / TOTAL;
   let spawnAcc = 0;
 
-  /* Compact frame storage */
+  /* ── Frame storage ── */
   const frames = [];
   function captureFrame(time) {
     const live = [];
@@ -86,19 +71,21 @@
       if (!bods[i].dead) live.push(bods[i]);
     }
     const n = live.length;
-    const d = new Float32Array(n * 6);
+    const d = new Float32Array(n * 7);
     const tr = new Uint8Array(n);
     for (let i = 0; i < n; i++) {
-      const b = live[i], o = i * 6;
+      const b = live[i], o = i * 7;
       d[o] = b.x; d[o + 1] = b.y; d[o + 2] = b.r;
       d[o + 3] = b.st > 0 ? 1 + 0.18 * Math.max(0, b.st / 0.1) : 1;
       d[o + 4] = b.st > 0 ? 1 - 0.12 * Math.max(0, b.st / 0.1) : 1;
       d[o + 5] = Math.min(1, b.sc);
+      d[o + 6] = Math.max(0, b.mt);
       tr[i] = b.t;
     }
-    frames.push({ d: d, tr: tr, n: n, sp: spawned, mg: merges, dn: done, t: time, ul: Array.from(unlocked) });
+    frames.push({ d, tr, n, sp: spawned, mg: merges, dn: done, t: time, ul: Array.from(unlocked) });
   }
 
+  /* ── Physics substep ── */
   function substep(dt) {
     const nb = bods.length;
     for (let i = 0; i < nb; i++) {
@@ -110,32 +97,45 @@
       if (b.pr > 0) b.pr -= dt;
       if (b.st > 0) b.st -= dt;
       if (b.sc < 1) b.sc += dt * 6;
+      if (b.mt > 0) b.mt -= dt;
     }
 
+    /* Circle + tube boundary */
     for (let i = 0; i < nb; i++) {
       const b = bods[i];
       if (b.dead) continue;
-      for (let s = 0; s < nSegs; s++) {
-        const seg = segs[s];
-        const ex = seg.x2 - seg.x1, ey = seg.y2 - seg.y1;
-        const l2 = ex * ex + ey * ey;
-        if (l2 < 0.001) continue;
-        let tp = ((b.x - seg.x1) * ex + (b.y - seg.y1) * ey) / l2;
-        if (tp < 0) tp = 0; else if (tp > 1) tp = 1;
-        const dx = b.x - (seg.x1 + tp * ex), dy = b.y - (seg.y1 + tp * ey);
-        const d2 = dx * dx + dy * dy;
-        if (d2 < b.r * b.r && d2 > 0.001) {
-          const d = Math.sqrt(d2), nx = dx / d, ny = dy / d;
-          b.x += nx * (b.r - d) * 1.01; b.y += ny * (b.r - d) * 1.01;
-          const vn = b.vx * nx + b.vy * ny;
-          if (vn < 0) { b.vx -= (1 + REST) * vn * nx; b.vy -= (1 + REST) * vn * ny; b.st = 0.08; }
+
+      const dx = b.x - CX;
+      const dy = b.y - CY;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
+
+      const inOpening = Math.abs(dx) < TUBE_HW + b.r * 0.5 && dy < -CRAD * 0.5;
+
+      if (dist + b.r > CRAD && !inOpening) {
+        const nx = dx / dist, ny = dy / dist;
+        b.x = CX + nx * (CRAD - b.r);
+        b.y = CY + ny * (CRAD - b.r);
+        const vn = b.vx * nx + b.vy * ny;
+        if (vn > 0) {
+          b.vx -= (1 + REST) * vn * nx;
+          b.vy -= (1 + REST) * vn * ny;
+          b.st = 0.06;
         }
       }
-      if (b.x - b.r < CL) { b.x = CL + b.r; if (b.vx < 0) b.vx = -b.vx * REST; }
-      if (b.x + b.r > CR) { b.x = CR - b.r; if (b.vx > 0) b.vx = -b.vx * REST; }
-      if (b.y + b.r > CB) { b.y = CB - b.r; if (b.vy > 0) b.vy = -b.vy * REST; }
+
+      if (b.y < TUBE_BOT + b.r * 2) {
+        if (b.x - b.r < CX - TUBE_HW) {
+          b.x = CX - TUBE_HW + b.r;
+          if (b.vx < 0) { b.vx = -b.vx * REST; b.st = 0.04; }
+        }
+        if (b.x + b.r > CX + TUBE_HW) {
+          b.x = CX + TUBE_HW - b.r;
+          if (b.vx > 0) { b.vx = -b.vx * REST; b.st = 0.04; }
+        }
+      }
     }
 
+    /* Body–body collision + merge */
     const toAdd = [];
     for (let i = 0; i < nb; i++) {
       const a = bods[i];
@@ -153,7 +153,10 @@
         if (a.t === b.t && a.pr <= 0 && b.pr <= 0 && a.t < N - 1) {
           a.dead = true; b.dead = true;
           const nt = a.t + 1;
-          toAdd.push(mkBody(nt, (a.x + b.x) / 2, (a.y + b.y) / 2, (a.vx + b.vx) * 0.3, Math.min((a.vy + b.vy) * 0.3 - 25, -8), 0.05));
+          const nb2 = mkBody(nt, (a.x + b.x) / 2, (a.y + b.y) / 2,
+            (a.vx + b.vx) * 0.3, Math.min((a.vy + b.vy) * 0.3 - 25, -8), 0.05);
+          nb2.mt = 0.3;
+          toAdd.push(nb2);
           merges++; lastMerge = sim;
           if (!unlocked.has(nt)) unlocked.add(nt);
           const sk = nt === N - 1 ? 'final' : 'merge_' + a.t;
@@ -176,17 +179,16 @@
     for (let i = 0; i < toAdd.length; i++) bods.push(toAdd[i]);
   }
 
-  /* Main pre-simulation loop */
-  let sim = 0, nextFrame = 0;
-  let compactCounter = 0;
+  /* ── Main pre-simulation ── */
+  let sim = 0, nextFrame = 0, compactCounter = 0;
 
   while (sim < maxSim) {
     if (!done && spawned < TOTAL) {
       spawnAcc += DT;
       while (spawnAcc >= spawnInt && spawned < TOTAL) {
         spawnAcc -= spawnInt;
-        const sx = CL + R[0] + 2 + rng() * (CW - R[0] * 2 - 4);
-        bods.push(mkBody(0, sx, CT - R[0] - 3, (rng() - 0.5) * 30, 20 + rng() * 35));
+        const sx = CX + (rng() - 0.5) * (TUBE_HW * 2 - R[0] * 3);
+        bods.push(mkBody(0, sx, TUBE_TOP + R[0], (rng() - 0.5) * 12, 8 + rng() * 20));
         spawned++;
       }
     }
@@ -194,7 +196,7 @@
     for (let s = 0; s < SUBSTEPS; s++) substep(SUB_DT);
     sim += DT;
 
-    /* Anti-stall: attract nearest same-tier pair (runs once per DT, not per substep) */
+    /* Anti-stall: attract nearest same-tier pair */
     if (!done && sim - lastMerge > 0.6 && bods.length > 1) {
       let bestD2 = 1e9, bi = -1, bj = -1;
       for (let i = 0; i < bods.length; i++) {
@@ -216,7 +218,6 @@
         const force = (250 + stallT * 400) * tierBoost * DT;
         a.vx += dx / d * force; a.vy += dy / d * force;
         b.vx -= dx / d * force; b.vy -= dy / d * force;
-        /* Hard teleport if stalled too long */
         if (stallT > 3.0 && d > a.r + b.r + 5) {
           const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
           a.x = mx - a.r * 0.5; b.x = mx + b.r * 0.5;
@@ -226,7 +227,6 @@
       }
     }
 
-    /* Compact dead bodies periodically */
     if (++compactCounter >= 30) {
       compactCounter = 0;
       let w = 0;
@@ -240,16 +240,15 @@
     if (done && sim > doneT + 2.0) break;
   }
 
-  /* Final compact */
   bods = bods.filter(function (b) { return !b.dead; });
 
   if (!done) {
-    window.SIM = { duration: 0, totalFrames: 0, events: [], seek: function () { }, failed: true };
+    window.SIM = { duration: 0, totalFrames: 0, events: [], seek: function () {}, failed: true };
     document.dispatchEvent(new Event('sim-ready'));
     return;
   }
 
-  /* Build mapped frame indices with slow-mo + hold */
+  /* ── Slow-mo + hold ── */
   const slomoStart = Math.max(0, Math.floor((doneT - 0.8) * FPS));
   const doneFrame = Math.min(Math.floor(doneT * FPS), frames.length - 1);
   const mapped = [];
@@ -260,10 +259,15 @@
 
   const duration = mapped.length / FPS;
 
-  /* Canvas */
+  /* ── Canvas — high-DPI ── */
   const canvas = document.getElementById('sim-canvas');
-  canvas.width = W; canvas.height = H;
+  const PX = window.devicePixelRatio || 3;
+  canvas.width = W * PX;
+  canvas.height = H * PX;
   const ctx = canvas.getContext('2d');
+  ctx.scale(PX, PX);
+
+  /* ── Load icons ── */
   const icos = {};
   if (window.ICON_DATA) {
     for (var _k in window.ICON_DATA) {
@@ -271,91 +275,127 @@
     }
   }
 
+  /* ── Pre-build rainbow HSL table ── */
+  const rainbow = [];
+  for (let i = 0; i < 360; i++) rainbow.push('hsl(' + i + ',100%,55%)');
+
+  /* ── Draw ── */
   function draw(frameIdx) {
     var mi = mapped[frameIdx];
     if (mi === undefined) return;
     var f = frames[mi];
     if (!f) return;
-    var p = SPEC.palette || { bg: '#1a1a2e', text: '#fff', accent: '#e94560' };
+    var hueOff = frameIdx * 1.8;
 
-    ctx.fillStyle = p.bg; ctx.fillRect(0, 0, W, H);
+    /* Black background */
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, W, H);
 
-    /* Container */
-    ctx.strokeStyle = SPEC.container?.color || '#888';
-    ctx.lineWidth = 3; ctx.lineCap = 'round';
-    ctx.beginPath(); ctx.moveTo(CL, CT);
-    for (var si = 0; si < nSegs; si++) { ctx.lineTo(segs[si].x1, segs[si].y1); ctx.lineTo(segs[si].x2, segs[si].y2); }
-    ctx.lineTo(CR, CT); ctx.stroke();
-    if (SPEC.container?.label) {
-      ctx.fillStyle = SPEC.container.color || '#888';
-      ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center';
-      ctx.fillText(SPEC.container.label, (CL + CR) / 2, CB + 14);
-    }
-
-    /* Progress bar */
-    var barY = SAFE.t + 4, isz = 18, gp = (CW - N * isz) / (N + 1);
-    for (var i = 0; i < N; i++) {
-      var x = CL + gp * (i + 1) + isz * i + isz / 2;
-      var ti = SPEC.tiers[i], ul = f.ul.indexOf(i) >= 0, fin = i === N - 1;
-      if (fin && !f.dn) {
-        ctx.fillStyle = '#333'; ctx.beginPath(); ctx.arc(x, barY + 12, isz / 2 + 2, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = '#666'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.fillText('???', x, barY + 12);
-      } else {
-        ctx.globalAlpha = ul ? 1 : 0.3;
-        var ic = icos[ti.icon];
-        if (ic && ic.complete && ic.naturalWidth > 0) ctx.drawImage(ic, x - isz / 2, barY + 3, isz, isz);
-        else { ctx.font = (isz - 2) + 'px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(ti.icon, x, barY + 12); }
-        ctx.globalAlpha = 1;
+    /* Rainbow circle border with glow — two passes */
+    var arcStart = -Math.PI / 2 + TUBE_ANGLE;
+    var arcTotal = 2 * Math.PI - 2 * TUBE_ANGLE;
+    var numSegs = 72;
+    var passes = [
+      { w: 10, a: 0.14 },
+      { w: 2.8, a: 1.0 },
+    ];
+    for (var pi = 0; pi < passes.length; pi++) {
+      ctx.lineWidth = passes[pi].w;
+      ctx.lineCap = 'round';
+      for (var si = 0; si < numSegs; si++) {
+        var a0 = arcStart + (si / numSegs) * arcTotal;
+        var a1 = arcStart + ((si + 1.2) / numSegs) * arcTotal;
+        var hue = Math.floor((hueOff + (si / numSegs) * 360) % 360);
+        ctx.globalAlpha = passes[pi].a;
+        ctx.strokeStyle = rainbow[hue];
+        ctx.beginPath();
+        ctx.arc(CX, CY, CRAD, a0, a1);
+        ctx.stroke();
       }
     }
+    ctx.globalAlpha = 1;
 
-    /* Counter */
-    ctx.fillStyle = p.text; ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'left';
-    ctx.fillText(SPEC.tiers[0].icon + ' × ' + f.sp, CL, SAFE.t + 52);
-
-    /* Hook */
-    var vt = frameIdx / FPS;
-    if (SPEC.hook && vt < 2.5) {
-      ctx.globalAlpha = vt < 2 ? 1 : Math.max(0, 1 - (vt - 2) / 0.5);
-      ctx.fillStyle = p.accent; ctx.font = 'bold 18px sans-serif'; ctx.textAlign = 'center';
-      wrapText(ctx, SPEC.hook, W / 2, SAFE.t + 20, W - 40, 22);
-      ctx.globalAlpha = 1;
-    }
+    /* White tube lines */
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(CX - TUBE_HW, TUBE_TOP);
+    ctx.lineTo(CX - TUBE_HW, TUBE_BOT + 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(CX + TUBE_HW, TUBE_TOP);
+    ctx.lineTo(CX + TUBE_HW, TUBE_BOT + 2);
+    ctx.stroke();
 
     /* Bodies */
     for (var bi = 0; bi < f.n; bi++) {
-      var o = bi * 6;
+      var o = bi * 7;
       var bx = f.d[o], by = f.d[o + 1], br = f.d[o + 2];
       var bsx = f.d[o + 3], bsy = f.d[o + 4], bsc = f.d[o + 5];
+      var mergeFlash = f.d[o + 6];
       var tier = f.tr[bi], bti = SPEC.tiers[tier];
 
-      ctx.save(); ctx.translate(bx, by);
+      ctx.save();
+      ctx.translate(bx, by);
       var scl = bsc < 1 ? 0.5 + 0.5 * easeBack(bsc) : 1;
       ctx.scale(bsx * scl, bsy * scl);
+
       var sz = br * 2;
+
+      /* Merge flash glow ring */
+      if (mergeFlash > 0.01) {
+        var flashAlpha = (mergeFlash / 0.3) * 0.45;
+        var flashR = br + 3 + (0.3 - mergeFlash) * 20;
+        ctx.globalAlpha = flashAlpha;
+        ctx.strokeStyle = '#ffe066';
+        ctx.lineWidth = 2 + (0.3 - mergeFlash) * 6;
+        ctx.beginPath();
+        ctx.arc(0, 0, flashR, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
+
+      /* Draw icon */
       var bimg = icos[bti.icon];
-      if (bimg && bimg.complete && bimg.naturalWidth > 0) ctx.drawImage(bimg, -sz / 2, -sz / 2, sz, sz);
-      else { ctx.font = Math.round(sz * 0.8) + 'px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = p.text; ctx.fillText(bti.icon, 0, 0); }
+      if (bimg && bimg.complete && bimg.naturalWidth > 0) {
+        ctx.drawImage(bimg, -sz / 2, -sz / 2, sz, sz);
+      } else {
+        ctx.font = Math.round(sz * 0.75) + 'px sans-serif';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#fff';
+        ctx.fillText(bti.icon, 0, 0);
+      }
+
+      /* Accessory */
       if (bti.accessory) {
         var ai = icos[bti.accessory], as = sz * 0.4;
-        if (ai && ai.complete && ai.naturalWidth > 0) ctx.drawImage(ai, sz * 0.15, -sz * 0.45, as, as);
-        else { ctx.font = Math.round(as * 0.8) + 'px sans-serif'; ctx.fillText(bti.accessory, sz * 0.25, -sz * 0.3); }
+        if (ai && ai.complete && ai.naturalWidth > 0) {
+          ctx.drawImage(ai, sz * 0.15, -sz * 0.45, as, as);
+        } else {
+          ctx.font = Math.round(as * 0.7) + 'px sans-serif';
+          ctx.fillStyle = '#fff';
+          ctx.fillText(bti.accessory, sz * 0.25, -sz * 0.3);
+        }
       }
-      ctx.restore();
 
-      if (bsc < 0.8 && bsc > 0.05) {
-        ctx.fillStyle = p.accent; ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'center';
-        ctx.fillText(bti.name + ' unlocked!', bx, by - br - 8);
-      }
+      ctx.restore();
     }
 
-    /* Final reveal */
+    /* Hook text — always visible at bottom */
+    if (SPEC.hook) {
+      ctx.fillStyle = '#fff';
+      ctx.font = 'italic bold 17px sans-serif';
+      ctx.textAlign = 'center';
+      wrapText(ctx, SPEC.hook, W / 2, H - 70, W - 50, 22);
+    }
+
+    /* Final reveal text */
     if (f.dn && SPEC.finalText) {
-      ctx.fillStyle = p.accent; ctx.font = 'bold 22px sans-serif'; ctx.textAlign = 'center';
-      var fy = H / 2;
-      for (var fi = 0; fi < f.n; fi++) { if (f.tr[fi] === N - 1) { fy = f.d[fi * 6 + 1] - f.d[fi * 6 + 2] - 30; break; } }
-      wrapText(ctx, SPEC.finalText, W / 2, Math.min(fy, H - 160), W - 60, 26);
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 18px sans-serif';
+      ctx.textAlign = 'center';
+      wrapText(ctx, SPEC.finalText, CX, CY - CRAD + 30, CRAD * 1.6, 22);
     }
   }
 
@@ -368,6 +408,7 @@
     }
     c.fillText(l.trim(), x, ty);
   }
+
   function easeBack(t) { var c = 1.7; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); }
 
   window.SIM = {
