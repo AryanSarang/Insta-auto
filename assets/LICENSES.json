@@ -310,5 +310,13 @@
     "author": "magnuswaker",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-16T19:49:07.747Z"
+  },
+  {
+    "file": "assets/icons/1f9df.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-16T20:28:53.057Z"
   }
 ]
