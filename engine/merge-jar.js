@@ -30,8 +30,8 @@
 
   /* ── Circular flask layout ── */
   const CX = W / 2;
-  const CY = 310;
-  const CRAD = 148;
+  const CY = 290;
+  const CRAD = 140;
   const TUBE_HW = 17;
   const TUBE_TOP = 15;
   const TUBE_BOT = CY - Math.sqrt(CRAD * CRAD - TUBE_HW * TUBE_HW);
@@ -188,7 +188,7 @@
       while (spawnAcc >= spawnInt && spawned < TOTAL) {
         spawnAcc -= spawnInt;
         const sx = CX + (rng() - 0.5) * (TUBE_HW * 2 - R[0] * 3);
-        bods.push(mkBody(0, sx, TUBE_TOP + R[0], (rng() - 0.5) * 12, 8 + rng() * 20));
+        bods.push(mkBody(0, sx, TUBE_TOP + R[0], (rng() - 0.5) * 30, 12 + rng() * 25));
         spawned++;
       }
     }
@@ -343,13 +343,13 @@
 
       var sz = br * 2;
 
-      /* Merge flash glow ring */
-      if (mergeFlash > 0.01) {
-        var flashAlpha = (mergeFlash / 0.3) * 0.45;
-        var flashR = br + 3 + (0.3 - mergeFlash) * 20;
+      /* Merge flash glow ring (skip on final tier during hold) */
+      if (mergeFlash > 0.01 && !(f.dn && tier === N - 1)) {
+        var flashAlpha = (mergeFlash / 0.3) * 0.4;
+        var flashR = br + 3 + (0.3 - mergeFlash) * 15;
         ctx.globalAlpha = flashAlpha;
         ctx.strokeStyle = '#ffe066';
-        ctx.lineWidth = 2 + (0.3 - mergeFlash) * 6;
+        ctx.lineWidth = 1.5 + (0.3 - mergeFlash) * 4;
         ctx.beginPath();
         ctx.arc(0, 0, flashR, 0, Math.PI * 2);
         ctx.stroke();
@@ -383,19 +383,20 @@
     }
 
     /* Hook text — always visible at bottom */
-    if (SPEC.hook) {
+    if (SPEC.hook && !f.dn) {
       ctx.fillStyle = '#fff';
       ctx.font = 'italic bold 17px sans-serif';
       ctx.textAlign = 'center';
-      wrapText(ctx, SPEC.hook, W / 2, H - 70, W - 50, 22);
+      wrapText(ctx, SPEC.hook, W / 2, H - 55, W - 50, 22);
     }
 
-    /* Final reveal text */
+    /* Final reveal text — centered ABOVE the circle, well clear of rim */
     if (f.dn && SPEC.finalText) {
       ctx.fillStyle = '#fff';
-      ctx.font = 'bold 18px sans-serif';
+      ctx.font = 'bold 20px sans-serif';
       ctx.textAlign = 'center';
-      wrapText(ctx, SPEC.finalText, CX, CY - CRAD + 30, CRAD * 1.6, 22);
+      var ftY = Math.max(30, CY - CRAD - 50);
+      wrapText(ctx, SPEC.finalText, CX, ftY, W - 40, 24);
     }
   }
 
