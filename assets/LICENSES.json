@@ -222,5 +222,53 @@
     "author": "NoTomorrow12",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-16T07:58:01.881Z"
+  },
+  {
+    "file": "assets/icons/1f9d4.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-16T12:40:38.897Z"
+  },
+  {
+    "file": "assets/icons/2615.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-16T12:40:39.038Z"
+  },
+  {
+    "file": "assets/icons/1f95a.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-16T12:45:50.767Z"
+  },
+  {
+    "file": "assets/icons/1f41b.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-16T12:45:50.873Z"
+  },
+  {
+    "file": "assets/icons/1f996.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-16T12:45:50.971Z"
+  },
+  {
+    "file": "assets/icons/1f4fa.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-16T12:45:51.045Z"
   }
 ]
