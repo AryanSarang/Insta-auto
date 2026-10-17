@@ -358,5 +358,29 @@
     "author": "unfa",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-17T07:35:15.858Z"
+  },
+  {
+    "file": "assets/icons/1f9d1_200d_1f4bc.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-17T11:43:59.449Z"
+  },
+  {
+    "file": "assets/icons/1f635.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-17T11:47:18.765Z"
+  },
+  {
+    "file": "assets/icons/1f4c5.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-17T11:47:18.835Z"
   }
 ]
