@@ -2,9 +2,9 @@ name: Post Reel
 
 on:
   schedule:
-    - cron: '30 7 * * *'   # Morning post ~07:30 UTC
-    - cron: '30 16 * * *'  # Evening post ~16:30 UTC
-    - cron: '0 3 * * *'    # Nightly fill-queue at 03:00 UTC
+    - cron: '30 22 * * *'  # 4:00 AM IST post
+    - cron: '30 4 * * *'   # 10:00 AM IST post
+    - cron: '0 18 * * *'   # Fill-queue at 11:30 PM IST
   workflow_dispatch:
     inputs:
       dry_run:
@@ -70,7 +70,7 @@ jobs:
           DRY="${{ inputs.dry_run }}"
           FILL="${{ inputs.fill_queue }}"
 
-          if [ "$CRON" = "0 3 * * *" ]; then
+          if [ "$CRON" = "0 18 * * *" ]; then
             echo "args=--fill-queue=2" >> "$GITHUB_OUTPUT"
           elif [ "$DRY" = "true" ]; then
             echo "args=--dry-run" >> "$GITHUB_OUTPUT"

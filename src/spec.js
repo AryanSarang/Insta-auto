@@ -1,7 +1,7 @@
 import { clamp } from './util.js';
 
 const SHAPES = ['jar', 'glass', 'bowl', 'box'];
-const MOODS = ['light', 'dark', 'rock', 'romantic', 'loud'];
+const MOODS = ['light', 'dark', 'rock', 'romantic', 'loud', 'meme', 'bouncy', 'retro'];
 const GRAVITIES = ['low', 'normal', 'high'];
 const STYLES = ['pop', 'boing', 'squeak', 'voice', 'impact', 'magic', 'cartoon', 'fanfare'];
 

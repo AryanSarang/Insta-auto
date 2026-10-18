@@ -1,4 +1,4 @@
-/* Merge-Jar physics engine — circular flask, rainbow border */
+/* Merge-Jar physics engine — circular flask, rainbow border, enhanced visuals */
 (function () {
   'use strict';
 
@@ -28,20 +28,20 @@
   const GRAV = ({ low: 550, normal: 850, high: 1150 })[SPEC.physics?.gravity] || 850;
   const REST = Math.min(SPEC.physics?.bounciness || 0.6, 0.7);
 
-  /* ── Circular flask layout ── */
+  /* ── Circular flask — enlarged for visibility ── */
   const CX = W / 2;
-  const CY = 290;
-  const CRAD = 140;
-  const TUBE_HW = 17;
-  const TUBE_TOP = 15;
+  const CY = 280;
+  const CRAD = 155;
+  const TUBE_HW = 18;
+  const TUBE_TOP = 12;
   const TUBE_BOT = CY - Math.sqrt(CRAD * CRAD - TUBE_HW * TUBE_HW);
   const TUBE_ANGLE = Math.asin(TUBE_HW / CRAD);
 
-  /* ── Tier radii — dramatic size growth ── */
-  const GR = 1.42;
-  const targetMaxR = CRAD * 0.34;
+  /* ── Tier radii — bigger items for mobile readability ── */
+  const GR = 1.35;
+  const targetMaxR = CRAD * 0.38;
   const computedBase = targetMaxR / Math.pow(GR, N - 1);
-  const baseR = Math.max(4, computedBase);
+  const baseR = Math.max(8, computedBase);
   const R = [];
   for (let i = 0; i < N; i++) R.push(baseR * Math.pow(GR, i));
   if (R[N - 1] > targetMaxR) {
@@ -54,6 +54,10 @@
   const evts = [], unlocked = new Set([0]);
   let lastMerge = 0;
   const sndT = {};
+
+  /* Merge burst tracking for visual effects */
+  const activeBursts = [];
+  let flashAmount = 0;
 
   function mkBody(tier, x, y, vx, vy, prot) {
     return { id: nid++, t: tier, x, y, vx: vx || 0, vy: vy || 0, r: R[tier], pr: prot || 0, st: 0, sc: prot > 0 ? 0.3 : 0, dead: false, mt: 0 };
@@ -82,7 +86,14 @@
       d[o + 6] = Math.max(0, b.mt);
       tr[i] = b.t;
     }
-    frames.push({ d, tr, n, sp: spawned, mg: merges, dn: done, t: time, ul: Array.from(unlocked) });
+    const curBursts = [];
+    for (let i = 0; i < activeBursts.length; i++) {
+      const age = time - activeBursts[i].birth;
+      if (age >= 0 && age < 0.45) {
+        curBursts.push({ x: activeBursts[i].x, y: activeBursts[i].y, tier: activeBursts[i].tier, age: age });
+      }
+    }
+    frames.push({ d, tr, n, sp: spawned, mg: merges, dn: done, t: time, ul: Array.from(unlocked), bursts: curBursts, flash: flashAmount });
   }
 
   /* ── Physics substep ── */
@@ -153,12 +164,21 @@
         if (a.t === b.t && a.pr <= 0 && b.pr <= 0 && a.t < N - 1) {
           a.dead = true; b.dead = true;
           const nt = a.t + 1;
-          const nb2 = mkBody(nt, (a.x + b.x) / 2, (a.y + b.y) / 2,
-            (a.vx + b.vx) * 0.3, Math.min((a.vy + b.vy) * 0.3 - 25, -8), 0.05);
-          nb2.mt = 0.3;
+          const mergeX = (a.x + b.x) / 2, mergeY = (a.y + b.y) / 2;
+          const tierPop = -12 - nt * 5;
+          const nb2 = mkBody(nt, mergeX, mergeY,
+            (a.vx + b.vx) * 0.3, Math.min((a.vy + b.vy) * 0.3 + tierPop, -8), 0.05);
+          nb2.mt = 0.5;
+          nb2.sc = 0;
           toAdd.push(nb2);
           merges++; lastMerge = sim;
           if (!unlocked.has(nt)) unlocked.add(nt);
+
+          activeBursts.push({ x: mergeX, y: mergeY, tier: nt, birth: sim });
+          if (nt >= Math.floor(N / 2)) {
+            flashAmount = Math.max(flashAmount, 0.3 + (nt / N) * 0.5);
+          }
+
           const sk = nt === N - 1 ? 'final' : 'merge_' + a.t;
           if (sim - (sndT[sk] || 0) >= 0.06) { evts.push({ t: sim, sfx: sk, rate: 1 + (rng() - 0.5) * 0.24 }); sndT[sk] = sim; }
           if (nt === N - 1) { done = true; doneT = sim; }
@@ -188,13 +208,16 @@
       while (spawnAcc >= spawnInt && spawned < TOTAL) {
         spawnAcc -= spawnInt;
         const sx = CX + (rng() - 0.5) * (TUBE_HW * 2 - R[0] * 3);
-        bods.push(mkBody(0, sx, TUBE_TOP + R[0], (rng() - 0.5) * 30, 12 + rng() * 25));
+        bods.push(mkBody(0, sx, TUBE_TOP + R[0], (rng() - 0.5) * 45, 15 + rng() * 30));
         spawned++;
       }
     }
 
     for (let s = 0; s < SUBSTEPS; s++) substep(SUB_DT);
     sim += DT;
+
+    if (flashAmount > 0) flashAmount = Math.max(0, flashAmount - DT * 3);
+    while (activeBursts.length > 0 && sim - activeBursts[0].birth > 0.5) activeBursts.shift();
 
     /* Anti-stall: attract nearest same-tier pair */
     if (!done && sim - lastMerge > 0.6 && bods.length > 1) {
@@ -248,14 +271,14 @@
     return;
   }
 
-  /* ── Slow-mo + hold ── */
+  /* ── Slow-mo + extended hold ── */
   const slomoStart = Math.max(0, Math.floor((doneT - 0.8) * FPS));
   const doneFrame = Math.min(Math.floor(doneT * FPS), frames.length - 1);
   const mapped = [];
   for (let i = 0; i < Math.min(slomoStart, frames.length); i++) mapped.push(i);
   for (let i = slomoStart; i <= doneFrame; i++) { mapped.push(i); mapped.push(i); mapped.push(i); }
   const holdIdx = Math.min(doneFrame + 1, frames.length - 1);
-  for (let h = 0; h < Math.round(1.5 * FPS); h++) mapped.push(holdIdx);
+  for (let h = 0; h < Math.round(2.5 * FPS); h++) mapped.push(holdIdx);
 
   const duration = mapped.length / FPS;
 
@@ -279,6 +302,35 @@
   const rainbow = [];
   for (let i = 0; i < 360; i++) rainbow.push('hsl(' + i + ',100%,55%)');
 
+  /* ── Tier color palette ── */
+  var TIER_HUES = [180, 120, 60, 30, 330, 280, 200, 45];
+  function tierColor(tier) {
+    return 'hsl(' + TIER_HUES[tier % TIER_HUES.length] + ',90%,60%)';
+  }
+
+  /* ── Draw merge burst ripples ── */
+  function drawBurstRipples(burst) {
+    var progress = burst.age / 0.4;
+    if (progress > 1) return;
+    var numRings = 2 + Math.min(burst.tier, 3);
+    var maxRadius = 15 + burst.tier * 10;
+
+    for (var r = 0; r < numRings; r++) {
+      var ringDelay = r * 0.12;
+      var ringP = Math.max(0, progress - ringDelay);
+      if (ringP <= 0 || ringP > 1) continue;
+      var radius = ringP * maxRadius;
+      var ringAlpha = (1 - progress) * 0.5 * (1 - ringP);
+      ctx.globalAlpha = ringAlpha;
+      ctx.strokeStyle = tierColor(burst.tier);
+      ctx.lineWidth = Math.max(0.5, 2.5 * (1 - ringP));
+      ctx.beginPath();
+      ctx.arc(burst.x, burst.y, radius, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+
   /* ── Draw ── */
   function draw(frameIdx) {
     var mi = mapped[frameIdx];
@@ -290,6 +342,13 @@
     /* Black background */
     ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, W, H);
+
+    /* Merge burst ripples — behind bodies */
+    if (f.bursts) {
+      for (var bi2 = 0; bi2 < f.bursts.length; bi2++) {
+        drawBurstRipples(f.bursts[bi2]);
+      }
+    }
 
     /* Rainbow circle border with glow — two passes */
     var arcStart = -Math.PI / 2 + TUBE_ANGLE;
@@ -329,6 +388,7 @@
     ctx.stroke();
 
     /* Bodies */
+    var glowTier = Math.floor(N * 0.4);
     for (var bi = 0; bi < f.n; bi++) {
       var o = bi * 7;
       var bx = f.d[o], by = f.d[o + 1], br = f.d[o + 2];
@@ -339,20 +399,61 @@
       ctx.save();
       ctx.translate(bx, by);
       var scl = bsc < 1 ? 0.5 + 0.5 * easeBack(bsc) : 1;
+
+      if (f.dn && tier === N - 1) {
+        scl *= 1.0 + 0.06 * Math.sin(frameIdx * 0.12);
+      }
+
       ctx.scale(bsx * scl, bsy * scl);
 
       var sz = br * 2;
 
+      /* Tier glow for higher-tier items */
+      if (tier >= glowTier) {
+        var glowStrength = (tier - glowTier + 1) / (N - glowTier);
+        var glowAlpha = 0.08 + glowStrength * 0.18;
+        var glowR = br * (1.4 + glowStrength * 0.6);
+        var grad = ctx.createRadialGradient(0, 0, br * 0.3, 0, 0, glowR);
+        grad.addColorStop(0, tierColor(tier));
+        grad.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.globalAlpha = glowAlpha;
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(0, 0, glowR, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+
+      /* Final tier golden glow during hold */
+      if (f.dn && tier === N - 1) {
+        var pulseGlow = 0.5 + 0.5 * Math.sin(frameIdx * 0.1);
+        var goldR = br * (1.8 + pulseGlow * 0.4);
+        var goldGrad = ctx.createRadialGradient(0, 0, br * 0.5, 0, 0, goldR);
+        goldGrad.addColorStop(0, 'rgba(255,224,102,0.35)');
+        goldGrad.addColorStop(0.6, 'rgba(255,200,50,0.12)');
+        goldGrad.addColorStop(1, 'rgba(255,180,0,0)');
+        ctx.fillStyle = goldGrad;
+        ctx.beginPath();
+        ctx.arc(0, 0, goldR, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
       /* Merge flash glow ring (skip on final tier during hold) */
       if (mergeFlash > 0.01 && !(f.dn && tier === N - 1)) {
-        var flashAlpha = (mergeFlash / 0.3) * 0.4;
-        var flashR = br + 3 + (0.3 - mergeFlash) * 15;
-        ctx.globalAlpha = flashAlpha;
-        ctx.strokeStyle = '#ffe066';
-        ctx.lineWidth = 1.5 + (0.3 - mergeFlash) * 4;
+        var flashProgress = 1 - (mergeFlash / 0.5);
+        var ringR = br + 4 + flashProgress * 20;
+        var ringAlpha = (mergeFlash / 0.5) * 0.5;
+        ctx.globalAlpha = ringAlpha;
+        ctx.strokeStyle = tierColor(tier);
+        ctx.lineWidth = 2 + (1 - flashProgress) * 3;
         ctx.beginPath();
-        ctx.arc(0, 0, flashR, 0, Math.PI * 2);
+        ctx.arc(0, 0, ringR, 0, Math.PI * 2);
         ctx.stroke();
+        ctx.globalAlpha = ringAlpha * 0.3;
+        ctx.fillStyle = tierColor(tier);
+        ctx.beginPath();
+        ctx.arc(0, 0, br * 1.15, 0, Math.PI * 2);
+        ctx.fill();
         ctx.globalAlpha = 1;
       }
 
@@ -382,21 +483,44 @@
       ctx.restore();
     }
 
-    /* Hook text — always visible at bottom */
-    if (SPEC.hook && !f.dn) {
+    /* Screen flash overlay for high-tier merges */
+    if (f.flash > 0.01) {
+      ctx.globalAlpha = Math.min(f.flash * 0.25, 0.3);
       ctx.fillStyle = '#fff';
-      ctx.font = 'italic bold 17px sans-serif';
-      ctx.textAlign = 'center';
-      wrapText(ctx, SPEC.hook, W / 2, H - 55, W - 50, 22);
+      ctx.fillRect(0, 0, W, H);
+      ctx.globalAlpha = 1;
     }
 
-    /* Final reveal text — centered ABOVE the circle, well clear of rim */
-    if (f.dn && SPEC.finalText) {
-      ctx.fillStyle = '#fff';
-      ctx.font = 'bold 20px sans-serif';
+    /* Hook text — bold, below circle, with drop shadow */
+    if (SPEC.hook && !f.dn) {
+      ctx.font = 'bold 22px sans-serif';
       ctx.textAlign = 'center';
-      var ftY = Math.max(30, CY - CRAD - 50);
-      wrapText(ctx, SPEC.finalText, CX, ftY, W - 40, 24);
+      ctx.fillStyle = 'rgba(0,0,0,0.7)';
+      wrapText(ctx, SPEC.hook, CX + 1, CY + CRAD + 36, W - 40, 26);
+      ctx.fillStyle = '#fff';
+      wrapText(ctx, SPEC.hook, CX, CY + CRAD + 35, W - 40, 26);
+    }
+
+    /* Final reveal text — bold, above circle, with golden glow */
+    if (f.dn && SPEC.finalText) {
+      ctx.save();
+      var ftY = Math.max(25, CY - CRAD - 40);
+      ctx.shadowColor = '#ffe066';
+      ctx.shadowBlur = 10;
+      ctx.font = 'bold 24px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#fff';
+      wrapText(ctx, SPEC.finalText, CX, ftY, W - 36, 28);
+      ctx.restore();
+    }
+
+    /* Vignette during final reveal */
+    if (f.dn) {
+      var vig = ctx.createRadialGradient(CX, CY, CRAD * 0.7, CX, CY, H * 0.75);
+      vig.addColorStop(0, 'rgba(0,0,0,0)');
+      vig.addColorStop(1, 'rgba(0,0,0,0.35)');
+      ctx.fillStyle = vig;
+      ctx.fillRect(0, 0, W, H);
     }
   }
 

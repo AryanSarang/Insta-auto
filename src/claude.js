@@ -171,15 +171,23 @@ export async function reviewFrames(framesDir, frameFiles) {
 - "issues": array of strings describing problems found
 
 Check for:
-1. Text readability (must be clear on a phone)
+1. Text readability (must be clear on a phone, with drop shadow or outline)
 2. Icons that appear as empty boxes or are missing
 3. Icons that don't visually match their tier name
 4. Items escaping outside the container
-5. Final reveal frame: is the final form clearly visible and centered?
-6. Punchline text: is it readable and funny?
+5. Final reveal frame: is the final form clearly visible, centered, with glow effect?
+6. Punchline text: is it readable and punchy?
 7. Progress bar: is it visible and correct?
 8. Anything that looks broken, inappropriate, or low quality
 9. Overall visual appeal and entertainment value
+
+CRITICAL quality checks (score 0-3 if any fail):
+10. Icon coherence: do ALL tier icons belong to the same visual world? (e.g. all animals, all sea creatures). Mixed unrelated icons = instant fail.
+11. Evolution logic: does each tier feel like a natural upgrade from the previous one? Random progression = fail.
+12. Arena utilization: are items spread across the arena or clustered in one corner? Items should fill at least 60% of the flask area.
+13. Icon visibility: can you recognise the tier-0 icons even though they are tiny? Overly complex emoji at small size = fail.
+14. Merge satisfaction: when items merge, is there a visible burst/glow effect? Merges should feel impactful.
+15. Final form payoff: does the final tier icon feel like a grand culmination of the evolution chain?
 
 Score >= 7 = pass. Be strict but fair.`;
 

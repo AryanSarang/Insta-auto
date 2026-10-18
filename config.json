@@ -43,7 +43,7 @@
     "lowWater": 3
   },
   "slots": {
-    "morning": "09:00",
-    "evening": "18:00"
+    "morning": "04:00",
+    "evening": "10:00"
   }
 }
