@@ -406,5 +406,69 @@
     "author": "Soundwarf",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-18T07:48:17.047Z"
+  },
+  {
+    "file": "assets/icons/1f40d.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-18T20:11:00.141Z"
+  },
+  {
+    "file": "assets/icons/1f40a.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-18T20:11:00.237Z"
+  },
+  {
+    "file": "assets/icons/1f409.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-18T20:11:00.353Z"
+  },
+  {
+    "file": "assets/sfx/846337.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/TheKingOfGeeks360/sounds/846337/",
+    "author": "TheKingOfGeeks360",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-18T20:11:09.457Z"
+  },
+  {
+    "file": "assets/icons/1f4fb.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-18T20:13:23.968Z"
+  },
+  {
+    "file": "assets/sfx/683179.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/NearTheAtmoshphere/sounds/683179/",
+    "author": "NearTheAtmoshphere",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-18T20:13:29.660Z"
+  },
+  {
+    "file": "assets/sfx/448364.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/StepGames/sounds/448364/",
+    "author": "StepGames",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-18T20:13:30.725Z"
+  },
+  {
+    "file": "assets/sfx/351879.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/marlonnnnnn/sounds/351879/",
+    "author": "marlonnnnnn",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-18T20:13:31.743Z"
   }
 ]
