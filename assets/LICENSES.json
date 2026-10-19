@@ -566,5 +566,133 @@
     "author": "FunnyVoices",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-19T00:25:58.324Z"
+  },
+  {
+    "file": "assets/icons/2699.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-19T10:07:38.102Z"
+  },
+  {
+    "file": "assets/icons/1f570.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-19T10:07:38.212Z"
+  },
+  {
+    "file": "assets/sfx/827463.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/jonahlpayne/sounds/827463/",
+    "author": "jonahlpayne",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-19T10:07:44.148Z"
+  },
+  {
+    "file": "assets/sfx/456827.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Rvgerxini/sounds/456827/",
+    "author": "Rvgerxini",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-19T10:07:45.115Z"
+  },
+  {
+    "file": "assets/icons/1f6f4.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-19T10:09:30.961Z"
+  },
+  {
+    "file": "assets/icons/1f6b2.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-19T10:09:31.111Z"
+  },
+  {
+    "file": "assets/icons/1f6f5.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-19T10:09:31.180Z"
+  },
+  {
+    "file": "assets/icons/1f697.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-19T10:09:31.261Z"
+  },
+  {
+    "file": "assets/icons/2708.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-19T10:09:31.354Z"
+  },
+  {
+    "file": "assets/icons/1f680.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-19T10:09:31.442Z"
+  },
+  {
+    "file": "assets/sfx/547408.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Ian_G/sounds/547408/",
+    "author": "Ian_G",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-19T10:09:40.082Z"
+  },
+  {
+    "file": "assets/sfx/164625.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/deleted_user_2104797/sounds/164625/",
+    "author": "deleted_user_2104797",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-19T10:09:41.573Z"
+  },
+  {
+    "file": "assets/icons/1f941.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-19T10:11:24.768Z"
+  },
+  {
+    "file": "assets/icons/2709.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-19T10:11:24.900Z"
+  },
+  {
+    "file": "assets/icons/1f4de.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-19T10:11:24.974Z"
+  },
+  {
+    "file": "assets/icons/1f6f0.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-19T10:11:25.059Z"
   }
 ]
