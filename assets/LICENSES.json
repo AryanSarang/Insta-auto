@@ -822,5 +822,37 @@
     "author": "Microsoft",
     "license": "MIT",
     "fetchedAt": "2026-10-20T01:13:38.755Z"
+  },
+  {
+    "file": "assets/icons/1f9c7.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-20T09:33:47.509Z"
+  },
+  {
+    "file": "assets/sfx/106392.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/j1987/sounds/106392/",
+    "author": "j1987",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-20T09:33:59.512Z"
+  },
+  {
+    "file": "assets/icons/1f369.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-20T09:35:52.990Z"
+  },
+  {
+    "file": "assets/icons/1f9c1.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-20T09:37:47.853Z"
   }
 ]
