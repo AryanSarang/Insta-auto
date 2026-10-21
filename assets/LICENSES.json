@@ -1086,5 +1086,37 @@
     "author": "ralph.whitehead",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-21T09:34:42.354Z"
+  },
+  {
+    "file": "assets/icons/1f98d.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-21T15:03:54.822Z"
+  },
+  {
+    "file": "assets/icons/1f93a.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-21T15:03:54.918Z"
+  },
+  {
+    "file": "assets/icons/1f9d1_200d_1f52c.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-21T15:03:55.032Z"
+  },
+  {
+    "file": "assets/icons/1f9d1_200d_1f680.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-21T15:03:55.169Z"
   }
 ]
