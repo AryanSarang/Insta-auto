@@ -1,6 +1,6 @@
 {
   "title": "Coin to Billionaire",
-  "hook": "Can 64 coins make a billionaire?",
+  "hook": "Can a coin become a billionaire?",
   "tiers": [
     { "name": "Coin", "icon": "🪙" },
     { "name": "Cash", "icon": "💵" },
@@ -11,6 +11,7 @@
     { "name": "Billionaire", "icon": "🤵", "accessory": "👑" }
   ],
   "sounds": {
+    "bounce": { "query": "coin tap metallic short", "style": "pop" },
     "merge": [
       { "query": "coin clink short metallic", "style": "pop" },
       { "query": "cash register cha ching", "style": "cartoon" },
@@ -26,7 +27,7 @@
   "physics": { "bounciness": 0.65, "gravity": "normal" },
   "finalText": "Still can't afford rent though 💀",
   "mood": "loud",
-  "caption": "Starting with 64 tiny coins and merging them into something... unexpected 💰\n\nEvery coin counts, every merge matters. But does all that money actually buy happiness? Spoiler: it buys a crown.\n\nWhat's YOUR money evolution? Comment your tier! 👇\n\nFollow to see what evolves next.",
+  "caption": "Tiny coins keep dropping into the jar and merging into something... unexpected 💰\n\nEvery coin counts, every merge matters. But does all that money actually buy happiness? Spoiler: it buys a crown.\n\nWhat's YOUR money evolution? Comment your tier! 👇\n\nFollow to see what evolves next.",
   "hashtags": ["#money", "#satisfying", "#mergegame", "#oddlysatisfying", "#billionaire"],
   "seed": 1337
 }

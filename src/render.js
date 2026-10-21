@@ -58,7 +58,7 @@ export async function renderSpec(spec, icons, outDir, opts = {}) {
   await page.goto(`file://${htmlPath}`, { waitUntil: 'load', timeout: 30_000 });
 
   log('Waiting for pre-simulation...');
-  await page.waitForFunction('window.SIM && (window.SIM.duration > 0 || window.SIM.failed)', { timeout: 60_000 });
+  await page.waitForFunction('window.SIM && (window.SIM.duration > 0 || window.SIM.failed)', { timeout: 120_000 });
 
   const simFailed = await page.evaluate(() => !!window.SIM.failed);
   if (simFailed) {
@@ -74,7 +74,7 @@ export async function renderSpec(spec, icons, outDir, opts = {}) {
 
   log(`Simulation ready: ${simInfo.duration.toFixed(1)}s, ${simInfo.totalFrames} frames, ${simInfo.eventCount} events`);
 
-  if (simInfo.duration < 5 || simInfo.duration > 120) {
+  if (simInfo.duration < 5 || simInfo.duration > 200) {
     throw new Error(`Simulation duration out of range: ${simInfo.duration}s`);
   }
 

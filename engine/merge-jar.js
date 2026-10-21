@@ -1,4 +1,4 @@
-/* Merge-Jar physics engine — circular flask, rainbow border, enhanced visuals */
+/* Merge-Jar physics engine — 60fps, continuous spawn, particle effects, screen shake */
 (function () {
   'use strict';
 
@@ -15,20 +15,19 @@
   const SPEC = window.SPEC;
   if (!SPEC) return;
 
-  const W = 360, H = 640, FPS = 30;
+  const W = 360, H = 640, FPS = 60;
   const DT = 1 / 60;
   const SUBSTEPS = 2;
   const SUB_DT = DT / SUBSTEPS;
 
   const N = SPEC.tiers.length;
-  const TOTAL = 1 << (N - 1);
-  const maxDur = SPEC.maxSeconds || 90;
-  const maxSim = maxDur + 20;
+  const maxDur = SPEC.maxSeconds || 180;
+  const maxSim = maxDur + 30;
 
   const GRAV = ({ low: 550, normal: 850, high: 1150 })[SPEC.physics?.gravity] || 850;
   const REST = Math.min(SPEC.physics?.bounciness || 0.6, 0.7);
 
-  /* ── Circular flask — enlarged for visibility ── */
+  /* ── Circular flask ── */
   const CX = W / 2;
   const CY = 280;
   const CRAD = 155;
@@ -37,7 +36,7 @@
   const TUBE_BOT = CY - Math.sqrt(CRAD * CRAD - TUBE_HW * TUBE_HW);
   const TUBE_ANGLE = Math.asin(TUBE_HW / CRAD);
 
-  /* ── Tier radii — bigger items for mobile readability ── */
+  /* ── Tier radii ── */
   const GR = 1.35;
   const targetMaxR = CRAD * 0.38;
   const computedBase = targetMaxR / Math.pow(GR, N - 1);
@@ -55,194 +54,323 @@
   let lastMerge = 0;
   const sndT = {};
 
-  /* Merge burst tracking for visual effects */
-  const activeBursts = [];
+  /* ── Particle system ── */
+  const particles = [];
   let flashAmount = 0;
+  let shakeX = 0, shakeY = 0;
+  let shakeDecay = 0;
+
+  /* ── Shockwave tracking ── */
+  const shockwaves = [];
 
   function mkBody(tier, x, y, vx, vy, prot) {
     return { id: nid++, t: tier, x, y, vx: vx || 0, vy: vy || 0, r: R[tier], pr: prot || 0, st: 0, sc: prot > 0 ? 0.3 : 0, dead: false, mt: 0 };
   }
 
-  const spawnDur = maxDur * 0.45;
-  const spawnInt = spawnDur / TOTAL;
+  /* ── Continuous spawn — adaptive rate ── */
   let spawnAcc = 0;
+
+  function aliveCount() {
+    let c = 0;
+    for (let i = 0; i < bods.length; i++) if (!bods[i].dead) c++;
+    return c;
+  }
+
+  function spawnInterval() {
+    var alive = aliveCount();
+    if (alive > 50) return 0.5;
+    if (alive > 40) return 0.4;
+    if (alive > 25) return 0.32;
+    if (alive < 10) return 0.2;
+    if (alive < 15) return 0.25;
+    return 0.3;
+  }
+
+  /* ── Spawn particles on merge ── */
+  function spawnMergeParticles(x, y, tier, count) {
+    var speed = 60 + tier * 25;
+    for (var i = 0; i < count; i++) {
+      var angle = (i / count) * Math.PI * 2 + rng() * 0.4;
+      var spd = speed * (0.6 + rng() * 0.8);
+      particles.push({
+        x: x, y: y,
+        vx: Math.cos(angle) * spd,
+        vy: Math.sin(angle) * spd - 30,
+        age: 0, maxAge: 0.35 + rng() * 0.15,
+        tier: tier,
+        size: 1.5 + rng() * 1.5 + tier * 0.3
+      });
+    }
+  }
+
+  function spawnFinalParticles(x, y) {
+    for (var i = 0; i < 24; i++) {
+      var angle = (i / 24) * Math.PI * 2;
+      var spd = 80 + rng() * 60;
+      particles.push({
+        x: x, y: y,
+        vx: Math.cos(angle) * spd,
+        vy: Math.sin(angle) * spd - 40,
+        age: 0, maxAge: 0.6 + rng() * 0.3,
+        tier: -1,
+        size: 2.5 + rng() * 2
+      });
+    }
+  }
 
   /* ── Frame storage ── */
   const frames = [];
   function captureFrame(time) {
-    const live = [];
-    for (let i = 0; i < bods.length; i++) {
+    var live = [];
+    for (var i = 0; i < bods.length; i++) {
       if (!bods[i].dead) live.push(bods[i]);
     }
-    const n = live.length;
-    const d = new Float32Array(n * 7);
-    const tr = new Uint8Array(n);
-    for (let i = 0; i < n; i++) {
-      const b = live[i], o = i * 7;
+    var n = live.length;
+    var d = new Float32Array(n * 7);
+    var tr = new Uint8Array(n);
+    for (var i = 0; i < n; i++) {
+      var b = live[i], o = i * 7;
       d[o] = b.x; d[o + 1] = b.y; d[o + 2] = b.r;
-      d[o + 3] = b.st > 0 ? 1 + 0.18 * Math.max(0, b.st / 0.1) : 1;
-      d[o + 4] = b.st > 0 ? 1 - 0.12 * Math.max(0, b.st / 0.1) : 1;
+      d[o + 3] = b.st > 0 ? 1 + 0.25 * Math.max(0, b.st / 0.15) : 1;
+      d[o + 4] = b.st > 0 ? 1 - 0.20 * Math.max(0, b.st / 0.15) : 1;
       d[o + 5] = Math.min(1, b.sc);
       d[o + 6] = Math.max(0, b.mt);
       tr[i] = b.t;
     }
-    const curBursts = [];
-    for (let i = 0; i < activeBursts.length; i++) {
-      const age = time - activeBursts[i].birth;
-      if (age >= 0 && age < 0.45) {
-        curBursts.push({ x: activeBursts[i].x, y: activeBursts[i].y, tier: activeBursts[i].tier, age: age });
+
+    var curParticles = [];
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      if (p.age < p.maxAge) {
+        var alpha = 1 - (p.age / p.maxAge);
+        curParticles.push({ x: p.x, y: p.y, tier: p.tier, alpha: alpha, size: p.size });
       }
     }
-    frames.push({ d, tr, n, sp: spawned, mg: merges, dn: done, t: time, ul: Array.from(unlocked), bursts: curBursts, flash: flashAmount });
+
+    var curShockwaves = [];
+    for (var i = 0; i < shockwaves.length; i++) {
+      var sw = shockwaves[i];
+      var swAge = time - sw.birth;
+      if (swAge >= 0 && swAge < 0.3) {
+        curShockwaves.push({ x: sw.x, y: sw.y, tier: sw.tier, progress: swAge / 0.3, maxR: sw.maxR });
+      }
+    }
+
+    frames.push({
+      d: d, tr: tr, n: n,
+      sp: spawned, mg: merges, dn: done, t: time,
+      ul: Array.from(unlocked),
+      particles: curParticles,
+      shockwaves: curShockwaves,
+      flash: flashAmount,
+      shakeX: shakeX,
+      shakeY: shakeY
+    });
   }
 
   /* ── Physics substep ── */
   function substep(dt) {
-    const nb = bods.length;
-    for (let i = 0; i < nb; i++) {
-      const b = bods[i];
+    var nb = bods.length;
+    for (var i = 0; i < nb; i++) {
+      var b = bods[i];
       if (b.dead) continue;
       b.vy += GRAV * dt;
-      b.vx *= 0.996; b.vy *= 0.996;
+      b.vx *= 0.998; b.vy *= 0.998;
       b.x += b.vx * dt; b.y += b.vy * dt;
       if (b.pr > 0) b.pr -= dt;
       if (b.st > 0) b.st -= dt;
-      if (b.sc < 1) b.sc += dt * 6;
+      if (b.sc < 1) b.sc += dt * 5;
       if (b.mt > 0) b.mt -= dt;
     }
 
     /* Circle + tube boundary */
-    for (let i = 0; i < nb; i++) {
-      const b = bods[i];
+    for (var i = 0; i < nb; i++) {
+      var b = bods[i];
       if (b.dead) continue;
 
-      const dx = b.x - CX;
-      const dy = b.y - CY;
-      const dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
+      var dx = b.x - CX;
+      var dy = b.y - CY;
+      var dist = Math.sqrt(dx * dx + dy * dy) || 0.01;
 
-      const inOpening = Math.abs(dx) < TUBE_HW + b.r * 0.5 && dy < -CRAD * 0.5;
+      var inOpening = Math.abs(dx) < TUBE_HW + b.r * 0.5 && dy < -CRAD * 0.5;
 
       if (dist + b.r > CRAD && !inOpening) {
-        const nx = dx / dist, ny = dy / dist;
+        var nx = dx / dist, ny = dy / dist;
         b.x = CX + nx * (CRAD - b.r);
         b.y = CY + ny * (CRAD - b.r);
-        const vn = b.vx * nx + b.vy * ny;
+        var vn = b.vx * nx + b.vy * ny;
         if (vn > 0) {
           b.vx -= (1 + REST) * vn * nx;
           b.vy -= (1 + REST) * vn * ny;
-          b.st = 0.06;
+          b.st = 0.08;
         }
       }
 
       if (b.y < TUBE_BOT + b.r * 2) {
         if (b.x - b.r < CX - TUBE_HW) {
           b.x = CX - TUBE_HW + b.r;
-          if (b.vx < 0) { b.vx = -b.vx * REST; b.st = 0.04; }
+          if (b.vx < 0) { b.vx = -b.vx * REST; b.st = 0.06; }
         }
         if (b.x + b.r > CX + TUBE_HW) {
           b.x = CX + TUBE_HW - b.r;
-          if (b.vx > 0) { b.vx = -b.vx * REST; b.st = 0.04; }
+          if (b.vx > 0) { b.vx = -b.vx * REST; b.st = 0.06; }
         }
       }
     }
 
     /* Body–body collision + merge */
-    const toAdd = [];
-    for (let i = 0; i < nb; i++) {
-      const a = bods[i];
+    var toAdd = [];
+    for (var i = 0; i < nb; i++) {
+      var a = bods[i];
       if (a.dead) continue;
-      for (let j = i + 1; j < nb; j++) {
-        const b = bods[j];
+      for (var j = i + 1; j < nb; j++) {
+        var b = bods[j];
         if (b.dead) continue;
-        const dx = b.x - a.x, dy = b.y - a.y;
-        const mr = a.r + b.r;
+        var dx = b.x - a.x, dy = b.y - a.y;
+        var mr = a.r + b.r;
         if (dx > mr || dx < -mr || dy > mr || dy < -mr) continue;
-        const d2 = dx * dx + dy * dy;
+        var d2 = dx * dx + dy * dy;
         if (d2 >= mr * mr || d2 < 0.0001) continue;
-        const d = Math.sqrt(d2);
+        var d = Math.sqrt(d2);
 
         if (a.t === b.t && a.pr <= 0 && b.pr <= 0 && a.t < N - 1) {
           a.dead = true; b.dead = true;
-          const nt = a.t + 1;
-          const mergeX = (a.x + b.x) / 2, mergeY = (a.y + b.y) / 2;
-          const tierPop = -12 - nt * 5;
-          const nb2 = mkBody(nt, mergeX, mergeY,
-            (a.vx + b.vx) * 0.3, Math.min((a.vy + b.vy) * 0.3 + tierPop, -8), 0.05);
+          var nt = a.t + 1;
+          var mergeX = (a.x + b.x) / 2, mergeY = (a.y + b.y) / 2;
+          var tierPop = -15 - nt * 6;
+          var nb2 = mkBody(nt, mergeX, mergeY,
+            (a.vx + b.vx) * 0.3, Math.min((a.vy + b.vy) * 0.3 + tierPop, -10), 0.05);
           nb2.mt = 0.5;
           nb2.sc = 0;
+          nb2.st = 0.15;
           toAdd.push(nb2);
           merges++; lastMerge = sim;
           if (!unlocked.has(nt)) unlocked.add(nt);
 
-          activeBursts.push({ x: mergeX, y: mergeY, tier: nt, birth: sim });
-          if (nt >= Math.floor(N / 2)) {
-            flashAmount = Math.max(flashAmount, 0.3 + (nt / N) * 0.5);
+          /* Particle explosion */
+          var pCount = 8 + Math.min(nt, 4) * 2;
+          spawnMergeParticles(mergeX, mergeY, nt, pCount);
+
+          /* Shockwave */
+          shockwaves.push({ x: mergeX, y: mergeY, tier: nt, birth: sim, maxR: R[nt] * 2.5 + nt * 5 });
+
+          /* Screen shake on high-tier merges */
+          if (nt >= Math.floor(N * 0.4)) {
+            var shakeMag = 2 + (nt / N) * 6;
+            shakeX = (rng() - 0.5) * shakeMag * 2;
+            shakeY = (rng() - 0.5) * shakeMag * 2;
+            shakeDecay = 0.2;
+            flashAmount = Math.max(flashAmount, 0.25 + (nt / N) * 0.5);
           }
 
-          const sk = nt === N - 1 ? 'final' : 'merge_' + a.t;
+          /* Final form particles */
+          if (nt === N - 1) {
+            spawnFinalParticles(mergeX, mergeY);
+          }
+
+          var sk = nt === N - 1 ? 'final' : 'merge_' + a.t;
           if (sim - (sndT[sk] || 0) >= 0.06) { evts.push({ t: sim, sfx: sk, rate: 1 + (rng() - 0.5) * 0.24 }); sndT[sk] = sim; }
           if (nt === N - 1) { done = true; doneT = sim; }
           break;
         } else {
-          const ov = mr - d, p = ov * 0.52;
-          const nx = dx / d, ny = dy / d;
+          var ov = mr - d, p = ov * 0.52;
+          var nx = dx / d, ny = dy / d;
           a.x -= nx * p; a.y -= ny * p; b.x += nx * p; b.y += ny * p;
-          const dvn = (a.vx - b.vx) * nx + (a.vy - b.vy) * ny;
+          var dvn = (a.vx - b.vx) * nx + (a.vy - b.vy) * ny;
           if (dvn > 0) {
-            const imp = dvn * REST;
+            var imp = dvn * REST;
             a.vx -= imp * nx; a.vy -= imp * ny; b.vx += imp * nx; b.vy += imp * ny;
             a.st = 0.05; b.st = 0.05;
           }
         }
       }
     }
-    for (let i = 0; i < toAdd.length; i++) bods.push(toAdd[i]);
+    for (var i = 0; i < toAdd.length; i++) bods.push(toAdd[i]);
   }
 
   /* ── Main pre-simulation ── */
-  let sim = 0, nextFrame = 0, compactCounter = 0;
+  var sim = 0, nextFrame = 0, compactCounter = 0;
 
   while (sim < maxSim) {
-    if (!done && spawned < TOTAL) {
+    /* Continuous spawning until done */
+    if (!done) {
       spawnAcc += DT;
-      while (spawnAcc >= spawnInt && spawned < TOTAL) {
-        spawnAcc -= spawnInt;
-        const sx = CX + (rng() - 0.5) * (TUBE_HW * 2 - R[0] * 3);
-        bods.push(mkBody(0, sx, TUBE_TOP + R[0], (rng() - 0.5) * 45, 15 + rng() * 30));
+      var interval = spawnInterval();
+      while (spawnAcc >= interval) {
+        spawnAcc -= interval;
+        var tubeSpread = TUBE_HW * 1.6 - R[0] * 2;
+        var sx = CX + (rng() - 0.5) * tubeSpread;
+        bods.push(mkBody(0, sx, TUBE_TOP + R[0],
+          (rng() - 0.5) * 50, 20 + rng() * 35));
         spawned++;
       }
     }
 
-    for (let s = 0; s < SUBSTEPS; s++) substep(SUB_DT);
+    for (var s = 0; s < SUBSTEPS; s++) substep(SUB_DT);
     sim += DT;
 
+    /* Update particles */
+    for (var pi = particles.length - 1; pi >= 0; pi--) {
+      var p = particles[pi];
+      p.x += p.vx * DT;
+      p.y += p.vy * DT;
+      p.vy += 200 * DT;
+      p.vx *= 0.96;
+      p.vy *= 0.96;
+      p.age += DT;
+      if (p.age >= p.maxAge) { particles.splice(pi, 1); }
+    }
+
+    /* Decay shockwaves */
+    while (shockwaves.length > 0 && sim - shockwaves[0].birth > 0.35) shockwaves.shift();
+
+    /* Decay flash and shake */
     if (flashAmount > 0) flashAmount = Math.max(0, flashAmount - DT * 3);
-    while (activeBursts.length > 0 && sim - activeBursts[0].birth > 0.5) activeBursts.shift();
+    if (shakeDecay > 0) {
+      shakeDecay -= DT;
+      var shakeFade = Math.max(0, shakeDecay / 0.2);
+      shakeX *= shakeFade;
+      shakeY *= shakeFade;
+    } else {
+      shakeX = 0; shakeY = 0;
+    }
 
     /* Anti-stall: attract nearest same-tier pair */
-    if (!done && sim - lastMerge > 0.6 && bods.length > 1) {
-      let bestD2 = 1e9, bi = -1, bj = -1;
-      for (let i = 0; i < bods.length; i++) {
+    if (!done && sim - lastMerge > 1.0 && bods.length > 1) {
+      var bestD2 = 1e9, bi = -1, bj = -1;
+      for (var i = 0; i < bods.length; i++) {
         if (bods[i].dead) continue;
-        for (let j = i + 1; j < bods.length; j++) {
+        for (var j = i + 1; j < bods.length; j++) {
           if (bods[j].dead) continue;
           if (bods[i].t !== bods[j].t || bods[i].t >= N - 1) continue;
-          const dx = bods[j].x - bods[i].x, dy = bods[j].y - bods[i].y;
-          const d2 = dx * dx + dy * dy;
+          var dx = bods[j].x - bods[i].x, dy = bods[j].y - bods[i].y;
+          var d2 = dx * dx + dy * dy;
           if (d2 < bestD2) { bestD2 = d2; bi = i; bj = j; }
         }
       }
       if (bi >= 0) {
-        const a = bods[bi], b = bods[bj];
-        const dx = b.x - a.x, dy = b.y - a.y;
-        const d = Math.sqrt(dx * dx + dy * dy) || 1;
-        const stallT = sim - lastMerge;
-        const tierBoost = 1 + a.t * 0.5;
-        const force = (250 + stallT * 400) * tierBoost * DT;
+        var a = bods[bi], b = bods[bj];
+        var dx = b.x - a.x, dy = b.y - a.y;
+        var d = Math.sqrt(dx * dx + dy * dy) || 1;
+        var stallT = sim - lastMerge;
+        var tierBoost = 1 + a.t * 0.5;
+        var ramp = stallT < 2 ? stallT - 1.0 : 1.0 + (stallT - 2) * 3;
+        var force = (150 + ramp * 300) * tierBoost * DT;
         a.vx += dx / d * force; a.vy += dy / d * force;
         b.vx -= dx / d * force; b.vy -= dy / d * force;
-        if (stallT > 3.0 && d > a.r + b.r + 5) {
-          const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+
+        /* Random perturbation after 1.5s to break deadlocks */
+        if (stallT > 1.5) {
+          for (var pi2 = 0; pi2 < bods.length; pi2++) {
+            if (!bods[pi2].dead) {
+              bods[pi2].vx += (rng() - 0.5) * 40;
+              bods[pi2].vy += (rng() - 0.5) * 30;
+            }
+          }
+        }
+
+        if (stallT > 3.5 && d > a.r + b.r + 5) {
+          var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
           a.x = mx - a.r * 0.5; b.x = mx + b.r * 0.5;
           a.y = my; b.y = my;
           a.vx = 0; a.vy = 0; b.vx = 0; b.vy = 0;
@@ -252,9 +380,9 @@
 
     if (++compactCounter >= 30) {
       compactCounter = 0;
-      let w = 0;
-      for (let r = 0; r < bods.length; r++) {
-        if (!bods[r].dead && bods[r].y - bods[r].r < H + 80) { bods[w++] = bods[r]; }
+      var w = 0;
+      for (var r2 = 0; r2 < bods.length; r2++) {
+        if (!bods[r2].dead && bods[r2].y - bods[r2].r < H + 80) { bods[w++] = bods[r2]; }
       }
       bods.length = w;
     }
@@ -271,27 +399,42 @@
     return;
   }
 
-  /* ── Slow-mo + extended hold ── */
-  const slomoStart = Math.max(0, Math.floor((doneT - 0.8) * FPS));
-  const doneFrame = Math.min(Math.floor(doneT * FPS), frames.length - 1);
-  const mapped = [];
-  for (let i = 0; i < Math.min(slomoStart, frames.length); i++) mapped.push(i);
-  for (let i = slomoStart; i <= doneFrame; i++) { mapped.push(i); mapped.push(i); mapped.push(i); }
-  const holdIdx = Math.min(doneFrame + 1, frames.length - 1);
-  for (let h = 0; h < Math.round(2.5 * FPS); h++) mapped.push(holdIdx);
+  /* ── Slow-mo (5x) + extended hold (3s) ── */
+  var slomoStart = Math.max(0, Math.floor((doneT - 0.8) * FPS));
+  var doneFrame = Math.min(Math.floor(doneT * FPS), frames.length - 1);
+  var mapped = [];
+  for (var i = 0; i < Math.min(slomoStart, frames.length); i++) mapped.push(i);
+  for (var i = slomoStart; i <= doneFrame; i++) {
+    mapped.push(i); mapped.push(i); mapped.push(i); mapped.push(i); mapped.push(i);
+  }
+  var holdIdx = Math.min(doneFrame + 1, frames.length - 1);
+  for (var h = 0; h < Math.round(3.0 * FPS); h++) mapped.push(holdIdx);
 
-  const duration = mapped.length / FPS;
+  /* ── Drift final body to center during hold ── */
+  var holdFrame = frames[holdIdx];
+  if (holdFrame) {
+    for (var bi = 0; bi < holdFrame.n; bi++) {
+      if (holdFrame.tr[bi] === N - 1) {
+        var o = bi * 7;
+        holdFrame.d[o] = CX;
+        holdFrame.d[o + 1] = CY;
+        break;
+      }
+    }
+  }
+
+  var duration = mapped.length / FPS;
 
   /* ── Canvas — high-DPI ── */
-  const canvas = document.getElementById('sim-canvas');
-  const PX = window.devicePixelRatio || 3;
+  var canvas = document.getElementById('sim-canvas');
+  var PX = window.devicePixelRatio || 3;
   canvas.width = W * PX;
   canvas.height = H * PX;
-  const ctx = canvas.getContext('2d');
+  var ctx = canvas.getContext('2d');
   ctx.scale(PX, PX);
 
   /* ── Load icons ── */
-  const icos = {};
+  var icos = {};
   if (window.ICON_DATA) {
     for (var _k in window.ICON_DATA) {
       var img = new Image(); img.src = window.ICON_DATA[_k]; icos[_k] = img;
@@ -299,8 +442,8 @@
   }
 
   /* ── Pre-build rainbow HSL table ── */
-  const rainbow = [];
-  for (let i = 0; i < 360; i++) rainbow.push('hsl(' + i + ',100%,55%)');
+  var rainbow = [];
+  for (var i = 0; i < 360; i++) rainbow.push('hsl(' + i + ',100%,55%)');
 
   /* ── Tier color palette ── */
   var TIER_HUES = [180, 120, 60, 30, 330, 280, 200, 45];
@@ -308,27 +451,17 @@
     return 'hsl(' + TIER_HUES[tier % TIER_HUES.length] + ',90%,60%)';
   }
 
-  /* ── Draw merge burst ripples ── */
-  function drawBurstRipples(burst) {
-    var progress = burst.age / 0.4;
-    if (progress > 1) return;
-    var numRings = 2 + Math.min(burst.tier, 3);
-    var maxRadius = 15 + burst.tier * 10;
+  function goldColor(alpha) {
+    return 'rgba(255,220,80,' + alpha + ')';
+  }
 
-    for (var r = 0; r < numRings; r++) {
-      var ringDelay = r * 0.12;
-      var ringP = Math.max(0, progress - ringDelay);
-      if (ringP <= 0 || ringP > 1) continue;
-      var radius = ringP * maxRadius;
-      var ringAlpha = (1 - progress) * 0.5 * (1 - ringP);
-      ctx.globalAlpha = ringAlpha;
-      ctx.strokeStyle = tierColor(burst.tier);
-      ctx.lineWidth = Math.max(0.5, 2.5 * (1 - ringP));
-      ctx.beginPath();
-      ctx.arc(burst.x, burst.y, radius, 0, Math.PI * 2);
-      ctx.stroke();
-    }
-    ctx.globalAlpha = 1;
+  /* ── Easing functions ── */
+  function easeBack(t) { var c = 1.7; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); }
+
+  function easeElasticOut(t) {
+    if (t <= 0) return 0;
+    if (t >= 1) return 1;
+    return Math.pow(2, -10 * t) * Math.sin((t - 0.075) * (2 * Math.PI) / 0.3) + 1;
   }
 
   /* ── Draw ── */
@@ -337,18 +470,16 @@
     if (mi === undefined) return;
     var f = frames[mi];
     if (!f) return;
-    var hueOff = frameIdx * 1.8;
+    var hueOff = frameIdx * 1.2;
+    var isHold = frameIdx >= mapped.length - Math.round(3.0 * FPS);
 
     /* Black background */
     ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, W, H);
 
-    /* Merge burst ripples — behind bodies */
-    if (f.bursts) {
-      for (var bi2 = 0; bi2 < f.bursts.length; bi2++) {
-        drawBurstRipples(f.bursts[bi2]);
-      }
-    }
+    /* Apply camera shake */
+    ctx.save();
+    ctx.translate(f.shakeX || 0, f.shakeY || 0);
 
     /* Rainbow circle border with glow — two passes */
     var arcStart = -Math.PI / 2 + TUBE_ANGLE;
@@ -387,6 +518,22 @@
     ctx.lineTo(CX + TUBE_HW, TUBE_BOT + 2);
     ctx.stroke();
 
+    /* Draw shockwaves behind bodies */
+    if (f.shockwaves) {
+      for (var swi = 0; swi < f.shockwaves.length; swi++) {
+        var sw = f.shockwaves[swi];
+        var swAlpha = (1 - sw.progress) * 0.6;
+        var swRadius = sw.progress * sw.maxR;
+        ctx.globalAlpha = swAlpha;
+        ctx.strokeStyle = tierColor(sw.tier);
+        ctx.lineWidth = Math.max(1, 3 * (1 - sw.progress));
+        ctx.beginPath();
+        ctx.arc(sw.x, sw.y, swRadius, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    }
+
     /* Bodies */
     var glowTier = Math.floor(N * 0.4);
     for (var bi = 0; bi < f.n; bi++) {
@@ -398,10 +545,12 @@
 
       ctx.save();
       ctx.translate(bx, by);
-      var scl = bsc < 1 ? 0.5 + 0.5 * easeBack(bsc) : 1;
+
+      /* Elastic ease-out for spawn scale */
+      var scl = bsc < 1 ? easeElasticOut(bsc) : 1;
 
       if (f.dn && tier === N - 1) {
-        scl *= 1.0 + 0.06 * Math.sin(frameIdx * 0.12);
+        scl *= 1.0 + 0.08 * Math.sin(frameIdx * 0.08);
       }
 
       ctx.scale(bsx * scl, bsy * scl);
@@ -411,7 +560,7 @@
       /* Tier glow for higher-tier items */
       if (tier >= glowTier) {
         var glowStrength = (tier - glowTier + 1) / (N - glowTier);
-        var glowAlpha = 0.08 + glowStrength * 0.18;
+        var glowAlpha = 0.1 + glowStrength * 0.22;
         var glowR = br * (1.4 + glowStrength * 0.6);
         var grad = ctx.createRadialGradient(0, 0, br * 0.3, 0, 0, glowR);
         grad.addColorStop(0, tierColor(tier));
@@ -426,11 +575,11 @@
 
       /* Final tier golden glow during hold */
       if (f.dn && tier === N - 1) {
-        var pulseGlow = 0.5 + 0.5 * Math.sin(frameIdx * 0.1);
-        var goldR = br * (1.8 + pulseGlow * 0.4);
+        var pulseGlow = 0.5 + 0.5 * Math.sin(frameIdx * 0.06);
+        var goldR = br * (2.0 + pulseGlow * 0.5);
         var goldGrad = ctx.createRadialGradient(0, 0, br * 0.5, 0, 0, goldR);
-        goldGrad.addColorStop(0, 'rgba(255,224,102,0.35)');
-        goldGrad.addColorStop(0.6, 'rgba(255,200,50,0.12)');
+        goldGrad.addColorStop(0, 'rgba(255,224,102,0.4)');
+        goldGrad.addColorStop(0.5, 'rgba(255,200,50,0.15)');
         goldGrad.addColorStop(1, 'rgba(255,180,0,0)');
         ctx.fillStyle = goldGrad;
         ctx.beginPath();
@@ -438,21 +587,21 @@
         ctx.fill();
       }
 
-      /* Merge flash glow ring (skip on final tier during hold) */
+      /* Merge flash glow ring */
       if (mergeFlash > 0.01 && !(f.dn && tier === N - 1)) {
         var flashProgress = 1 - (mergeFlash / 0.5);
-        var ringR = br + 4 + flashProgress * 20;
-        var ringAlpha = (mergeFlash / 0.5) * 0.5;
+        var ringR = br + 5 + flashProgress * 25;
+        var ringAlpha = (mergeFlash / 0.5) * 0.6;
         ctx.globalAlpha = ringAlpha;
         ctx.strokeStyle = tierColor(tier);
-        ctx.lineWidth = 2 + (1 - flashProgress) * 3;
+        ctx.lineWidth = 2.5 + (1 - flashProgress) * 4;
         ctx.beginPath();
         ctx.arc(0, 0, ringR, 0, Math.PI * 2);
         ctx.stroke();
-        ctx.globalAlpha = ringAlpha * 0.3;
+        ctx.globalAlpha = ringAlpha * 0.4;
         ctx.fillStyle = tierColor(tier);
         ctx.beginPath();
-        ctx.arc(0, 0, br * 1.15, 0, Math.PI * 2);
+        ctx.arc(0, 0, br * 1.2, 0, Math.PI * 2);
         ctx.fill();
         ctx.globalAlpha = 1;
       }
@@ -483,13 +632,29 @@
       ctx.restore();
     }
 
-    /* Screen flash overlay for high-tier merges */
-    if (f.flash > 0.01) {
-      ctx.globalAlpha = Math.min(f.flash * 0.25, 0.3);
-      ctx.fillStyle = '#fff';
-      ctx.fillRect(0, 0, W, H);
+    /* Draw particles */
+    if (f.particles) {
+      for (var pi2 = 0; pi2 < f.particles.length; pi2++) {
+        var p = f.particles[pi2];
+        ctx.globalAlpha = p.alpha * 0.9;
+        ctx.fillStyle = p.tier === -1 ? goldColor(p.alpha) : tierColor(p.tier);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
       ctx.globalAlpha = 1;
     }
+
+    /* Screen flash overlay */
+    if (f.flash > 0.01) {
+      ctx.globalAlpha = Math.min(f.flash * 0.35, 0.5);
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(-10, -10, W + 20, H + 20);
+      ctx.globalAlpha = 1;
+    }
+
+    /* End camera shake transform */
+    ctx.restore();
 
     /* Hook text — bold, below circle, with drop shadow */
     if (SPEC.hook && !f.dn) {
@@ -506,11 +671,11 @@
       ctx.save();
       var ftY = Math.max(25, CY - CRAD - 40);
       ctx.shadowColor = '#ffe066';
-      ctx.shadowBlur = 10;
-      ctx.font = 'bold 24px sans-serif';
+      ctx.shadowBlur = 12;
+      ctx.font = 'bold 26px sans-serif';
       ctx.textAlign = 'center';
       ctx.fillStyle = '#fff';
-      wrapText(ctx, SPEC.finalText, CX, ftY, W - 36, 28);
+      wrapText(ctx, SPEC.finalText, CX, ftY, W - 36, 30);
       ctx.restore();
     }
 
@@ -518,7 +683,7 @@
     if (f.dn) {
       var vig = ctx.createRadialGradient(CX, CY, CRAD * 0.7, CX, CY, H * 0.75);
       vig.addColorStop(0, 'rgba(0,0,0,0)');
-      vig.addColorStop(1, 'rgba(0,0,0,0.35)');
+      vig.addColorStop(1, 'rgba(0,0,0,0.4)');
       ctx.fillStyle = vig;
       ctx.fillRect(0, 0, W, H);
     }
@@ -533,8 +698,6 @@
     }
     c.fillText(l.trim(), x, ty);
   }
-
-  function easeBack(t) { var c = 1.7; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); }
 
   window.SIM = {
     duration: duration,

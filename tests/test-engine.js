@@ -11,10 +11,8 @@ const EXAMPLES_DIR = join(ROOT, 'examples');
 async function testSpec(specPath, label) {
   const spec = JSON.parse(readFileSync(specPath, 'utf8'));
   const numTiers = spec.tiers.length;
-  const expectedMerges = Math.pow(2, numTiers - 1) - 1;
-  const expectedSpawns = Math.pow(2, numTiers - 1);
 
-  console.log(`\n=== Testing: ${label} (${numTiers} tiers, need ${expectedSpawns} spawns, ${expectedMerges} merges) ===`);
+  console.log(`\n=== Testing: ${label} (${numTiers} tiers, continuous spawn until final form) ===`);
 
   const browser = await chromium.launch({ args: ['--no-sandbox'] });
   const context = await browser.newContext({ viewport: { width: 360, height: 640 } });
@@ -22,7 +20,7 @@ async function testSpec(specPath, label) {
 
   page.on('pageerror', err => console.error('  PAGE ERROR:', err.message));
 
-  const enrichedSpec = { ...spec, maxSeconds: 90, minSeconds: 30 };
+  const enrichedSpec = { ...spec, maxSeconds: 180, minSeconds: 30 };
   await page.addInitScript(`window.SPEC = ${JSON.stringify(enrichedSpec)};`);
   await page.addInitScript(`window.ICON_DATA = {};`);
 
@@ -85,7 +83,7 @@ async function testSpec(specPath, label) {
   let pass = true;
   if (simMs > 5000) { console.error('  WARN: Pre-simulation took >5s'); }
   if (simInfo.duration < 10) { console.error('  FAIL: Duration too short'); pass = false; }
-  if (simInfo.duration > 120) { console.error('  FAIL: Duration too long'); pass = false; }
+  if (simInfo.duration > 200) { console.error('  FAIL: Duration too long'); pass = false; }
   if (!finalEvent) { console.error('  FAIL: No final event'); pass = false; }
   if (!deterministicDuration) pass = false;
 
@@ -126,7 +124,7 @@ async function testRandomSeeds(numTests = 5) {
       caption: 'Test caption',
       hashtags: [],
       seed: Math.floor(Math.random() * 2147483647),
-      maxSeconds: 90,
+      maxSeconds: 180,
       minSeconds: 30,
     };
 

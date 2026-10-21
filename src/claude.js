@@ -186,8 +186,10 @@ CRITICAL quality checks (score 0-3 if any fail):
 11. Evolution logic: does each tier feel like a natural upgrade from the previous one? Random progression = fail.
 12. Arena utilization: are items spread across the arena or clustered in one corner? Items should fill at least 60% of the flask area.
 13. Icon visibility: can you recognise the tier-0 icons even though they are tiny? Overly complex emoji at small size = fail.
-14. Merge satisfaction: when items merge, is there a visible burst/glow effect? Merges should feel impactful.
-15. Final form payoff: does the final tier icon feel like a grand culmination of the evolution chain?
+14. Merge satisfaction: when items merge, is there a visible particle burst/shockwave effect? Merges should feel impactful and rewarding.
+15. Final form payoff: does the final tier icon feel like a grand culmination of the evolution chain? It should be centered with a golden glow.
+16. Animation smoothness: does the motion look fluid and natural? Bodies should bounce energetically, not sit still.
+17. Continuous flow: are new balls continuously dropping in? The flask should always have activity — never look empty or stagnant.
 
 Score >= 7 = pass. Be strict but fair.`;
 

@@ -205,6 +205,10 @@ export async function resolveAllSounds(spec, config = {}) {
   const sounds = {};
   const allQueries = [];
 
+  if (spec.sounds.bounce) {
+    allQueries.push({ key: 'bounce', query: spec.sounds.bounce.query, style: spec.sounds.bounce.style || 'pop', type: 'bounce' });
+  }
+
   for (const [i, ms] of spec.sounds.merge.entries()) {
     allQueries.push({ key: `merge_${i}`, query: ms.query, style: ms.style, type: 'merge' });
   }
@@ -214,8 +218,8 @@ export async function resolveAllSounds(spec, config = {}) {
   try {
     const candidates = {};
     for (const q of allQueries) {
-      const minD = q.type === 'merge' ? 0.1 : 0.5;
-      const maxD = q.type === 'merge' ? 2 : 5;
+      const minD = q.type === 'bounce' ? 0.05 : q.type === 'merge' ? 0.1 : 0.5;
+      const maxD = q.type === 'bounce' ? 0.8 : q.type === 'merge' ? 2 : 5;
       const results = await searchFreesound(q.query, {
         minDuration: minD,
         maxDuration: maxD,
@@ -240,9 +244,9 @@ export async function resolveAllSounds(spec, config = {}) {
   }
 
   for (const q of allQueries) {
-    const maxLen = q.type === 'merge' ? 1.2 : 3;
-    const minD = q.type === 'merge' ? 0.1 : 0.5;
-    const maxD = q.type === 'merge' ? 2 : 5;
+    const maxLen = q.type === 'bounce' ? 0.3 : q.type === 'merge' ? 1.2 : 3;
+    const minD = q.type === 'bounce' ? 0.05 : q.type === 'merge' ? 0.1 : 0.5;
+    const maxD = q.type === 'bounce' ? 0.8 : q.type === 'merge' ? 2 : 5;
     const fallbackQuery = `cartoon ${q.style} short`;
 
     try {

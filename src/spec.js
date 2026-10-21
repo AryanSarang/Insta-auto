@@ -31,6 +31,14 @@ export function validateSpec(spec) {
   if (!spec.sounds || typeof spec.sounds !== 'object') {
     push('missing sounds');
   } else {
+    if (spec.sounds.bounce && typeof spec.sounds.bounce === 'object') {
+      if (typeof spec.sounds.bounce.query !== 'string' || !spec.sounds.bounce.query.trim()) {
+        spec.sounds.bounce = { query: 'soft pop short', style: 'pop' };
+      }
+      if (!STYLES.includes(spec.sounds.bounce.style)) spec.sounds.bounce.style = 'pop';
+    } else {
+      spec.sounds.bounce = { query: 'soft pop short', style: 'pop' };
+    }
     const expectedMerge = (spec.tiers?.length || 0) - 1;
     if (!Array.isArray(spec.sounds.merge) || spec.sounds.merge.length !== expectedMerge) {
       push(`sounds.merge must have ${expectedMerge} entries, got ${spec.sounds?.merge?.length}`);

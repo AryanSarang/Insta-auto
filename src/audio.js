@@ -63,7 +63,9 @@ export function mixSfxEvents(events, soundMap, duration) {
 
     windowEvents = windowEvents.filter(w => ev.t - w.t < overlapWindow);
     windowEvents.push(ev);
-    const gain = Math.min(1, 1.5 / Math.sqrt(windowEvents.length));
+    const isBounce = ev.sfx === 'bounce';
+    const baseGain = isBounce ? 0.25 : 1;
+    const gain = Math.min(baseGain, 1.5 / Math.sqrt(windowEvents.length));
 
     for (let j = 0; j < resampled.length && offsetSample + j < totalSamples; j++) {
       mixBuffer[offsetSample + j] += resampled[j] * gain;
@@ -193,7 +195,7 @@ export function verifyOutput(filePath) {
     if (video.codec_name !== 'h264') checks.push(`wrong video codec: ${video.codec_name}`);
   }
   if (!audio) checks.push('no audio stream');
-  if (dur < 10 || dur > 120) checks.push(`duration out of range: ${dur}s`);
+  if (dur < 10 || dur > 200) checks.push(`duration out of range: ${dur}s`);
 
   return { valid: checks.length === 0, checks, duration: dur, resolution: video ? `${video.width}x${video.height}` : 'none' };
 }

@@ -20,9 +20,10 @@ Return ONLY one JSON object — no markdown, no explanation, no code fences.
 
 {
   "title": "internal title",
-  "hook": "big on-screen question for the first ~2.5 s, max 40 chars (e.g. 'Can 64 chicks become a dragon?')",
+  "hook": "big on-screen question for the first ~2.5 s, max 40 chars (e.g. 'Will it reach the final form?' or 'Can the chick become a dragon?'). NEVER include a number like 64 or 128.",
   "tiers": [ { "name": "Chick", "icon": "🐣" }, ..., { "name": "Dragon", "icon": "🐉" } ],
   "sounds": {
+    "bounce": { "query": "short Freesound query for wall-hit sound (soft pop, tap, ping)", "style": "pop" },
     "merge": [ { "query": "short Freesound search query for tier0+tier0 merge sound", "style": "pop|boing|squeak|voice|impact|magic|cartoon" }, ... one per merge (tiers-1 total) ],
     "final": { "query": "Freesound search for the final reveal sound", "style": "fanfare" }
   },
@@ -67,6 +68,7 @@ Return ONLY one JSON object — no markdown, no explanation, no code fences.
 - An optional "accessory" emoji is drawn small on top of the item for added humor (e.g. a crown 👑 on a lion 🦁).
 
 ## Sound rules
+- sounds.bounce is a SINGLE very short sound (~0.1s) that plays on every wall collision. This is what makes the video ASMR-satisfying. Choose a crisp, clean tap/ping/pop that won't be annoying when played rapidly: "soft tap short", "ping metallic short", "pop bubble quick", "click soft".
 - sounds.merge has exactly (number of tiers - 1) entries, one per merge level.
 - Low tiers merge VERY often (dozens of times), so they need SHORT, light, satisfying sounds: pops, bloops, soft squeaks, cartoon clicks. Keep queries generic: "cartoon pop short", "soft bloop", "bubble pop".
 - Each merge sound should get BIGGER and MORE DRAMATIC as tiers increase. Build excitement through audio.
@@ -77,7 +79,7 @@ Return ONLY one JSON object — no markdown, no explanation, no code fences.
 
 ## Style rules
 - Think "bouncing ball + 2048 merge game" — the satisfying feel of watching balls collide and evolve is the core appeal.
-- The hook must make the viewer curious enough to watch to the end. Frame it as a question about the evolution: "Can 64 X become Y?" or "Will it reach the final form?"
+- The hook must make the viewer curious enough to watch to the end. Frame it as a question about the evolution journey: "Will it reach the final form?", "Can the X become Y?", "What happens when X merges?". NEVER put a specific number in the hook (no "64", "128", etc.) — balls drop continuously.
 - The punchline (finalText) and caption carry the humour. The punchline should be a witty one-liner that pays off the whole evolution journey.
 - Prefer moods like "bouncy", "meme", "retro", or "light" for the satisfying game vibe. Use "dark" or "loud" sparingly for dramatic themes.
 - Vary containers, palettes, moods, and physics across different specs.
@@ -85,6 +87,13 @@ Return ONLY one JSON object — no markdown, no explanation, no code fences.
 - Hashtags: 3-6 relevant tags. Always include #oddlysatisfying and #mergegame.
 
 ## Tier count guidance
-- 6 tiers: Fast, punchy videos (~25-35s). Good for simple linear progressions.
-- 7 tiers: Standard length (~35-50s). Best balance of variety and pacing. PREFERRED.
-- 8 tiers: Longer, more epic videos (~50-70s). Use for rich themes with many natural stages.
+- 6 tiers: Shorter videos (~30-60s). Good for simple linear progressions.
+- 7 tiers: Standard length (~50-90s). Best balance of variety and pacing. PREFERRED.
+- 8 tiers: Longer, epic videos (~70-120s). Use for rich themes with many natural stages.
+- Videos can run up to 2 minutes if the evolution journey needs it. Let the simulation breathe naturally.
+
+## Spawning and pacing (important for hook/caption)
+- Balls drop CONTINUOUSLY into the flask — there is NO fixed number of balls.
+- The simulation keeps spawning tier-0 items automatically until the final form is achieved.
+- The hook should NEVER mention a specific number of balls. Focus on the journey and destination instead.
+- The satisfying part is watching the continuous flow of merges building up to the final evolution.

@@ -1,6 +1,6 @@
 {
   "title": "Monkey to Human 2026",
-  "hook": "Can 64 monkeys become a 2026 human?",
+  "hook": "Can a monkey become a 2026 human?",
   "tiers": [
     { "name": "Monkey", "icon": "🐒" },
     { "name": "Chimp", "icon": "🦍" },
@@ -11,6 +11,7 @@
     { "name": "Human 2026", "icon": "🧍", "accessory": "📱" }
   ],
   "sounds": {
+    "bounce": { "query": "soft tap wood short", "style": "pop" },
     "merge": [
       { "query": "cartoon pop bloop short", "style": "pop" },
       { "query": "monkey chatter short", "style": "voice" },
@@ -26,7 +27,7 @@
   "physics": { "bounciness": 0.7, "gravity": "normal" },
   "finalText": "Just scrolling... like the rest of us",
   "mood": "light",
-  "caption": "64 monkeys walk into a jar... and only one walks out holding a phone 📱\n\nWatch as millions of years of evolution happen in 30 seconds. From swinging in trees to... scrolling through reels. Was it worth the wait?\n\nWhat would YOUR evolution look like? Drop your final form in the comments 👇\n\nFollow to see what evolves next.",
+  "caption": "A tiny monkey walks into a jar... and what walks out is holding a phone 📱\n\nWatch as millions of years of evolution happen in under 2 minutes. From swinging in trees to... scrolling through reels. Was it worth the wait?\n\nWhat would YOUR evolution look like? Drop your final form in the comments 👇\n\nFollow to see what evolves next.",
   "hashtags": ["#evolution", "#satisfying", "#mergegame", "#oddlysatisfying", "#physics"],
   "seed": 42
 }
