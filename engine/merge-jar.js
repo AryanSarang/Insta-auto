@@ -176,6 +176,16 @@
       if (b.dead) continue;
       b.vy += GRAV * dt;
       b.vx *= 0.998; b.vy *= 0.998;
+
+      /* Bottom-zone damping — balls slow down as they settle near flask bottom */
+      var bottomZoneTop = CY + CRAD * 0.15;
+      if (b.y > bottomZoneTop) {
+        var depth = Math.min((b.y - bottomZoneTop) / (CRAD * 0.85), 1);
+        var bottomDamp = 1 - depth * depth * 0.012;
+        b.vx *= bottomDamp;
+        b.vy *= bottomDamp;
+      }
+
       b.x += b.vx * dt; b.y += b.vy * dt;
       if (b.pr > 0) b.pr -= dt;
       if (b.st > 0) b.st -= dt;
@@ -200,8 +210,14 @@
         b.y = CY + ny * (CRAD - b.r);
         var vn = b.vx * nx + b.vy * ny;
         if (vn > 0) {
-          b.vx -= (1 + REST) * vn * nx;
-          b.vy -= (1 + REST) * vn * ny;
+          /* Softer bounce near the bottom — cushioning effect */
+          var wallRest = REST;
+          if (b.y > CY + CRAD * 0.3) {
+            var bDepth = Math.min((b.y - CY - CRAD * 0.3) / (CRAD * 0.7), 1);
+            wallRest *= (1 - bDepth * 0.35);
+          }
+          b.vx -= (1 + wallRest) * vn * nx;
+          b.vy -= (1 + wallRest) * vn * ny;
           b.st = 0.08;
         }
       }
