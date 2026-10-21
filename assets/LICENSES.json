@@ -1118,5 +1118,45 @@
     "author": "Microsoft",
     "license": "MIT",
     "fetchedAt": "2026-10-21T15:03:55.169Z"
+  },
+  {
+    "file": "assets/icons/1fab1.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-21T21:18:46.552Z"
+  },
+  {
+    "file": "assets/icons/1f995.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-21T21:18:46.671Z"
+  },
+  {
+    "file": "assets/sfx/372182.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/supersound23/sounds/372182/",
+    "author": "supersound23",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-21T21:18:52.770Z"
+  },
+  {
+    "file": "assets/sfx/611642.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/kstargio/sounds/611642/",
+    "author": "kstargio",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-21T21:18:53.494Z"
+  },
+  {
+    "file": "assets/sfx/54407.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/KorgMS2000B/sounds/54407/",
+    "author": "KorgMS2000B",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-21T21:20:50.551Z"
   }
 ]
