@@ -1406,5 +1406,21 @@
     "author": "Kyanite_",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-22T09:41:23.563Z"
+  },
+  {
+    "file": "assets/icons/1f682.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-22T21:18:09.017Z"
+  },
+  {
+    "file": "assets/sfx/701045.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/manofham/sounds/701045/",
+    "author": "manofham",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-22T21:18:15.573Z"
   }
 ]
