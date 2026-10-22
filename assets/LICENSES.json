@@ -1310,5 +1310,101 @@
     "author": "Stone_in_Focus_FILMish",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-22T00:54:00.684Z"
+  },
+  {
+    "file": "assets/icons/1f3b1.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-22T09:33:34.658Z"
+  },
+  {
+    "file": "assets/icons/1f3be.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-22T09:33:34.727Z"
+  },
+  {
+    "file": "assets/icons/26be.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-22T09:33:34.780Z"
+  },
+  {
+    "file": "assets/icons/1f3d0.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-22T09:33:34.836Z"
+  },
+  {
+    "file": "assets/icons/26bd.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-22T09:33:34.884Z"
+  },
+  {
+    "file": "assets/icons/1f3c0.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-22T09:33:34.935Z"
+  },
+  {
+    "file": "assets/sfx/457039.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Breviceps/sounds/457039/",
+    "author": "Breviceps",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-22T09:33:41.032Z"
+  },
+  {
+    "file": "assets/sfx/555042.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/bittermelonheart/sounds/555042/",
+    "author": "bittermelonheart",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-22T09:33:42.312Z"
+  },
+  {
+    "file": "assets/icons/1f3d3.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-22T09:35:55.241Z"
+  },
+  {
+    "file": "assets/icons/26f3.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-22T09:35:55.316Z"
+  },
+  {
+    "file": "assets/icons/1f947.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-22T09:35:55.350Z"
+  },
+  {
+    "file": "assets/sfx/432912.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Kyanite_/sounds/432912/",
+    "author": "Kyanite_",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-22T09:41:23.563Z"
   }
 ]
