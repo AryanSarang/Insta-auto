@@ -67,14 +67,14 @@ Return ONLY one JSON object — no markdown, no explanation, no code fences.
 - NO brand logos, real people, or copyrighted characters.
 - An optional "accessory" emoji is drawn small on top of the item for added humor (e.g. a crown 👑 on a lion 🦁).
 
-## Sound rules
-- sounds.bounce is a SINGLE very short sound (~0.1s) that plays on every wall collision. This is what makes the video ASMR-satisfying. Choose a crisp, clean tap/ping/pop that won't be annoying when played rapidly: "soft tap short", "ping metallic short", "pop bubble quick", "click soft".
+## Sound rules (make them FUNNY and THEMATIC — generic game sounds kill engagement)
+- sounds.bounce is a SINGLE very short sound (~0.1s) that plays on every wall collision. Choose something satisfying AND entertaining: "cartoon boing short", "rubber squeak quick", "bubble pop crisp", "funny plop". Avoid bland clicks or notification sounds.
 - sounds.merge has exactly (number of tiers - 1) entries, one per merge level.
-- Low tiers merge VERY often (dozens of times), so they need SHORT, light, satisfying sounds: pops, bloops, soft squeaks, cartoon clicks. Keep queries generic: "cartoon pop short", "soft bloop", "bubble pop".
+- Low tiers merge VERY often, so they need SHORT, FUNNY, satisfying sounds. Think cartoon comedy: "cartoon spring boing", "comic pop", "silly squeak", "funny blip". NOT generic "ding" or "click".
 - Each merge sound should get BIGGER and MORE DRAMATIC as tiers increase. Build excitement through audio.
-- Mid-tier sounds: characterful but still short. Match the theme: "bird chirp", "splash water", "crunch bite".
-- High-tier sounds: impressive, theme-specific: "eagle screech short", "lion roar short", "explosion boom short".
-- The final sound is a dramatic payoff: a tada, crowd "ooh", epic reveal, or comedic sting.
+- Mid-tier sounds: THEMATIC and characterful. Match the evolution theme! Animal chain → "funny animal squawk", "cartoon gulp", "comical growl". Food chain → "cooking sizzle", "funny munch", "cartoon bite". Make viewers smile.
+- High-tier sounds: dramatic AND entertaining. "Crowd gasp", "monster roar funny", "epic boom cartoon", "dramatic whoosh". Must be memorable.
+- The final sound MUST be a crowd-pleasing payoff: "crowd ooh wow", "epic reveal tada", "funny celebration", or a comedic sting that makes viewers replay.
 - All queries must work on Freesound — use concrete descriptive words, not abstract concepts. Keep queries 2-4 words.
 
 ## Style rules
@@ -86,10 +86,10 @@ Return ONLY one JSON object — no markdown, no explanation, no code fences.
 - The caption should tell a tiny story, end with a question that invites comments, then the CTA.
 - Hashtags: 3-6 relevant tags. Always include #oddlysatisfying and #mergegame.
 
-## Tier count guidance
-- 6 tiers: Shorter videos (~30-60s). Good for simple linear progressions.
-- 7 tiers: Standard length (~50-90s). Best balance of variety and pacing. PREFERRED.
-- 8 tiers: Longer, epic videos (~70-120s). Use for rich themes with many natural stages.
+## Tier count guidance (IMPORTANT — minimum 7 tiers)
+- 7 tiers: Standard length (~60-90s). Best balance of variety and pacing. DEFAULT CHOICE.
+- 8 tiers: Longer, epic videos (~80-120s). Use for rich themes with many natural stages.
+- NEVER use fewer than 7 tiers. Videos must be at least 60 seconds long.
 - Videos can run up to 2 minutes if the evolution journey needs it. Let the simulation breathe naturally.
 
 ## Spawning and pacing (important for hook/caption)

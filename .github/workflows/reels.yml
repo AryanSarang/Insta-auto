@@ -76,6 +76,10 @@ jobs:
             echo "args=--dry-run" >> "$GITHUB_OUTPUT"
           elif [ -n "$FILL" ] && [ "$FILL" != "0" ]; then
             echo "args=--fill-queue=$FILL" >> "$GITHUB_OUTPUT"
+          elif [ "$CRON" = "30 22 * * *" ]; then
+            echo "args=--slot=morning" >> "$GITHUB_OUTPUT"
+          elif [ "$CRON" = "30 4 * * *" ]; then
+            echo "args=--slot=evening" >> "$GITHUB_OUTPUT"
           else
             echo "args=" >> "$GITHUB_OUTPUT"
           fi

@@ -24,7 +24,7 @@
   const maxDur = SPEC.maxSeconds || 180;
   const maxSim = maxDur + 30;
 
-  const GRAV = ({ low: 550, normal: 850, high: 1150 })[SPEC.physics?.gravity] || 850;
+  const GRAV = ({ low: 350, normal: 500, high: 750 })[SPEC.physics?.gravity] || 500;
   const REST = Math.min(SPEC.physics?.bounciness || 0.6, 0.7);
 
   /* ── Circular flask ── */
@@ -78,12 +78,12 @@
 
   function spawnInterval() {
     var alive = aliveCount();
-    if (alive > 50) return 0.5;
-    if (alive > 40) return 0.4;
-    if (alive > 25) return 0.32;
-    if (alive < 10) return 0.2;
-    if (alive < 15) return 0.25;
-    return 0.3;
+    if (alive > 50) return 0.9;
+    if (alive > 40) return 0.7;
+    if (alive > 25) return 0.55;
+    if (alive < 10) return 0.35;
+    if (alive < 15) return 0.42;
+    return 0.5;
   }
 
   /* ── Spawn particles on merge ── */
@@ -317,7 +317,7 @@
         var tubeSpread = TUBE_HW * 1.6 - R[0] * 2;
         var sx = CX + (rng() - 0.5) * tubeSpread;
         bods.push(mkBody(0, sx, TUBE_TOP + R[0],
-          (rng() - 0.5) * 50, 20 + rng() * 35));
+          (rng() - 0.5) * 30, 8 + rng() * 18));
         spawned++;
       }
     }
@@ -415,7 +415,7 @@
     return;
   }
 
-  /* ── Slow-mo (5x) + extended hold (3s) ── */
+  /* ── Slow-mo (5x) + extended hold ── */
   var slomoStart = Math.max(0, Math.floor((doneT - 0.8) * FPS));
   var doneFrame = Math.min(Math.floor(doneT * FPS), frames.length - 1);
   var mapped = [];
@@ -424,7 +424,11 @@
     mapped.push(i); mapped.push(i); mapped.push(i); mapped.push(i); mapped.push(i);
   }
   var holdIdx = Math.min(doneFrame + 1, frames.length - 1);
-  for (var h = 0; h < Math.round(3.0 * FPS); h++) mapped.push(holdIdx);
+  var baseHoldSec = 5.0;
+  var minDur = SPEC.minSeconds || 60;
+  var currentDur = mapped.length / FPS;
+  var holdSec = Math.max(baseHoldSec, minDur - currentDur);
+  for (var h = 0; h < Math.round(holdSec * FPS); h++) mapped.push(holdIdx);
 
   /* ── Drift final body to center during hold ── */
   var holdFrame = frames[holdIdx];
@@ -449,11 +453,21 @@
   var ctx = canvas.getContext('2d');
   ctx.scale(PX, PX);
 
-  /* ── Load icons ── */
+  /* ── Load icons (with preload) ── */
   var icos = {};
+  var iconPromises = [];
   if (window.ICON_DATA) {
     for (var _k in window.ICON_DATA) {
-      var img = new Image(); img.src = window.ICON_DATA[_k]; icos[_k] = img;
+      (function (key) {
+        var img = new Image();
+        iconPromises.push(new Promise(function (resolve) {
+          img.onload = resolve;
+          img.onerror = function () { console.warn('Icon load failed: ' + key); resolve(); };
+          setTimeout(resolve, 2000);
+        }));
+        img.src = window.ICON_DATA[key];
+        icos[key] = img;
+      })(_k);
     }
   }
 
@@ -715,11 +729,15 @@
     c.fillText(l.trim(), x, ty);
   }
 
-  window.SIM = {
+  var simObj = {
     duration: duration,
     totalFrames: mapped.length,
     events: evts,
     seek: function (t) { draw(Math.min(Math.floor(t * FPS), mapped.length - 1)); }
   };
-  document.dispatchEvent(new Event('sim-ready'));
+
+  Promise.all(iconPromises).then(function () {
+    window.SIM = simObj;
+    document.dispatchEvent(new Event('sim-ready'));
+  });
 })();
