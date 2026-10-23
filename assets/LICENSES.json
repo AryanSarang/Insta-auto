@@ -1598,5 +1598,53 @@
     "author": "NearTheAtmoshphere",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-23T09:33:35.531Z"
+  },
+  {
+    "file": "assets/sfx/614749.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Hajisounds/sounds/614749/",
+    "author": "Hajisounds",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-23T21:03:45.863Z"
+  },
+  {
+    "file": "assets/icons/1f579.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-23T21:08:22.208Z"
+  },
+  {
+    "file": "assets/icons/1f97d.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-23T21:08:22.301Z"
+  },
+  {
+    "file": "assets/sfx/634359.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/tsa05/sounds/634359/",
+    "author": "tsa05",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-23T21:08:28.707Z"
+  },
+  {
+    "file": "assets/sfx/535890.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Jerimee/sounds/535890/",
+    "author": "Jerimee",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-23T21:08:30.049Z"
+  },
+  {
+    "file": "assets/sfx/746988.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/GammaGool/sounds/746988/",
+    "author": "GammaGool",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-23T21:08:31.745Z"
   }
 ]
