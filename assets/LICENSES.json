@@ -1854,5 +1854,125 @@
     "author": "yahsay",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-24T09:12:38.347Z"
+  },
+  {
+    "file": "assets/sfx/853279.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/el_boss/sounds/853279/",
+    "author": "el_boss",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T20:19:36.287Z"
+  },
+  {
+    "file": "assets/sfx/744144.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/nomentero/sounds/744144/",
+    "author": "nomentero",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T20:19:37.004Z"
+  },
+  {
+    "file": "assets/sfx/457536.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Lunevix/sounds/457536/",
+    "author": "Lunevix",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T20:19:38.107Z"
+  },
+  {
+    "file": "assets/sfx/717769.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/1bob/sounds/717769/",
+    "author": "1bob",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T20:19:38.792Z"
+  },
+  {
+    "file": "assets/sfx/457475.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/princessemilu/sounds/457475/",
+    "author": "princessemilu",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T20:19:40.227Z"
+  },
+  {
+    "file": "assets/sfx/563338.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/BaDoink/sounds/563338/",
+    "author": "BaDoink",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T20:19:42.250Z"
+  },
+  {
+    "file": "assets/sfx/578376.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/nomiqbomi/sounds/578376/",
+    "author": "nomiqbomi",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T20:19:43.708Z"
+  },
+  {
+    "file": "assets/icons/1f9ee.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-24T20:24:18.017Z"
+  },
+  {
+    "file": "assets/icons/1f4be.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-24T20:24:18.129Z"
+  },
+  {
+    "file": "assets/sfx/233649.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/rioforce/sounds/233649/",
+    "author": "rioforce",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T20:24:25.047Z"
+  },
+  {
+    "file": "assets/sfx/350863.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/cabled_mess/sounds/350863/",
+    "author": "cabled_mess",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T20:24:26.126Z"
+  },
+  {
+    "file": "assets/sfx/488381.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/wobesound/sounds/488381/",
+    "author": "wobesound",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T20:24:26.900Z"
+  },
+  {
+    "file": "assets/sfx/39013.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/the_semen_incident/sounds/39013/",
+    "author": "the_semen_incident",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T20:24:27.600Z"
+  },
+  {
+    "file": "assets/sfx/542042.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Rob_Marion/sounds/542042/",
+    "author": "Rob_Marion",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T20:24:29.035Z"
+  },
+  {
+    "file": "assets/sfx/707270.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/neopolitansixth/sounds/707270/",
+    "author": "neopolitansixth",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T20:24:30.142Z"
   }
 ]
