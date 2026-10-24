@@ -1646,5 +1646,109 @@
     "author": "GammaGool",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-23T21:08:31.745Z"
+  },
+  {
+    "file": "assets/icons/1f610.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-24T00:56:23.497Z"
+  },
+  {
+    "file": "assets/icons/1f642.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-24T00:56:23.575Z"
+  },
+  {
+    "file": "assets/icons/1f600.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-24T00:56:23.665Z"
+  },
+  {
+    "file": "assets/icons/1f602.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-24T00:56:23.745Z"
+  },
+  {
+    "file": "assets/icons/1f923.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-24T00:56:23.856Z"
+  },
+  {
+    "file": "assets/icons/1f62d.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-24T00:56:23.870Z"
+  },
+  {
+    "file": "assets/icons/1f480.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-24T00:56:23.882Z"
+  },
+  {
+    "file": "assets/sfx/461943.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/se2001/sounds/461943/",
+    "author": "se2001",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T00:56:31.124Z"
+  },
+  {
+    "file": "assets/sfx/397673.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/amoyssiadis/sounds/397673/",
+    "author": "amoyssiadis",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T00:56:32.259Z"
+  },
+  {
+    "file": "assets/icons/1f601.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-24T01:00:03.552Z"
+  },
+  {
+    "file": "assets/sfx/527526.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Jerimee/sounds/527526/",
+    "author": "Jerimee",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T01:00:09.821Z"
+  },
+  {
+    "file": "assets/sfx/343926.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Reitanna/sounds/343926/",
+    "author": "Reitanna",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-24T01:00:11.083Z"
+  },
+  {
+    "file": "assets/icons/1f973.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-24T01:03:40.222Z"
   }
 ]
