@@ -168,9 +168,11 @@ export async function findAndDownloadSound(query, destDir, opts = {}) {
 
   const results = await searchFreesound(query, opts);
   if (results.length === 0) {
-    if (opts.fallbackQuery) {
-      log(`No results for "${query}", trying fallback: "${opts.fallbackQuery}"`);
-      return findAndDownloadSound(opts.fallbackQuery, destDir, { ...opts, fallbackQuery: undefined });
+    const fallbacks = opts.fallbackQueries || (opts.fallbackQuery ? [opts.fallbackQuery] : []);
+    if (fallbacks.length > 0) {
+      const [next, ...rest] = fallbacks;
+      log(`No results for "${query}", trying fallback: "${next}"`);
+      return findAndDownloadSound(next, destDir, { ...opts, fallbackQueries: rest, fallbackQuery: undefined });
     }
     throw new Error(`No sounds found for "${query}"`);
   }

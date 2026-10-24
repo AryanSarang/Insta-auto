@@ -67,15 +67,17 @@ Return ONLY one JSON object — no markdown, no explanation, no code fences.
 - NO brand logos, real people, or copyrighted characters.
 - An optional "accessory" emoji is drawn small on top of the item for added humor (e.g. a crown 👑 on a lion 🦁).
 
-## Sound rules (make them FUNNY and THEMATIC — generic game sounds kill engagement)
-- sounds.bounce is a SINGLE very short sound (~0.1s) that plays on every wall collision. Choose something satisfying AND entertaining: "cartoon boing short", "rubber squeak quick", "bubble pop crisp", "funny plop". Avoid bland clicks or notification sounds.
-- sounds.merge has exactly (number of tiers - 1) entries, one per merge level.
-- Low tiers merge VERY often, so they need SHORT, FUNNY, satisfying sounds. Think cartoon comedy: "cartoon spring boing", "comic pop", "silly squeak", "funny blip". NOT generic "ding" or "click".
-- Each merge sound should get BIGGER and MORE DRAMATIC as tiers increase. Build excitement through audio.
-- Mid-tier sounds: THEMATIC and characterful. Match the evolution theme! Animal chain → "funny animal squawk", "cartoon gulp", "comical growl". Food chain → "cooking sizzle", "funny munch", "cartoon bite". Make viewers smile.
-- High-tier sounds: dramatic AND entertaining. "Crowd gasp", "monster roar funny", "epic boom cartoon", "dramatic whoosh". Must be memorable.
-- The final sound MUST be a crowd-pleasing payoff: "crowd ooh wow", "epic reveal tada", "funny celebration", or a comedic sting that makes viewers replay.
-- All queries must work on Freesound — use concrete descriptive words, not abstract concepts. Keep queries 2-4 words.
+## Sound rules (Freesound search queries — keep them SIMPLE)
+- All sound queries search the Freesound.org database. Use SIMPLE 1-2 word queries that describe the sound itself. No adjectives like "funny", "epic", "quick", "short", "crisp". Just the sound.
+- GOOD queries: "pop", "boing", "squeak", "splash", "ding", "whoosh", "drum hit", "glass break", "bubble pop", "cartoon boing", "bell chime", "crowd cheer"
+- BAD queries (too specific, won't find results): "rubber squeak quick", "cat hiss funny", "epic boom cartoon", "crowd ooh wow", "funny celebration"
+- sounds.bounce: a short wall-hit sound. Use: "pop", "tap", "boing", "knock", "plop", "ping".
+- sounds.merge: exactly (tiers - 1) entries, one per merge level.
+- Low tiers: short satisfying sounds. "pop", "boing", "blip", "squeak", "bubble".
+- Mid tiers: slightly bigger sounds matching the theme. "splash", "crunch", "chomp", "squawk", "sizzle", "gulp".
+- High tiers: dramatic sounds. "explosion", "crash", "roar", "thunder", "gong", "drum roll".
+- Final sound: the biggest payoff. "fanfare", "tada", "applause", "crowd cheer", "orchestral hit", "triumph".
+- Each merge sound should get progressively bigger/more dramatic.
 
 ## Style rules
 - Think "bouncing ball + 2048 merge game" — the satisfying feel of watching balls collide and evolve is the core appeal.

@@ -102,12 +102,63 @@ function writeWav(buffer, path) {
   writeFileSync(path, Buffer.concat([header, dataBuf]));
 }
 
+function sfxPeakLevel(buf) {
+  let peak = 0;
+  for (let i = 0; i < buf.length; i++) {
+    const v = Math.abs(buf[i]);
+    if (v > peak) peak = v;
+  }
+  return peak;
+}
+
+function muxSilentAudio(videoPath, finalPath, duration) {
+  warn('SFX is silent, adding silent audio track');
+  execSync([
+    'ffmpeg', '-y',
+    '-i', `"${videoPath}"`,
+    '-f', 'lavfi', '-i', `anullsrc=r=${SAMPLE_RATE}:cl=stereo`,
+    '-map', '0:v', '-map', '1:a',
+    '-c:v', 'copy', '-c:a', 'aac', '-b:a', '128k', '-ar', '48000',
+    '-movflags', '+faststart', '-t', String(duration),
+    `"${finalPath}"`,
+  ].join(' '), { stdio: 'pipe', timeout: 120_000 });
+}
+
+function safeLoudnorm(inputs, finalPath, filterComplex, fallbackFilter) {
+  const inputArgs = inputs.flatMap(p => ['-i', `"${p}"`]);
+  try {
+    execSync([
+      'ffmpeg', '-y',
+      ...inputArgs,
+      '-filter_complex', `"${filterComplex}"`,
+      '-map', '0:v', '-map', '"[out]"',
+      '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
+      '-movflags', '+faststart', '-shortest',
+      `"${finalPath}"`,
+    ].join(' '), { stdio: 'pipe', timeout: 120_000 });
+  } catch (e) {
+    warn('loudnorm failed, falling back to simple volume normalization');
+    execSync([
+      'ffmpeg', '-y',
+      ...inputArgs,
+      '-filter_complex', `"${fallbackFilter}"`,
+      '-map', '0:v', '-map', '"[out]"',
+      '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
+      '-movflags', '+faststart', '-shortest',
+      `"${finalPath}"`,
+    ].join(' '), { stdio: 'pipe', timeout: 120_000 });
+  }
+}
+
 export async function mixAudio(videoPath, events, soundMap, musicTrack, outDir, opts = {}) {
   const duration = opts.duration || 45;
   const mood = opts.mood || 'light';
 
   log(`Mixing ${events.length} sound events...`);
   const sfxBuffer = mixSfxEvents(events, soundMap, duration);
+  const peak = sfxPeakLevel(sfxBuffer);
+  log(`SFX peak level: ${peak.toFixed(6)}`);
+
   const sfxPath = join(outDir, 'sfx.wav');
   writeWav(sfxBuffer, sfxPath);
 
@@ -136,33 +187,18 @@ export async function mixAudio(videoPath, events, soundMap, musicTrack, outDir, 
       `"${loopedMusicPath}"`,
     ].join(' '), { stdio: 'pipe', timeout: 60_000 });
 
-    execSync([
-      'ffmpeg', '-y',
-      '-i', `"${videoPath}"`,
-      '-i', `"${sfxPath}"`,
-      '-i', `"${loopedMusicPath}"`,
-      '-filter_complex', '"[1:a][2:a]amix=inputs=2:duration=first:normalize=0[mixed];[mixed]loudnorm=I=-14:TP=-1.5[out]"',
-      '-map', '0:v', '-map', '"[out]"',
-      '-c:v', 'copy',
-      '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
-      '-movflags', '+faststart',
-      '-shortest',
-      `"${finalPath}"`,
-    ].join(' '), { stdio: 'pipe', timeout: 120_000 });
+    safeLoudnorm([videoPath, sfxPath, loopedMusicPath], finalPath,
+      '[1:a][2:a]amix=inputs=2:duration=first:normalize=0[mixed];[mixed]loudnorm=I=-14:TP=-1.5[out]',
+      '[1:a][2:a]amix=inputs=2:duration=first:normalize=0[out]');
   } else {
     warn('No music track, mixing SFX only');
-    execSync([
-      'ffmpeg', '-y',
-      '-i', `"${videoPath}"`,
-      '-i', `"${sfxPath}"`,
-      '-filter_complex', '"[1:a]loudnorm=I=-14:TP=-1.5[out]"',
-      '-map', '0:v', '-map', '"[out]"',
-      '-c:v', 'copy',
-      '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
-      '-movflags', '+faststart',
-      '-shortest',
-      `"${finalPath}"`,
-    ].join(' '), { stdio: 'pipe', timeout: 120_000 });
+    if (peak < 0.001) {
+      muxSilentAudio(videoPath, finalPath, duration);
+    } else {
+      safeLoudnorm([videoPath, sfxPath], finalPath,
+        '[1:a]loudnorm=I=-14:TP=-1.5[out]',
+        '[1:a]volume=1.5[out]');
+    }
   }
 
   log(`Final reel: ${finalPath}`);

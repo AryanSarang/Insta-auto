@@ -243,11 +243,21 @@ export async function resolveAllSounds(spec, config = {}) {
     warn('Claude sound picking unavailable, using rating-based selection:', e.message);
   }
 
+  const GENERIC_FALLBACKS = {
+    bounce: ['pop', 'tap', 'click', 'knock'],
+    merge: ['ding', 'chime', 'pop', 'boing', 'blip'],
+    final: ['fanfare', 'tada', 'applause', 'crowd cheer', 'orchestral hit'],
+  };
+
   for (const q of allQueries) {
     const maxLen = q.type === 'bounce' ? 0.3 : q.type === 'merge' ? 1.2 : 3;
     const minD = q.type === 'bounce' ? 0.05 : q.type === 'merge' ? 0.1 : 0.5;
     const maxD = q.type === 'bounce' ? 0.8 : q.type === 'merge' ? 2 : 5;
-    const fallbackQuery = `cartoon ${q.style} short`;
+    const fallbackQueries = [
+      `cartoon ${q.style}`,
+      q.style,
+      ...(GENERIC_FALLBACKS[q.type] || ['pop', 'ding']),
+    ];
 
     try {
       let pickedSound = null;
@@ -260,7 +270,7 @@ export async function resolveAllSounds(spec, config = {}) {
         maxLength: maxLen,
         minDuration: minD,
         maxDuration: maxD,
-        fallbackQuery,
+        fallbackQueries,
         claudePick: pickedSound,
         allowAttribution: config.allowAttribution,
       });
