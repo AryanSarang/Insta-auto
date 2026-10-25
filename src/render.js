@@ -72,7 +72,9 @@ export async function renderSpec(spec, icons, outDir, opts = {}) {
     eventCount: window.SIM.events.length,
   }));
 
-  log(`Simulation ready: ${simInfo.duration.toFixed(1)}s, ${simInfo.totalFrames} frames, ${simInfo.eventCount} events`);
+  const captureFrames = Math.ceil(simInfo.duration * fps);
+
+  log(`Simulation ready: ${simInfo.duration.toFixed(1)}s, ${simInfo.totalFrames} engine frames → ${captureFrames} capture frames @ ${fps}fps, ${simInfo.eventCount} events`);
 
   if (simInfo.duration < 5 || simInfo.duration > 200) {
     throw new Error(`Simulation duration out of range: ${simInfo.duration}s`);
@@ -103,17 +105,17 @@ export async function renderSpec(spec, icons, outDir, opts = {}) {
   ffmpeg.stderr.on('data', d => { ffmpegErr += d; });
 
   const reviewFrameIdxs = [
-    Math.floor(simInfo.totalFrames * 0.15),
-    Math.floor(simInfo.totalFrames * 0.50),
-    Math.floor(simInfo.totalFrames * 0.85),
-    simInfo.totalFrames - 2,
+    Math.floor(captureFrames * 0.15),
+    Math.floor(captureFrames * 0.50),
+    Math.floor(captureFrames * 0.85),
+    captureFrames - 2,
   ];
   const reviewFrames = [];
 
-  log(`Capturing ${simInfo.totalFrames} frames...`);
+  log(`Capturing ${captureFrames} frames...`);
   let lastProgress = 0;
 
-  for (let i = 0; i < simInfo.totalFrames; i++) {
+  for (let i = 0; i < captureFrames; i++) {
     const t = i / fps;
     await page.evaluate((time) => { window.SIM.seek(time); }, t);
 
@@ -130,9 +132,9 @@ export async function renderSpec(spec, icons, outDir, opts = {}) {
       reviewFrames.push(frameFile);
     }
 
-    const progress = Math.floor((i / simInfo.totalFrames) * 100);
+    const progress = Math.floor((i / captureFrames) * 100);
     if (progress >= lastProgress + 20) {
-      log(`  ${progress}% (${i}/${simInfo.totalFrames})`);
+      log(`  ${progress}% (${i}/${captureFrames})`);
       lastProgress = progress;
     }
   }
