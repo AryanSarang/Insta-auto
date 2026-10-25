@@ -72,9 +72,10 @@ async function publishResumable(videoPath, caption) {
     uploadUri = `https://rupload.facebook.com/ig-api-upload/${version}/${containerId}`;
   }
 
-  log(`Uploading video to container ${containerId}...`);
   const fileData = readFileSync(videoPath);
   const fileSize = statSync(videoPath).size;
+  const sizeMB = (fileSize / (1024 * 1024)).toFixed(1);
+  log(`Uploading video to container ${containerId} (${sizeMB} MB)...`);
 
   const uploadRes = await fetch(uploadUri, {
     method: 'POST',
@@ -89,7 +90,7 @@ async function publishResumable(videoPath, caption) {
 
   if (!uploadRes.ok) {
     const err = await uploadRes.text();
-    throw new Error(`Video upload failed: ${err}`);
+    throw new Error(`Video upload failed (HTTP ${uploadRes.status}, ${sizeMB} MB): ${err}`);
   }
 
   return finishPublish(containerId);

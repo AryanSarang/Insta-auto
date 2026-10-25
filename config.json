@@ -18,8 +18,8 @@
   ],
   "video": {
     "minSeconds": 60,
-    "maxSeconds": 180,
-    "fps": 60
+    "maxSeconds": 120,
+    "fps": 30
   },
   "hashtags": {
     "always": ["#oddlysatisfying", "#mergegame", "#2048", "#asmr"],

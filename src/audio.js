@@ -1,5 +1,5 @@
 import { execSync, spawn as spawnProc } from 'node:child_process';
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, log, warn } from './util.js';
 
@@ -206,8 +206,11 @@ export async function mixAudio(videoPath, events, soundMap, musicTrack, outDir, 
 }
 
 export function verifyOutput(filePath) {
+  const fileSize = statSync(filePath).size;
+  const sizeMB = (fileSize / (1024 * 1024)).toFixed(1);
+
   const probe = execSync(
-    `ffprobe -v error -select_streams v:0 -show_entries stream=width,height,codec_name -of json "${filePath}"`,
+    `ffprobe -v error -select_streams v:0 -show_entries stream=width,height,codec_name,r_frame_rate,bit_rate -of json "${filePath}"`,
     { stdio: ['pipe', 'pipe', 'pipe'] }
   ).toString();
   const video = JSON.parse(probe).streams?.[0];
@@ -219,10 +222,14 @@ export function verifyOutput(filePath) {
   const audio = JSON.parse(probeA).streams?.[0];
 
   const probeFmt = execSync(
-    `ffprobe -v error -show_entries format=duration -of json "${filePath}"`,
+    `ffprobe -v error -show_entries format=duration,bit_rate -of json "${filePath}"`,
     { stdio: ['pipe', 'pipe', 'pipe'] }
   ).toString();
-  const dur = parseFloat(JSON.parse(probeFmt).format?.duration || 0);
+  const fmt = JSON.parse(probeFmt).format || {};
+  const dur = parseFloat(fmt.duration || 0);
+  const bitrate = fmt.bit_rate ? `${(parseInt(fmt.bit_rate) / 1e6).toFixed(1)} Mbps` : 'unknown';
+
+  log(`File: ${sizeMB} MB, ${bitrate}, ${video?.r_frame_rate || '?'} fps`);
 
   const checks = [];
   if (!video) checks.push('no video stream');
@@ -233,5 +240,5 @@ export function verifyOutput(filePath) {
   if (!audio) checks.push('no audio stream');
   if (dur < 10 || dur > 200) checks.push(`duration out of range: ${dur}s`);
 
-  return { valid: checks.length === 0, checks, duration: dur, resolution: video ? `${video.width}x${video.height}` : 'none' };
+  return { valid: checks.length === 0, checks, duration: dur, resolution: video ? `${video.width}x${video.height}` : 'none', sizeMB: parseFloat(sizeMB) };
 }
