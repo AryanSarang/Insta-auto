@@ -1,4 +1,4 @@
-import { readFileSync, statSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { log, warn, sleep } from './util.js';
 import { uploadToS3 } from './storage.js';
 
@@ -66,6 +66,7 @@ async function publishResumable(videoPath, caption) {
   const container = await createRes.json();
   const containerId = container.id;
   let uploadUri = container.uri;
+  log(`Container ${containerId} created, uri from response: ${uploadUri || '(none)'}`);
 
   if (!uploadUri) {
     const version = process.env.GRAPH_API_VERSION || 'v23.0';
@@ -73,9 +74,10 @@ async function publishResumable(videoPath, caption) {
   }
 
   const fileData = readFileSync(videoPath);
-  const fileSize = statSync(videoPath).size;
+  const fileSize = fileData.length;
   const sizeMB = (fileSize / (1024 * 1024)).toFixed(1);
   log(`Uploading video to container ${containerId} (${sizeMB} MB)...`);
+  log(`Upload URI: ${uploadUri}`);
 
   const uploadRes = await fetch(uploadUri, {
     method: 'POST',
@@ -83,6 +85,7 @@ async function publishResumable(videoPath, caption) {
       'Authorization': `OAuth ${tok}`,
       'offset': '0',
       'file_size': String(fileSize),
+      'Content-Length': String(fileSize),
       'Content-Type': 'application/octet-stream',
     },
     body: fileData,
