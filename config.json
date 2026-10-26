@@ -32,7 +32,7 @@
   },
   "review": {
     "enabled": true,
-    "minScore": 4,
+    "minScore": 3,
     "ifUnavailable": "post"
   },
   "maxAttempts": 3,

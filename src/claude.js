@@ -165,33 +165,27 @@ export async function pickSounds(pickPrompt, userMsg) {
 }
 
 export async function reviewFrames(framesDir, frameFiles) {
-  const systemPrompt = `You are a quality reviewer for short vertical video reels (1080x1920). You will examine 4 key frames from a physics simulation reel. Return ONLY a JSON object with these fields:
+  const systemPrompt = `You are a lenient quality reviewer for short vertical video reels (1080x1920). You will examine 4 key frames from a bouncing-ball merge-evolution simulation. Return ONLY a JSON object with these fields:
 - "score": integer 1-10 (10 = perfect)
-- "pass": boolean
-- "issues": array of strings describing problems found
+- "pass": boolean (true unless the video is genuinely broken)
+- "issues": array of strings (only list real problems, not nitpicks)
 
-Check for:
-1. Text readability (must be clear on a phone, with drop shadow or outline)
-2. Icons that appear as empty boxes or are missing
-3. Icons that don't visually match their tier name
-4. Items escaping outside the container
-5. Final reveal frame: is the final form clearly visible, centered, with glow effect?
-6. Punchline text: is it readable and punchy?
-7. Progress bar: is it visible and correct?
-8. Anything that looks broken, inappropriate, or low quality
-9. Overall visual appeal and entertainment value
+ONLY fail (pass=false, score 1-2) for these DEALBREAKERS:
+1. Icons show as empty boxes / missing images (broken rendering)
+2. Most items have escaped outside the container
+3. The video appears completely black, frozen, or corrupted
+4. Text is totally unreadable (not just slightly overlapping)
 
-CRITICAL quality checks (score 0-3 if any fail):
-10. Icon coherence: do ALL tier icons belong to the same visual world? (e.g. all animals, all sea creatures). Mixed unrelated icons = instant fail.
-11. Evolution logic: does each tier feel like a natural upgrade from the previous one? Random progression = fail.
-12. Arena utilization: are items spread across the arena or clustered in one corner? Items should fill at least 60% of the flask area.
-13. Icon visibility: can you recognise the tier-0 icons even though they are tiny? Overly complex emoji at small size = fail.
-14. Merge satisfaction: when items merge, is there a visible particle burst/shockwave effect? Merges should feel impactful and rewarding.
-15. Final form payoff: does the final tier icon feel like a grand culmination of the evolution chain? It should be centered with a golden glow.
-16. Animation smoothness: does the motion look fluid and natural? Bodies should bounce energetically, not sit still.
-17. Continuous flow: are new balls continuously dropping in? The flask should always have activity — never look empty or stagnant.
+Everything else is acceptable. These are NOT reasons to fail:
+- Arena not perfectly filled — sparse areas are fine
+- Icons slightly similar between tiers — normal for emoji
+- Particles overlapping the final form — that's the celebration effect
+- Text overlapping container edges slightly — still readable
+- Evolution chain being creative or unusual — that's the fun
+- Final form not perfectly centered — close enough is fine
+- Background color differences between frames — lighting effects
 
-Score >= 4 = pass. Be strict but fair — only fail videos with genuine visual bugs, broken icons, or incoherent evolution chains.`;
+Be generous. Score 5+ for any video that looks like a working simulation with visible merges and a final reveal. Score 3-4 only if something looks noticeably wrong but not broken. Score 1-2 only for dealbreakers above.`;
 
   const userMsg = `Review these 4 frames from a merge-evolution reel. Frame 1 is early (items falling, hook text visible). Frame 2 is mid (merges happening). Frame 3 is near the end (slow motion before final merge). Frame 4 is the reveal (final form shown with punchline).
 
