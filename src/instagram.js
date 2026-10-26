@@ -1,4 +1,5 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, statSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { log, warn, sleep } from './util.js';
 import { uploadToS3 } from './storage.js';
 
@@ -73,27 +74,39 @@ async function publishResumable(videoPath, caption) {
     uploadUri = `https://rupload.facebook.com/ig-api-upload/${version}/${containerId}`;
   }
 
-  const fileData = readFileSync(videoPath);
-  const fileSize = fileData.length;
+  const fileSize = statSync(videoPath).size;
   const sizeMB = (fileSize / (1024 * 1024)).toFixed(1);
   log(`Uploading video to container ${containerId} (${sizeMB} MB)...`);
   log(`Upload URI: ${uploadUri}`);
 
-  const uploadRes = await fetch(uploadUri, {
-    method: 'POST',
-    headers: {
-      'Authorization': `OAuth ${tok}`,
-      'offset': '0',
-      'file_size': String(fileSize),
-      'Content-Length': String(fileSize),
-      'Content-Type': 'application/octet-stream',
-    },
-    body: fileData,
-  });
+  let uploadOutput;
+  try {
+    uploadOutput = execFileSync('curl', [
+      '-s', '-S',
+      '-w', '\n%{http_code}',
+      '-X', 'POST',
+      uploadUri,
+      '-H', `Authorization: OAuth ${tok}`,
+      '-H', 'offset: 0',
+      '-H', `file_size: ${String(fileSize)}`,
+      '-H', 'Content-Type: application/octet-stream',
+      '--data-binary', `@${videoPath}`,
+      '--max-time', '300',
+    ], { maxBuffer: 50 * 1024 * 1024, timeout: 360_000 }).toString().trim();
+  } catch (e) {
+    const stderr = e.stderr ? e.stderr.toString().trim() : '';
+    throw new Error(`Video upload curl failed: ${stderr || e.message}`);
+  }
 
-  if (!uploadRes.ok) {
-    const err = await uploadRes.text();
-    throw new Error(`Video upload failed (HTTP ${uploadRes.status}, ${sizeMB} MB): ${err}`);
+  const outputLines = uploadOutput.split('\n');
+  const httpCode = outputLines.pop().trim();
+  const responseBody = outputLines.join('\n').trim();
+
+  log(`Upload response: HTTP ${httpCode}`);
+  if (responseBody) log(`Upload body: ${responseBody.slice(0, 500)}`);
+
+  if (!httpCode.startsWith('2')) {
+    throw new Error(`Video upload failed (HTTP ${httpCode}, ${sizeMB} MB): ${responseBody}`);
   }
 
   return finishPublish(containerId);
