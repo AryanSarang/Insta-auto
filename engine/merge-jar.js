@@ -20,9 +20,9 @@
   const SUBSTEPS = 2;
   const SUB_DT = DT / SUBSTEPS;
 
-  const N = SPEC.tiers.length;
-  const maxDur = SPEC.maxSeconds || 180;
-  const maxSim = maxDur + 30;
+  const N = Math.min(SPEC.tiers.length, 6);
+  const maxDur = SPEC.maxSeconds || 25;
+  const maxSim = maxDur + 8;
 
   const GRAV = ({ low: 500, normal: 650, high: 850 })[SPEC.physics?.gravity] || 650;
   const REST = Math.min(SPEC.physics?.bounciness || 0.6, 0.7);
@@ -430,18 +430,39 @@
   var holdSec = Math.max(baseHoldSec, minDur - currentDur);
   for (var h = 0; h < Math.round(holdSec * FPS); h++) mapped.push(holdIdx);
 
-  /* ── Drift final body to center during hold ── */
+  /* ── Clean hold frame: only final-tier body, centered ── */
   var holdFrame = frames[holdIdx];
   if (holdFrame) {
+    var finalBi = -1;
     for (var bi = 0; bi < holdFrame.n; bi++) {
-      if (holdFrame.tr[bi] === N - 1) {
-        var o = bi * 7;
-        holdFrame.d[o] = CX;
-        holdFrame.d[o + 1] = CY;
-        break;
-      }
+      if (holdFrame.tr[bi] === N - 1) { finalBi = bi; break; }
+    }
+    if (finalBi >= 0) {
+      var fo = finalBi * 7;
+      var cleanD = new Float32Array(7);
+      cleanD[0] = CX;
+      cleanD[1] = CY;
+      cleanD[2] = holdFrame.d[fo + 2];
+      cleanD[3] = 1;
+      cleanD[4] = 1;
+      cleanD[5] = 1;
+      cleanD[6] = 0;
+      var cleanTr = new Uint8Array([N - 1]);
+      frames[holdIdx] = {
+        d: cleanD, tr: cleanTr, n: 1,
+        sp: holdFrame.sp, mg: holdFrame.mg, dn: true, t: holdFrame.t,
+        ul: holdFrame.ul,
+        particles: holdFrame.particles || [],
+        shockwaves: [],
+        flash: 0,
+        shakeX: 0, shakeY: 0
+      };
     }
   }
+
+  /* ── Hard cap: never exceed maxDur + 5s ── */
+  var hardCap = Math.floor((maxDur + 5) * FPS);
+  if (mapped.length > hardCap) mapped.length = hardCap;
 
   var duration = mapped.length / FPS;
 
