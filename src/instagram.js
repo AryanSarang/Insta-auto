@@ -108,7 +108,12 @@ async function publishResumable(videoPath, caption) {
   if (responseBody) log(`Upload body: ${responseBody.slice(0, 500)}`);
 
   if (!uploadRes.ok) {
-    throw new Error(`Video upload failed (HTTP ${uploadRes.status}, ${sizeMB} MB): ${responseBody}`);
+    const isProcessingError = responseBody.includes('ProcessingFailedError');
+    if (isProcessingError) {
+      warn(`Upload returned ${uploadRes.status} with ProcessingFailedError — polling container status anyway (rupload 400 can be spurious)`);
+    } else {
+      throw new Error(`Video upload failed (HTTP ${uploadRes.status}, ${sizeMB} MB): ${responseBody}`);
+    }
   }
 
   return finishPublish(containerId);

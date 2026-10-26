@@ -118,7 +118,7 @@ function muxSilentAudio(videoPath, finalPath, duration) {
     '-i', `"${videoPath}"`,
     '-f', 'lavfi', '-i', `anullsrc=r=${SAMPLE_RATE}:cl=stereo`,
     '-map', '0:v', '-map', '1:a',
-    '-c:v', 'copy', '-c:a', 'aac', '-b:a', '128k', '-ar', '48000',
+    '-c:v', 'copy', '-c:a', 'aac', '-b:a', '128k', '-ar', '44100',
     '-movflags', '+faststart', '-t', String(duration),
     `"${finalPath}"`,
   ].join(' '), { stdio: 'pipe', timeout: 120_000 });
@@ -132,7 +132,7 @@ function safeLoudnorm(inputs, finalPath, filterComplex, fallbackFilter) {
       ...inputArgs,
       '-filter_complex', `"${filterComplex}"`,
       '-map', '0:v', '-map', '"[out]"',
-      '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
+      '-c:v', 'copy', '-c:a', 'aac', '-b:a', '128k', '-ar', '44100',
       '-movflags', '+faststart', '-shortest',
       `"${finalPath}"`,
     ].join(' '), { stdio: 'pipe', timeout: 120_000 });
@@ -143,7 +143,7 @@ function safeLoudnorm(inputs, finalPath, filterComplex, fallbackFilter) {
       ...inputArgs,
       '-filter_complex', `"${fallbackFilter}"`,
       '-map', '0:v', '-map', '"[out]"',
-      '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000',
+      '-c:v', 'copy', '-c:a', 'aac', '-b:a', '128k', '-ar', '44100',
       '-movflags', '+faststart', '-shortest',
       `"${finalPath}"`,
     ].join(' '), { stdio: 'pipe', timeout: 120_000 });
