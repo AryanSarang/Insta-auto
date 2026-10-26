@@ -2166,5 +2166,85 @@
     "author": "qubodup",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-25T09:29:46.811Z"
+  },
+  {
+    "file": "assets/icons/1f47b.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-26T00:33:42.353Z"
+  },
+  {
+    "file": "assets/sfx/431774.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/musicvision31/sounds/431774/",
+    "author": "musicvision31",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-26T00:33:52.529Z"
+  },
+  {
+    "file": "assets/sfx/339114.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/xggw/sounds/339114/",
+    "author": "xggw",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-26T00:33:53.356Z"
+  },
+  {
+    "file": "assets/sfx/825228.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/armandem/sounds/825228/",
+    "author": "armandem",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-26T00:33:55.439Z"
+  },
+  {
+    "file": "assets/icons/1f7e1.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-26T00:40:28.209Z"
+  },
+  {
+    "file": "assets/icons/1f639.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-26T00:40:28.360Z"
+  },
+  {
+    "file": "assets/icons/1f63b.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-26T00:40:28.463Z"
+  },
+  {
+    "file": "assets/sfx/249750.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/matthiastidlund/sounds/249750/",
+    "author": "matthiastidlund",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-26T00:40:37.740Z"
+  },
+  {
+    "file": "assets/sfx/644943.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/craigscottuk/sounds/644943/",
+    "author": "craigscottuk",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-26T00:40:39.448Z"
+  },
+  {
+    "file": "assets/sfx/608085.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/FunWithSound/sounds/608085/",
+    "author": "FunWithSound",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-26T00:40:40.267Z"
   }
 ]
