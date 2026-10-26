@@ -20,11 +20,11 @@
   const SUBSTEPS = 2;
   const SUB_DT = DT / SUBSTEPS;
 
-  const N = Math.min(SPEC.tiers.length, 6);
-  const maxDur = SPEC.maxSeconds || 25;
-  const maxSim = maxDur + 8;
+  const N = SPEC.tiers.length;
+  const maxDur = SPEC.maxSeconds || 180;
+  const maxSim = maxDur + 30;
 
-  const GRAV = ({ low: 500, normal: 650, high: 850 })[SPEC.physics?.gravity] || 650;
+  const GRAV = ({ low: 350, normal: 500, high: 750 })[SPEC.physics?.gravity] || 500;
   const REST = Math.min(SPEC.physics?.bounciness || 0.6, 0.7);
 
   /* ── Circular flask ── */
@@ -78,12 +78,12 @@
 
   function spawnInterval() {
     var alive = aliveCount();
-    if (alive > 50) return 0.55;
-    if (alive > 40) return 0.45;
-    if (alive > 25) return 0.35;
-    if (alive < 10) return 0.2;
-    if (alive < 15) return 0.25;
-    return 0.3;
+    if (alive > 50) return 0.9;
+    if (alive > 40) return 0.75;
+    if (alive > 25) return 0.6;
+    if (alive < 10) return 0.35;
+    if (alive < 15) return 0.4;
+    return 0.5;
   }
 
   /* ── Spawn particles on merge ── */
@@ -352,7 +352,7 @@
     }
 
     /* Anti-stall: attract nearest same-tier pair */
-    if (!done && sim - lastMerge > 0.6 && bods.length > 1) {
+    if (!done && sim - lastMerge > 1.0 && bods.length > 1) {
       var bestD2 = 1e9, bi = -1, bj = -1;
       for (var i = 0; i < bods.length; i++) {
         if (bods[i].dead) continue;
@@ -370,13 +370,13 @@
         var d = Math.sqrt(dx * dx + dy * dy) || 1;
         var stallT = sim - lastMerge;
         var tierBoost = 1 + a.t * 0.5;
-        var ramp = stallT < 1.2 ? stallT - 0.6 : 0.6 + (stallT - 1.2) * 4;
+        var ramp = stallT < 2.0 ? stallT - 1.0 : 1.0 + (stallT - 2.0) * 3;
         var force = (150 + ramp * 300) * tierBoost * DT;
         a.vx += dx / d * force; a.vy += dy / d * force;
         b.vx -= dx / d * force; b.vy -= dy / d * force;
 
         /* Random perturbation after 1.5s to break deadlocks */
-        if (stallT > 1.0) {
+        if (stallT > 1.5) {
           for (var pi2 = 0; pi2 < bods.length; pi2++) {
             if (!bods[pi2].dead) {
               bods[pi2].vx += (rng() - 0.5) * 40;
@@ -385,7 +385,7 @@
           }
         }
 
-        if (stallT > 2.5 && d > a.r + b.r + 5) {
+        if (stallT > 3.5 && d > a.r + b.r + 5) {
           var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
           a.x = mx - a.r * 0.5; b.x = mx + b.r * 0.5;
           a.y = my; b.y = my;
@@ -415,16 +415,16 @@
     return;
   }
 
-  /* ── Slow-mo (3x) + extended hold ── */
-  var slomoStart = Math.max(0, Math.floor((doneT - 0.5) * FPS));
+  /* ── Slow-mo (5x) + extended hold ── */
+  var slomoStart = Math.max(0, Math.floor((doneT - 0.8) * FPS));
   var doneFrame = Math.min(Math.floor(doneT * FPS), frames.length - 1);
   var mapped = [];
   for (var i = 0; i < Math.min(slomoStart, frames.length); i++) mapped.push(i);
   for (var i = slomoStart; i <= doneFrame; i++) {
-    mapped.push(i); mapped.push(i); mapped.push(i);
+    for (var rep = 0; rep < 5; rep++) mapped.push(i);
   }
   var holdIdx = Math.min(doneFrame + 1, frames.length - 1);
-  var baseHoldSec = 2.0;
+  var baseHoldSec = 5.0;
   var minDur = SPEC.minSeconds || 60;
   var currentDur = mapped.length / FPS;
   var holdSec = Math.max(baseHoldSec, minDur - currentDur);
@@ -459,10 +459,6 @@
       };
     }
   }
-
-  /* ── Hard cap: never exceed maxDur + 5s ── */
-  var hardCap = Math.floor((maxDur + 5) * FPS);
-  if (mapped.length > hardCap) mapped.length = hardCap;
 
   var duration = mapped.length / FPS;
 
@@ -707,13 +703,13 @@
     /* End camera shake transform */
     ctx.restore();
 
-    /* Progress bar — tier progress below the arena */
-    if (!f.dn) {
+    /* Progress bar — tier progress below the arena (full at 100% during reveal) */
+    {
       var maxTier = 0;
       for (var ui = 0; ui < f.ul.length; ui++) {
         if (f.ul[ui] > maxTier) maxTier = f.ul[ui];
       }
-      var prog = maxTier / (N - 1);
+      var prog = f.dn ? 1 : maxTier / (N - 1);
       var barX = 30, barY = CY + CRAD + 12, barW = W - 60, barH = 5;
       ctx.fillStyle = 'rgba(255,255,255,0.12)';
       ctx.fillRect(barX, barY, barW, barH);

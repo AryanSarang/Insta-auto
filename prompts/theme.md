@@ -88,11 +88,11 @@ Return ONLY one JSON object — no markdown, no explanation, no code fences.
 - The caption should tell a tiny story, end with a question that invites comments, then the CTA.
 - Hashtags: 3-6 relevant tags. Always include #oddlysatisfying and #mergegame.
 
-## Tier count guidance (IMPORTANT — exactly 5 tiers)
-- ALWAYS use exactly 5 tiers. This produces punchy 15-25 second videos that perform best on Instagram Reels.
-- 5 tiers gives the perfect balance: quick pacing, clear evolution, satisfying payoff.
-- NEVER use more than 6 tiers or fewer than 5. Videos must be SHORT and fast-paced (under 30 seconds).
-- Every second counts — the evolution should feel rapid and exciting, not slow or drawn out.
+## Tier count guidance (IMPORTANT — minimum 7 tiers)
+- 7 tiers: Standard length (~60-90s). Best balance of variety and pacing. DEFAULT CHOICE.
+- 8 tiers: Longer, epic videos (~80-120s). Use for rich themes with many natural stages.
+- NEVER use fewer than 7 tiers. Videos must be at least 60 seconds long.
+- Videos can run up to 2 minutes if the evolution journey needs it. Let the simulation breathe naturally.
 
 ## Spawning and pacing (important for hook/caption)
 - Balls drop CONTINUOUSLY into the flask — there is NO fixed number of balls.
