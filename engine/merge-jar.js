@@ -24,7 +24,7 @@
   const maxDur = SPEC.maxSeconds || 180;
   const maxSim = maxDur + 30;
 
-  const GRAV = ({ low: 350, normal: 500, high: 750 })[SPEC.physics?.gravity] || 500;
+  const GRAV = ({ low: 500, normal: 650, high: 850 })[SPEC.physics?.gravity] || 650;
   const REST = Math.min(SPEC.physics?.bounciness || 0.6, 0.7);
 
   /* ── Circular flask ── */
@@ -37,10 +37,10 @@
   const TUBE_ANGLE = Math.asin(TUBE_HW / CRAD);
 
   /* ── Tier radii ── */
-  const GR = 1.35;
-  const targetMaxR = CRAD * 0.38;
+  const GR = 1.25;
+  const targetMaxR = CRAD * 0.42;
   const computedBase = targetMaxR / Math.pow(GR, N - 1);
-  const baseR = Math.max(8, computedBase);
+  const baseR = Math.max(14, computedBase);
   const R = [];
   for (let i = 0; i < N; i++) R.push(baseR * Math.pow(GR, i));
   if (R[N - 1] > targetMaxR) {
@@ -78,42 +78,42 @@
 
   function spawnInterval() {
     var alive = aliveCount();
-    if (alive > 50) return 0.9;
-    if (alive > 40) return 0.7;
-    if (alive > 25) return 0.55;
-    if (alive < 10) return 0.35;
-    if (alive < 15) return 0.42;
-    return 0.5;
+    if (alive > 50) return 0.55;
+    if (alive > 40) return 0.45;
+    if (alive > 25) return 0.35;
+    if (alive < 10) return 0.2;
+    if (alive < 15) return 0.25;
+    return 0.3;
   }
 
   /* ── Spawn particles on merge ── */
   function spawnMergeParticles(x, y, tier, count) {
-    var speed = 60 + tier * 25;
+    var speed = 90 + tier * 35;
     for (var i = 0; i < count; i++) {
       var angle = (i / count) * Math.PI * 2 + rng() * 0.4;
       var spd = speed * (0.6 + rng() * 0.8);
       particles.push({
         x: x, y: y,
         vx: Math.cos(angle) * spd,
-        vy: Math.sin(angle) * spd - 30,
-        age: 0, maxAge: 0.35 + rng() * 0.15,
+        vy: Math.sin(angle) * spd - 40,
+        age: 0, maxAge: 0.4 + rng() * 0.2,
         tier: tier,
-        size: 1.5 + rng() * 1.5 + tier * 0.3
+        size: 2.5 + rng() * 2.5 + tier * 0.6
       });
     }
   }
 
   function spawnFinalParticles(x, y) {
-    for (var i = 0; i < 24; i++) {
-      var angle = (i / 24) * Math.PI * 2;
-      var spd = 80 + rng() * 60;
+    for (var i = 0; i < 60; i++) {
+      var angle = (i / 60) * Math.PI * 2;
+      var spd = 120 + rng() * 100;
       particles.push({
         x: x, y: y,
         vx: Math.cos(angle) * spd,
-        vy: Math.sin(angle) * spd - 40,
-        age: 0, maxAge: 0.6 + rng() * 0.3,
+        vy: Math.sin(angle) * spd - 60,
+        age: 0, maxAge: 0.8 + rng() * 0.4,
         tier: -1,
-        size: 2.5 + rng() * 2
+        size: 3.5 + rng() * 3.5
       });
     }
   }
@@ -264,15 +264,15 @@
           if (!unlocked.has(nt)) unlocked.add(nt);
 
           /* Particle explosion */
-          var pCount = 8 + Math.min(nt, 4) * 2;
+          var pCount = 14 + Math.min(nt, 5) * 4;
           spawnMergeParticles(mergeX, mergeY, nt, pCount);
 
           /* Shockwave */
-          shockwaves.push({ x: mergeX, y: mergeY, tier: nt, birth: sim, maxR: R[nt] * 2.5 + nt * 5 });
+          shockwaves.push({ x: mergeX, y: mergeY, tier: nt, birth: sim, maxR: R[nt] * 4 + nt * 8 });
 
           /* Screen shake on high-tier merges */
-          if (nt >= Math.floor(N * 0.4)) {
-            var shakeMag = 2 + (nt / N) * 6;
+          if (nt >= Math.floor(N * 0.3)) {
+            var shakeMag = 3 + (nt / N) * 10;
             shakeX = (rng() - 0.5) * shakeMag * 2;
             shakeY = (rng() - 0.5) * shakeMag * 2;
             shakeDecay = 0.2;
@@ -352,7 +352,7 @@
     }
 
     /* Anti-stall: attract nearest same-tier pair */
-    if (!done && sim - lastMerge > 1.0 && bods.length > 1) {
+    if (!done && sim - lastMerge > 0.6 && bods.length > 1) {
       var bestD2 = 1e9, bi = -1, bj = -1;
       for (var i = 0; i < bods.length; i++) {
         if (bods[i].dead) continue;
@@ -370,13 +370,13 @@
         var d = Math.sqrt(dx * dx + dy * dy) || 1;
         var stallT = sim - lastMerge;
         var tierBoost = 1 + a.t * 0.5;
-        var ramp = stallT < 2 ? stallT - 1.0 : 1.0 + (stallT - 2) * 3;
+        var ramp = stallT < 1.2 ? stallT - 0.6 : 0.6 + (stallT - 1.2) * 4;
         var force = (150 + ramp * 300) * tierBoost * DT;
         a.vx += dx / d * force; a.vy += dy / d * force;
         b.vx -= dx / d * force; b.vy -= dy / d * force;
 
         /* Random perturbation after 1.5s to break deadlocks */
-        if (stallT > 1.5) {
+        if (stallT > 1.0) {
           for (var pi2 = 0; pi2 < bods.length; pi2++) {
             if (!bods[pi2].dead) {
               bods[pi2].vx += (rng() - 0.5) * 40;
@@ -385,7 +385,7 @@
           }
         }
 
-        if (stallT > 3.5 && d > a.r + b.r + 5) {
+        if (stallT > 2.5 && d > a.r + b.r + 5) {
           var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
           a.x = mx - a.r * 0.5; b.x = mx + b.r * 0.5;
           a.y = my; b.y = my;
@@ -415,16 +415,16 @@
     return;
   }
 
-  /* ── Slow-mo (5x) + extended hold ── */
-  var slomoStart = Math.max(0, Math.floor((doneT - 0.8) * FPS));
+  /* ── Slow-mo (3x) + extended hold ── */
+  var slomoStart = Math.max(0, Math.floor((doneT - 0.5) * FPS));
   var doneFrame = Math.min(Math.floor(doneT * FPS), frames.length - 1);
   var mapped = [];
   for (var i = 0; i < Math.min(slomoStart, frames.length); i++) mapped.push(i);
   for (var i = slomoStart; i <= doneFrame; i++) {
-    mapped.push(i); mapped.push(i); mapped.push(i); mapped.push(i); mapped.push(i);
+    mapped.push(i); mapped.push(i); mapped.push(i);
   }
   var holdIdx = Math.min(doneFrame + 1, frames.length - 1);
-  var baseHoldSec = 5.0;
+  var baseHoldSec = 2.0;
   var minDur = SPEC.minSeconds || 60;
   var currentDur = mapped.length / FPS;
   var holdSec = Math.max(baseHoldSec, minDur - currentDur);
@@ -556,7 +556,7 @@
         var swRadius = sw.progress * sw.maxR;
         ctx.globalAlpha = swAlpha;
         ctx.strokeStyle = tierColor(sw.tier);
-        ctx.lineWidth = Math.max(1, 3 * (1 - sw.progress));
+        ctx.lineWidth = Math.max(1.5, 5 * (1 - sw.progress));
         ctx.beginPath();
         ctx.arc(sw.x, sw.y, swRadius, 0, Math.PI * 2);
         ctx.stroke();
@@ -580,7 +580,7 @@
       var scl = bsc < 1 ? easeElasticOut(bsc) : 1;
 
       if (f.dn && tier === N - 1) {
-        scl *= 1.0 + 0.08 * Math.sin(frameIdx * 0.08);
+        scl *= 1.5 + 0.12 * Math.sin(frameIdx * 0.08);
       }
 
       ctx.scale(bsx * scl, bsy * scl);
@@ -606,10 +606,10 @@
       /* Final tier golden glow during hold */
       if (f.dn && tier === N - 1) {
         var pulseGlow = 0.5 + 0.5 * Math.sin(frameIdx * 0.06);
-        var goldR = br * (2.0 + pulseGlow * 0.5);
+        var goldR = br * (3.0 + pulseGlow * 1.0);
         var goldGrad = ctx.createRadialGradient(0, 0, br * 0.5, 0, 0, goldR);
-        goldGrad.addColorStop(0, 'rgba(255,224,102,0.4)');
-        goldGrad.addColorStop(0.5, 'rgba(255,200,50,0.15)');
+        goldGrad.addColorStop(0, 'rgba(255,224,102,0.6)');
+        goldGrad.addColorStop(0.5, 'rgba(255,200,50,0.25)');
         goldGrad.addColorStop(1, 'rgba(255,180,0,0)');
         ctx.fillStyle = goldGrad;
         ctx.beginPath();
@@ -686,14 +686,37 @@
     /* End camera shake transform */
     ctx.restore();
 
+    /* Progress bar — tier progress below the arena */
+    if (!f.dn) {
+      var maxTier = 0;
+      for (var ui = 0; ui < f.ul.length; ui++) {
+        if (f.ul[ui] > maxTier) maxTier = f.ul[ui];
+      }
+      var prog = maxTier / (N - 1);
+      var barX = 30, barY = CY + CRAD + 12, barW = W - 60, barH = 5;
+      ctx.fillStyle = 'rgba(255,255,255,0.12)';
+      ctx.fillRect(barX, barY, barW, barH);
+      if (prog > 0) {
+        var grd = ctx.createLinearGradient(barX, 0, barX + barW * prog, 0);
+        grd.addColorStop(0, tierColor(0));
+        grd.addColorStop(1, tierColor(maxTier));
+        ctx.fillStyle = grd;
+        ctx.fillRect(barX, barY, barW * prog, barH);
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.beginPath();
+        ctx.arc(barX + barW * prog, barY + barH / 2, 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
     /* Hook text — bold, below circle, with drop shadow */
     if (SPEC.hook && !f.dn) {
       ctx.font = 'bold 22px sans-serif';
       ctx.textAlign = 'center';
       ctx.fillStyle = 'rgba(0,0,0,0.7)';
-      wrapText(ctx, SPEC.hook, CX + 1, CY + CRAD + 36, W - 40, 26);
+      wrapText(ctx, SPEC.hook, CX + 1, CY + CRAD + 42, W - 40, 26);
       ctx.fillStyle = '#fff';
-      wrapText(ctx, SPEC.hook, CX, CY + CRAD + 35, W - 40, 26);
+      wrapText(ctx, SPEC.hook, CX, CY + CRAD + 41, W - 40, 26);
     }
 
     /* Final reveal text — bold, above circle, with golden glow */
