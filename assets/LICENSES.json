@@ -2254,5 +2254,61 @@
     "author": "AudioPapkin",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-26T10:24:36.617Z"
+  },
+  {
+    "file": "assets/sfx/493707.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/bastianpusch/sounds/493707/",
+    "author": "bastianpusch",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-26T11:20:33.743Z"
+  },
+  {
+    "file": "assets/icons/1f44d.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-26T11:22:52.603Z"
+  },
+  {
+    "file": "assets/icons/1f4c8.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-26T11:22:52.662Z"
+  },
+  {
+    "file": "assets/icons/1f310.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-26T11:22:52.788Z"
+  },
+  {
+    "file": "assets/sfx/788074.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Mediasaur/sounds/788074/",
+    "author": "Mediasaur",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-26T11:23:02.488Z"
+  },
+  {
+    "file": "assets/sfx/582687.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/ironcross32/sounds/582687/",
+    "author": "ironcross32",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-26T11:23:03.922Z"
+  },
+  {
+    "file": "assets/sfx/608892.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/MarknKris1996/sounds/608892/",
+    "author": "MarknKris1996",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-26T11:27:13.217Z"
   }
 ]
