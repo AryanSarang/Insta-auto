@@ -266,7 +266,7 @@ async function runOnce(config) {
       result = await processSpec(spec, config, outDir);
       reviewResult = await reviewReel(outDir, result.reviewFrames, config);
 
-      if (reviewResult.pass && (reviewResult.score >= (config.review?.minScore || 7) || reviewResult.status !== 'reviewed')) {
+      if (reviewResult.score >= (config.review?.minScore || 7) || reviewResult.status !== 'reviewed') {
         break;
       }
 

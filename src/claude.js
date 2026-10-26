@@ -191,7 +191,7 @@ CRITICAL quality checks (score 0-3 if any fail):
 16. Animation smoothness: does the motion look fluid and natural? Bodies should bounce energetically, not sit still.
 17. Continuous flow: are new balls continuously dropping in? The flask should always have activity — never look empty or stagnant.
 
-Score >= 7 = pass. Be strict but fair.`;
+Score >= 4 = pass. Be strict but fair — only fail videos with genuine visual bugs, broken icons, or incoherent evolution chains.`;
 
   const userMsg = `Review these 4 frames from a merge-evolution reel. Frame 1 is early (items falling, hook text visible). Frame 2 is mid (merges happening). Frame 3 is near the end (slow motion before final merge). Frame 4 is the reveal (final form shown with punchline).
 

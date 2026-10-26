@@ -91,11 +91,14 @@ export async function renderSpec(spec, icons, outDir, opts = {}) {
     '-c:v', 'libx264',
     '-preset', 'medium',
     '-crf', '18',
-    '-profile:v', 'main',
-    '-level', '4.0',
+    '-profile:v', 'high',
+    '-level', '4.1',
+    '-g', '60',
+    '-bf', '2',
     '-pix_fmt', 'yuv420p',
     '-vf', 'scale=1080:1920',
     '-movflags', '+faststart',
+    '-brand', 'isom',
     videoPath,
   ], { stdio: ['pipe', 'pipe', 'pipe'] });
 
