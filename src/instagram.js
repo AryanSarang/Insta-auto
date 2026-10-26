@@ -1,5 +1,4 @@
 import { readFileSync, statSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
 import { log, warn, sleep } from './util.js';
 import { uploadToS3 } from './storage.js';
 
@@ -79,34 +78,37 @@ async function publishResumable(videoPath, caption) {
   log(`Uploading video to container ${containerId} (${sizeMB} MB)...`);
   log(`Upload URI: ${uploadUri}`);
 
-  let uploadOutput;
   try {
-    uploadOutput = execFileSync('curl', [
-      '-s', '-S',
-      '-w', '\n%{http_code}',
-      '-X', 'POST',
-      uploadUri,
-      '-H', `Authorization: OAuth ${tok}`,
-      '-H', 'offset: 0',
-      '-H', `file_size: ${String(fileSize)}`,
-      '-H', 'Content-Type: application/octet-stream',
-      '--data-binary', `@${videoPath}`,
-      '--max-time', '300',
-    ], { maxBuffer: 50 * 1024 * 1024, timeout: 360_000 }).toString().trim();
-  } catch (e) {
-    const stderr = e.stderr ? e.stderr.toString().trim() : '';
-    throw new Error(`Video upload curl failed: ${stderr || e.message}`);
-  }
+    const { execSync } = await import('node:child_process');
+    const probe = execSync(
+      `ffprobe -v error -show_entries format=format_name,duration,bit_rate:stream=codec_name,codec_type,width,height,r_frame_rate,sample_rate,channels -of json "${videoPath}"`,
+      { stdio: ['pipe', 'pipe', 'pipe'] }
+    ).toString();
+    log(`Upload file probe: ${probe.trim()}`);
+  } catch {}
 
-  const outputLines = uploadOutput.split('\n');
-  const httpCode = outputLines.pop().trim();
-  const responseBody = outputLines.join('\n').trim();
 
-  log(`Upload response: HTTP ${httpCode}`);
+  const fileData = readFileSync(videoPath);
+  log(`Read ${fileData.length} bytes, uploading via fetch...`);
+
+  const uploadRes = await fetch(uploadUri, {
+    method: 'POST',
+    headers: {
+      'Authorization': `OAuth ${tok}`,
+      'offset': '0',
+      'file_size': String(fileSize),
+      'Content-Type': 'application/octet-stream',
+    },
+    body: fileData,
+    signal: AbortSignal.timeout(300_000),
+  });
+
+  const responseBody = await uploadRes.text();
+  log(`Upload response: HTTP ${uploadRes.status}`);
   if (responseBody) log(`Upload body: ${responseBody.slice(0, 500)}`);
 
-  if (!httpCode.startsWith('2')) {
-    throw new Error(`Video upload failed (HTTP ${httpCode}, ${sizeMB} MB): ${responseBody}`);
+  if (!uploadRes.ok) {
+    throw new Error(`Video upload failed (HTTP ${uploadRes.status}, ${sizeMB} MB): ${responseBody}`);
   }
 
   return finishPublish(containerId);

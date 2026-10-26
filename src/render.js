@@ -98,7 +98,6 @@ export async function renderSpec(spec, icons, outDir, opts = {}) {
     '-pix_fmt', 'yuv420p',
     '-vf', 'scale=1080:1920',
     '-movflags', '+faststart',
-    '-brand', 'isom',
     videoPath,
   ], { stdio: ['pipe', 'pipe', 'pipe'] });
 
