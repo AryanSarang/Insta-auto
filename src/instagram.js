@@ -21,7 +21,10 @@ function userId() {
 }
 
 export async function checkToken() {
-  const url = graphUrl(`/${userId()}?fields=id,username&access_token=${token()}`);
+  const tok = token();
+  const uid = userId();
+
+  const url = graphUrl(`/${uid}?fields=id,username&access_token=${tok}`);
   const res = await fetch(url);
   if (!res.ok) {
     const data = await res.json().catch(() => ({}));
@@ -31,6 +34,27 @@ export async function checkToken() {
   }
   const data = await res.json();
   log(`Instagram account: @${data.username} (${data.id})`);
+
+  // Debug token permissions
+  try {
+    const debugUrl = `https://graph.facebook.com/debug_token?input_token=${tok}&access_token=${tok}`;
+    const debugRes = await fetch(debugUrl);
+    if (debugRes.ok) {
+      const debugData = await debugRes.json();
+      const d = debugData.data || {};
+      log(`Token debug: type=${d.type}, app_id=${d.app_id}, expires=${d.expires_at ? new Date(d.expires_at * 1000).toISOString() : 'never'}`);
+      log(`Token scopes: ${(d.scopes || []).join(', ')}`);
+      if (d.expires_at && d.expires_at * 1000 < Date.now() + 7 * 86400000) {
+        warn('Token expires within 7 days!');
+      }
+      if (d.scopes && !d.scopes.includes('instagram_content_publish')) {
+        warn('Token is MISSING instagram_content_publish scope — publishing will fail!');
+      }
+    }
+  } catch (e) {
+    warn(`Token debug failed: ${e.message}`);
+  }
+
   return data;
 }
 
@@ -91,29 +115,31 @@ async function publishResumable(videoPath, caption) {
   const fileData = readFileSync(videoPath);
   log(`Read ${fileData.length} bytes, uploading via fetch...`);
 
+  const uploadHeaders = {
+    'Authorization': `OAuth ${tok}`,
+    'offset': '0',
+    'file_size': String(fileSize),
+    'Content-Length': String(fileData.length),
+    'Content-Type': 'application/octet-stream',
+  };
+  log(`Upload headers: offset=0, file_size=${fileSize}, Content-Length=${fileData.length}`);
+
   const uploadRes = await fetch(uploadUri, {
     method: 'POST',
-    headers: {
-      'Authorization': `OAuth ${tok}`,
-      'offset': '0',
-      'file_size': String(fileSize),
-      'Content-Type': 'application/octet-stream',
-    },
+    headers: uploadHeaders,
     body: fileData,
+    duplex: 'half',
     signal: AbortSignal.timeout(300_000),
   });
 
   const responseBody = await uploadRes.text();
   log(`Upload response: HTTP ${uploadRes.status}`);
+  const respHeaders = Object.fromEntries(uploadRes.headers.entries());
+  log(`Upload response headers: ${JSON.stringify(respHeaders)}`);
   if (responseBody) log(`Upload body: ${responseBody.slice(0, 500)}`);
 
   if (!uploadRes.ok) {
-    const isProcessingError = responseBody.includes('ProcessingFailedError');
-    if (isProcessingError) {
-      warn(`Upload returned ${uploadRes.status} with ProcessingFailedError — polling container status anyway (rupload 400 can be spurious)`);
-    } else {
-      throw new Error(`Video upload failed (HTTP ${uploadRes.status}, ${sizeMB} MB): ${responseBody}`);
-    }
+    throw new Error(`Video upload failed (HTTP ${uploadRes.status}, ${sizeMB} MB): ${responseBody}`);
   }
 
   return finishPublish(containerId);
