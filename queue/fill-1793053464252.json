@@ -1,0 +1,101 @@
+{
+  "title": "Wheel to Flying Saucer",
+  "hook": "Can a wheel reach outer space?",
+  "tiers": [
+    {
+      "name": "Wheel",
+      "icon": "🛞"
+    },
+    {
+      "name": "Bicycle",
+      "icon": "🚲"
+    },
+    {
+      "name": "Scooter",
+      "icon": "🛵"
+    },
+    {
+      "name": "Car",
+      "icon": "🚗"
+    },
+    {
+      "name": "Jet",
+      "icon": "✈️"
+    },
+    {
+      "name": "Rocket",
+      "icon": "🚀"
+    },
+    {
+      "name": "Flying Saucer",
+      "icon": "🛸"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "tap",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "pop",
+        "style": "pop"
+      },
+      {
+        "query": "bike bell",
+        "style": "cartoon"
+      },
+      {
+        "query": "scooter horn",
+        "style": "boing"
+      },
+      {
+        "query": "car horn",
+        "style": "impact"
+      },
+      {
+        "query": "jet flyby",
+        "style": "impact"
+      },
+      {
+        "query": "rocket launch",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "ufo",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "box",
+    "color": "#F59E0B",
+    "label": "GARAGE"
+  },
+  "palette": {
+    "bg": "#1E1B4B",
+    "text": "#FDE68A",
+    "accent": "#22D3EE"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "Invented the wheel, ended up as the alien's ride.",
+  "mood": "retro",
+  "caption": "Somebody rolled a wheel down a hill 5,000 years ago and accidentally started the space race. First came the bike, then the scooter, then a car that is somehow always low on gas. Next up was a jet, then a rocket, and finally a flying saucer, which is either the future or just aliens doing their commute. Watching these wheels smash together and level up is the most satisfying traffic jam ever. Which vehicle should have been in the middle of the chain? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#asmr",
+    "#evolution",
+    "#technology"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-10-26T22:24:24.252Z"
+  }
+}
