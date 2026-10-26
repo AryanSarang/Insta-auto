@@ -36,9 +36,25 @@ jobs:
           cache: npm
 
       - name: Install system dependencies
+        timeout-minutes: 5
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg fonts-noto-color-emoji imagemagick
+          # fonts-noto-color-emoji is pre-installed on ubuntu-latest
+          for i in 1 2 3; do
+            if sudo timeout 60 apt-get update -qq 2>/dev/null; then
+              break
+            fi
+            echo "::warning::apt-get update attempt $i failed, retrying in 5s..."
+            sleep 5
+          done
+          for i in 1 2 3; do
+            if sudo timeout 120 apt-get install -y -qq ffmpeg imagemagick 2>/dev/null; then
+              break
+            fi
+            echo "::warning::apt-get install attempt $i failed, retrying in 5s..."
+            sleep 5
+          done
+          ffmpeg -version | head -1
+          convert -version | head -1
 
       - name: Install Node dependencies
         run: npm ci
