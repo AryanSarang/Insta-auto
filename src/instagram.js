@@ -1,4 +1,6 @@
 import { readFileSync, statSync } from 'node:fs';
+import { request as httpsRequest } from 'node:https';
+import { URL } from 'node:url';
 import { log, warn, sleep } from './util.js';
 import { uploadToS3 } from './storage.js';
 
@@ -35,7 +37,6 @@ export async function checkToken() {
   const data = await res.json();
   log(`Instagram account: @${data.username} (${data.id})`);
 
-  // Debug token permissions
   try {
     const debugUrl = `https://graph.facebook.com/debug_token?input_token=${tok}&access_token=${tok}`;
     const debugRes = await fetch(debugUrl);
@@ -47,8 +48,8 @@ export async function checkToken() {
       if (d.expires_at && d.expires_at * 1000 < Date.now() + 7 * 86400000) {
         warn('Token expires within 7 days!');
       }
-      if (d.scopes && !d.scopes.includes('instagram_content_publish')) {
-        warn('Token is MISSING instagram_content_publish scope — publishing will fail!');
+      if (d.scopes && !d.scopes.includes('instagram_content_publish') && !d.scopes.includes('instagram_business_content_publish')) {
+        warn('Token is MISSING content_publish scope — publishing will fail!');
       }
     }
   } catch (e) {
@@ -64,11 +65,7 @@ export async function publishReel(videoPath, caption) {
   return publishResumable(videoPath, caption);
 }
 
-async function publishResumable(videoPath, caption) {
-  const uid = userId();
-  const tok = token();
-
-  log('Creating media container (resumable)...');
+async function createContainer(uid, tok, caption) {
   const createUrl = graphUrl(`/${uid}/media`);
   const createRes = await fetch(createUrl, {
     method: 'POST',
@@ -90,17 +87,59 @@ async function publishResumable(videoPath, caption) {
   const container = await createRes.json();
   const containerId = container.id;
   let uploadUri = container.uri;
-  log(`Container ${containerId} created, uri from response: ${uploadUri || '(none)'}`);
+  log(`Container ${containerId} created, uri: ${uploadUri || '(none)'}`);
 
   if (!uploadUri) {
     const version = process.env.GRAPH_API_VERSION || 'v23.0';
     uploadUri = `https://rupload.facebook.com/ig-api-upload/${version}/${containerId}`;
   }
 
+  return { containerId, uploadUri };
+}
+
+function uploadVideoNative(uploadUri, fileData, tok, fileSize) {
+  const url = new URL(uploadUri);
+
+  return new Promise((resolve, reject) => {
+    const req = httpsRequest({
+      hostname: url.hostname,
+      port: url.port || 443,
+      path: url.pathname + (url.search || ''),
+      method: 'POST',
+      headers: {
+        'Authorization': `OAuth ${tok}`,
+        'offset': '0',
+        'file_size': String(fileSize),
+        'Content-Type': 'video/mp4',
+        'Content-Length': String(fileData.length),
+      },
+    }, (res) => {
+      let body = '';
+      res.on('data', chunk => body += chunk);
+      res.on('end', () => {
+        const headers = {};
+        for (const [k, v] of Object.entries(res.headers)) headers[k] = v;
+        resolve({
+          ok: res.statusCode >= 200 && res.statusCode < 300,
+          status: res.statusCode,
+          body,
+          headers,
+        });
+      });
+    });
+
+    req.on('error', reject);
+    req.setTimeout(300_000, () => req.destroy(new Error('Upload timeout (5 min)')));
+    req.end(fileData);
+  });
+}
+
+async function publishResumable(videoPath, caption) {
+  const uid = userId();
+  const tok = token();
   const fileSize = statSync(videoPath).size;
   const sizeMB = (fileSize / (1024 * 1024)).toFixed(1);
-  log(`Uploading video to container ${containerId} (${sizeMB} MB)...`);
-  log(`Upload URI: ${uploadUri}`);
+  const maxRetries = 3;
 
   try {
     const { execSync } = await import('node:child_process');
@@ -111,38 +150,65 @@ async function publishResumable(videoPath, caption) {
     log(`Upload file probe: ${probe.trim()}`);
   } catch {}
 
-
   const fileData = readFileSync(videoPath);
-  log(`Read ${fileData.length} bytes, uploading via fetch...`);
+  log(`Video: ${sizeMB} MB, ${fileData.length} bytes`);
 
-  const uploadHeaders = {
-    'Authorization': `OAuth ${tok}`,
-    'offset': '0',
-    'file_size': String(fileSize),
-    'Content-Length': String(fileData.length),
-    'Content-Type': 'application/octet-stream',
-  };
-  log(`Upload headers: offset=0, file_size=${fileSize}, Content-Length=${fileData.length}`);
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    log(`\n--- Upload attempt ${attempt}/${maxRetries} ---`);
 
-  const uploadRes = await fetch(uploadUri, {
-    method: 'POST',
-    headers: uploadHeaders,
-    body: fileData,
-    duplex: 'half',
-    signal: AbortSignal.timeout(300_000),
-  });
+    const { containerId, uploadUri } = await createContainer(uid, tok, caption);
 
-  const responseBody = await uploadRes.text();
-  log(`Upload response: HTTP ${uploadRes.status}`);
-  const respHeaders = Object.fromEntries(uploadRes.headers.entries());
-  log(`Upload response headers: ${JSON.stringify(respHeaders)}`);
-  if (responseBody) log(`Upload body: ${responseBody.slice(0, 500)}`);
+    log('Waiting 3s for container to settle...');
+    await sleep(3000);
 
-  if (!uploadRes.ok) {
-    throw new Error(`Video upload failed (HTTP ${uploadRes.status}, ${sizeMB} MB): ${responseBody}`);
+    log(`Uploading ${sizeMB} MB to ${uploadUri}`);
+
+    let uploadResult;
+    try {
+      uploadResult = await uploadVideoNative(uploadUri, fileData, tok, fileSize);
+    } catch (e) {
+      warn(`Upload transport error: ${e.message}`);
+      if (attempt < maxRetries) {
+        const delay = attempt * 5000;
+        warn(`Retrying in ${delay / 1000}s with fresh container...`);
+        await sleep(delay);
+        continue;
+      }
+      throw new Error(`Upload failed after ${maxRetries} attempts: ${e.message}`);
+    }
+
+    log(`Upload response: HTTP ${uploadResult.status}`);
+    if (uploadResult.body) log(`Upload body: ${uploadResult.body.slice(0, 500)}`);
+    if (Object.keys(uploadResult.headers).length) {
+      log(`Upload response headers: ${JSON.stringify(uploadResult.headers)}`);
+    }
+
+    if (uploadResult.ok) {
+      log('Upload succeeded, polling for processing...');
+      return finishPublish(containerId);
+    }
+
+    const isProcessingError = uploadResult.body.includes('ProcessingFailedError');
+    warn(`Upload failed: HTTP ${uploadResult.status}${isProcessingError ? ' (ProcessingFailedError)' : ''}`);
+
+    if (attempt < maxRetries) {
+      const delay = attempt * 5000;
+      warn(`Creating fresh container and retrying in ${delay / 1000}s...`);
+      await sleep(delay);
+      continue;
+    }
+
+    if (hasS3Config()) {
+      warn('Resumable upload exhausted — falling back to URL-based upload via S3...');
+      return publishViaUrl(videoPath, caption);
+    }
+
+    throw new Error(`Video upload failed after ${maxRetries} attempts (HTTP ${uploadResult.status}, ${sizeMB} MB): ${uploadResult.body}`);
   }
+}
 
-  return finishPublish(containerId);
+function hasS3Config() {
+  return !!(process.env.S3_ENDPOINT && process.env.S3_BUCKET && process.env.S3_ACCESS_KEY && process.env.S3_SECRET_KEY);
 }
 
 async function publishViaUrl(videoPath, caption) {
@@ -181,7 +247,7 @@ async function finishPublish(containerId) {
   const uid = userId();
 
   log('Waiting for processing...');
-  const maxWait = 15 * 60 * 1000;
+  const maxWait = 10 * 60 * 1000;
   const start = Date.now();
 
   while (Date.now() - start < maxWait) {
@@ -189,7 +255,7 @@ async function finishPublish(containerId) {
     const statusRes = await fetch(statusUrl);
     const statusData = await statusRes.json();
 
-    log(`  Status: ${statusData.status_code || 'unknown'}`);
+    log(`  Status: ${statusData.status_code || 'unknown'} (${Math.round((Date.now() - start) / 1000)}s elapsed)`);
 
     if (statusData.status_code === 'FINISHED') break;
     if (statusData.status_code === 'ERROR' || statusData.status_code === 'EXPIRED') {
@@ -199,7 +265,7 @@ async function finishPublish(containerId) {
     await sleep(10_000);
   }
 
-  if (Date.now() - start >= maxWait) throw new Error('Media processing timed out after 15 minutes');
+  if (Date.now() - start >= maxWait) throw new Error('Media processing timed out after 10 minutes');
 
   log('Publishing reel...');
   let publishResult;
