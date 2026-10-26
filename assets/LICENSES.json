@@ -2246,5 +2246,13 @@
     "author": "FunWithSound",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-26T00:40:40.267Z"
+  },
+  {
+    "file": "assets/sfx/755054.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/AudioPapkin/sounds/755054/",
+    "author": "AudioPapkin",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-26T10:24:36.617Z"
   }
 ]
