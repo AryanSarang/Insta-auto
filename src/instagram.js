@@ -134,6 +134,22 @@ function uploadVideoNative(uploadUri, fileData, tok, fileSize) {
   });
 }
 
+async function checkContainerStatus(containerId, tok, timeoutMs = 90_000) {
+  const start = Date.now();
+  while (Date.now() - start < timeoutMs) {
+    const statusUrl = graphUrl(`/${containerId}?fields=status_code,status&access_token=${tok}`);
+    const statusRes = await fetch(statusUrl);
+    const statusData = await statusRes.json();
+    const code = statusData.status_code;
+    log(`  Container ${containerId} status: ${code || 'unknown'} (${Math.round((Date.now() - start) / 1000)}s)`);
+
+    if (code === 'FINISHED') return 'FINISHED';
+    if (code === 'ERROR' || code === 'EXPIRED') return code;
+    await sleep(10_000);
+  }
+  return 'TIMEOUT';
+}
+
 async function publishResumable(videoPath, caption) {
   const uid = userId();
   const tok = token();
@@ -158,8 +174,9 @@ async function publishResumable(videoPath, caption) {
 
     const { containerId, uploadUri } = await createContainer(uid, tok, caption);
 
-    log('Waiting 3s for container to settle...');
-    await sleep(3000);
+    const settleTime = attempt === 1 ? 3000 : 5000;
+    log(`Waiting ${settleTime / 1000}s for container to settle...`);
+    await sleep(settleTime);
 
     log(`Uploading ${sizeMB} MB to ${uploadUri}`);
 
@@ -169,7 +186,7 @@ async function publishResumable(videoPath, caption) {
     } catch (e) {
       warn(`Upload transport error: ${e.message}`);
       if (attempt < maxRetries) {
-        const delay = attempt * 5000;
+        const delay = attempt * 10000;
         warn(`Retrying in ${delay / 1000}s with fresh container...`);
         await sleep(delay);
         continue;
@@ -179,9 +196,6 @@ async function publishResumable(videoPath, caption) {
 
     log(`Upload response: HTTP ${uploadResult.status}`);
     if (uploadResult.body) log(`Upload body: ${uploadResult.body.slice(0, 500)}`);
-    if (Object.keys(uploadResult.headers).length) {
-      log(`Upload response headers: ${JSON.stringify(uploadResult.headers)}`);
-    }
 
     if (uploadResult.ok) {
       log('Upload succeeded, polling for processing...');
@@ -191,8 +205,18 @@ async function publishResumable(videoPath, caption) {
     const isProcessingError = uploadResult.body.includes('ProcessingFailedError');
     warn(`Upload failed: HTTP ${uploadResult.status}${isProcessingError ? ' (ProcessingFailedError)' : ''}`);
 
+    if (isProcessingError) {
+      log('Checking if container still processed despite 400...');
+      const status = await checkContainerStatus(containerId, tok, 60_000);
+      if (status === 'FINISHED') {
+        log('Container processed successfully despite upload 400!');
+        return finishPublish(containerId);
+      }
+      log(`Container status: ${status} — will retry with fresh container`);
+    }
+
     if (attempt < maxRetries) {
-      const delay = attempt * 5000;
+      const delay = attempt * 15000;
       warn(`Creating fresh container and retrying in ${delay / 1000}s...`);
       await sleep(delay);
       continue;
