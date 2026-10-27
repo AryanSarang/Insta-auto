@@ -2494,5 +2494,45 @@
     "author": "sabbyt2",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-27T19:50:38.995Z"
+  },
+  {
+    "file": "assets/sfx/350343.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/nettimato/sounds/350343/",
+    "author": "nettimato",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-27T19:59:26.904Z"
+  },
+  {
+    "file": "assets/sfx/393811.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/deleted_user_6479820/sounds/393811/",
+    "author": "deleted_user_6479820",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-27T19:59:28.032Z"
+  },
+  {
+    "file": "assets/sfx/742836.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Capt.Jack/sounds/742836/",
+    "author": "Capt.Jack",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-27T19:59:28.852Z"
+  },
+  {
+    "file": "assets/sfx/643923.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/deadrobotmusic/sounds/643923/",
+    "author": "deadrobotmusic",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-27T19:59:29.670Z"
+  },
+  {
+    "file": "assets/sfx/455856.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Tissman/sounds/455856/",
+    "author": "Tissman",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-27T19:59:30.518Z"
   }
 ]
