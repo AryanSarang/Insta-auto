@@ -35,25 +35,22 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Install system dependencies
-        timeout-minutes: 5
+      - name: Install ffmpeg (static binary)
         run: |
-          # fonts-noto-color-emoji is pre-installed on ubuntu-latest
-          for i in 1 2 3; do
-            if sudo timeout 60 apt-get update -qq 2>/dev/null; then
-              break
-            fi
-            echo "::warning::apt-get update attempt $i failed, retrying in 5s..."
-            sleep 5
-          done
-          for i in 1 2 3; do
-            if sudo timeout 120 apt-get install -y -qq ffmpeg imagemagick 2>/dev/null; then
-              break
-            fi
-            echo "::warning::apt-get install attempt $i failed, retrying in 5s..."
-            sleep 5
-          done
+          curl -sSL --retry 3 --retry-delay 5 \
+            https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
+            -o /tmp/ffmpeg.tar.xz
+          sudo tar -xJf /tmp/ffmpeg.tar.xz --strip-components=1 -C /usr/local/bin/ \
+            --wildcards '*/ffmpeg' '*/ffprobe'
+          rm /tmp/ffmpeg.tar.xz
           ffmpeg -version | head -1
+
+      - name: Install imagemagick
+        timeout-minutes: 3
+        continue-on-error: true
+        run: |
+          sudo timeout 30 apt-get update -qq 2>/dev/null || true
+          sudo timeout 90 apt-get install -y -qq --no-install-recommends imagemagick 2>/dev/null
           convert -version | head -1
 
       - name: Install Node dependencies
