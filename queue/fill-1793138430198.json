@@ -1,0 +1,103 @@
+{
+  "title": "Lightbulb to Robot Overlord",
+  "hook": "Can a lightbulb become a robot boss?",
+  "tiers": [
+    {
+      "name": "Lightbulb",
+      "icon": "💡"
+    },
+    {
+      "name": "Radio",
+      "icon": "📻"
+    },
+    {
+      "name": "Television",
+      "icon": "📺"
+    },
+    {
+      "name": "Telephone",
+      "icon": "☎️"
+    },
+    {
+      "name": "Smartphone",
+      "icon": "📱"
+    },
+    {
+      "name": "Laptop",
+      "icon": "💻"
+    },
+    {
+      "name": "Robot Overlord",
+      "icon": "🤖",
+      "accessory": "👑"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "tap",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "blip",
+        "style": "pop"
+      },
+      {
+        "query": "radio static",
+        "style": "squeak"
+      },
+      {
+        "query": "click",
+        "style": "cartoon"
+      },
+      {
+        "query": "telephone ring",
+        "style": "boing"
+      },
+      {
+        "query": "notification",
+        "style": "magic"
+      },
+      {
+        "query": "startup",
+        "style": "magic"
+      }
+    ],
+    "final": {
+      "query": "fanfare",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "box",
+    "color": "#3DF5C8",
+    "label": "Tech Lab"
+  },
+  "palette": {
+    "bg": "#14122B",
+    "text": "#FFFFFF",
+    "accent": "#FF4FD8"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "It started with a bulb. Now it has opinions.",
+  "mood": "retro",
+  "caption": "One tiny lightbulb had a bright idea: what if it kept bumping into its twin? Suddenly it was a radio, then a TV, then a phone that never stops ringing, then a smartphone, then a laptop with 47 tabs open. And now it's a crown-wearing robot who definitely read your search history. Technology really went from 'let there be light' to 'let there be Wi-Fi' in a few satisfying bounces. Which gadget in this chain do you miss the most? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#technology",
+    "#evolution",
+    "#asmr",
+    "#satisfyingvideo"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-10-27T22:00:30.198Z"
+  }
+}

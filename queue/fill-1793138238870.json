@@ -1,0 +1,109 @@
+{
+  "title": "Caterpillar to Butterfly Overlord",
+  "hook": "Can a tiny worm rule the sky?",
+  "tiers": [
+    {
+      "name": "Egg",
+      "icon": "🥚"
+    },
+    {
+      "name": "Caterpillar",
+      "icon": "🐛"
+    },
+    {
+      "name": "Ant",
+      "icon": "🐜"
+    },
+    {
+      "name": "Bee",
+      "icon": "🐝"
+    },
+    {
+      "name": "Butterfly",
+      "icon": "🦋"
+    },
+    {
+      "name": "Songbird",
+      "icon": "🐦"
+    },
+    {
+      "name": "Eagle",
+      "icon": "🦅"
+    },
+    {
+      "name": "Dragon",
+      "icon": "🐉"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "pop",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "pop",
+        "style": "pop"
+      },
+      {
+        "query": "blip",
+        "style": "pop"
+      },
+      {
+        "query": "boing",
+        "style": "boing"
+      },
+      {
+        "query": "squeak",
+        "style": "squeak"
+      },
+      {
+        "query": "bird chirp",
+        "style": "cartoon"
+      },
+      {
+        "query": "eagle screech",
+        "style": "impact"
+      },
+      {
+        "query": "roar",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "fanfare",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "jar",
+    "color": "#A8E6CF",
+    "label": "Bug Glow-Up Jar"
+  },
+  "palette": {
+    "bg": "#FFF3B0",
+    "text": "#2D3A1F",
+    "accent": "#FF6F91"
+  },
+  "physics": {
+    "bounciness": 0.78,
+    "gravity": "normal"
+  },
+  "finalText": "Never skip the glow-up. Skip the cocoon? Never.",
+  "mood": "bouncy",
+  "caption": "It started as a tiny egg with big dreams. It hatched, ate everything in sight, got a little lost with the ants, buzzed with the bees, then burst out as a butterfly. But the story did not end there. Somebody kept evolving, and now there is a dragon in the garden. Nature really said 'level up' and refused to elaborate. What should the dragon evolve into next? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#evolution",
+    "#asmr",
+    "#satisfyingvideo"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-10-27T21:57:18.870Z"
+  }
+}
