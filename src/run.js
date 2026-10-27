@@ -262,9 +262,12 @@ async function runOnce(config) {
   let result, reviewResult;
 
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    const attemptDir = attempt === 1 ? outDir : join(ROOT, 'out', `${runId}-a${attempt}`);
+    if (attempt > 1) ensureDir(attemptDir);
+
     try {
-      result = await processSpec(spec, config, outDir);
-      reviewResult = await reviewReel(outDir, result.reviewFrames, config);
+      result = await processSpec(spec, config, attemptDir);
+      reviewResult = await reviewReel(attemptDir, result.reviewFrames, config);
 
       if (reviewResult.score >= (config.review?.minScore || 7) || reviewResult.status !== 'reviewed') {
         break;

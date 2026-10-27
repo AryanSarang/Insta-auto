@@ -76,7 +76,17 @@ export async function searchFreesound(query, opts = {}) {
   const url = `${API_BASE}/search/text/?${params}`;
   log(`Freesound search: "${query}"`);
 
-  const res = await fetch(url);
+  let res;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    res = await fetch(url);
+    if (res.status === 429) {
+      const wait = (attempt + 1) * 15;
+      warn(`Freesound rate limited (429), waiting ${wait}s...`);
+      await new Promise(r => setTimeout(r, wait * 1000));
+      continue;
+    }
+    break;
+  }
   if (!res.ok) {
     const text = await res.text();
     throw new Error(`Freesound search error ${res.status}: ${text}`);
@@ -106,7 +116,17 @@ export async function downloadSound(sound, destDir, opts = {}) {
   const dlUrl = `${previewUrl}?token=${key}`;
   log(`Downloading sound ${sound.id}: ${sound.name}`);
 
-  const res = await fetch(dlUrl);
+  let res;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    res = await fetch(dlUrl);
+    if (res.status === 429) {
+      const wait = (attempt + 1) * 10;
+      warn(`Freesound download rate limited (429), waiting ${wait}s...`);
+      await new Promise(r => setTimeout(r, wait * 1000));
+      continue;
+    }
+    break;
+  }
   if (!res.ok) throw new Error(`Download failed ${res.status} for sound ${sound.id}`);
 
   const buffer = Buffer.from(await res.arrayBuffer());

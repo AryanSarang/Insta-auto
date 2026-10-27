@@ -58,7 +58,7 @@ export async function renderSpec(spec, icons, outDir, opts = {}) {
   await page.goto(`file://${htmlPath}`, { waitUntil: 'load', timeout: 30_000 });
 
   log('Waiting for pre-simulation...');
-  await page.waitForFunction('window.SIM && (window.SIM.duration > 0 || window.SIM.failed)', { timeout: 120_000 });
+  await page.waitForFunction('window.SIM && (window.SIM.duration > 0 || window.SIM.failed)', { timeout: 180_000 });
 
   const simFailed = await page.evaluate(() => !!window.SIM.failed);
   if (simFailed) {

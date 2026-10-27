@@ -17,8 +17,8 @@
     "meme culture and internet"
   ],
   "video": {
-    "minSeconds": 10,
-    "maxSeconds": 20,
+    "minSeconds": 30,
+    "maxSeconds": 90,
     "fps": 30
   },
   "hashtags": {

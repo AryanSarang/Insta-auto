@@ -1,4 +1,4 @@
-/* Merge-Jar physics engine — 60fps, continuous spawn, particle effects, screen shake */
+/* Merge-Jar physics engine — realistic collisions, mass-based impulses, bounce sounds */
 (function () {
   'use strict';
 
@@ -17,15 +17,15 @@
 
   const W = 360, H = 640, FPS = 60;
   const DT = 1 / 60;
-  const SUBSTEPS = 2;
+  const SUBSTEPS = 4;
   const SUB_DT = DT / SUBSTEPS;
 
   const N = SPEC.tiers.length;
   const maxDur = SPEC.maxSeconds || 180;
   const maxSim = maxDur + 30;
 
-  const GRAV = ({ low: 350, normal: 500, high: 750 })[SPEC.physics?.gravity] || 500;
-  const REST = Math.min(SPEC.physics?.bounciness || 0.6, 0.7);
+  const GRAV = ({ low: 100, normal: 180, high: 300 })[SPEC.physics?.gravity] || 180;
+  const REST = Math.min(SPEC.physics?.bounciness || 0.5, 0.65);
 
   /* ── Circular flask ── */
   const CX = W / 2;
@@ -64,7 +64,8 @@
   const shockwaves = [];
 
   function mkBody(tier, x, y, vx, vy, prot) {
-    return { id: nid++, t: tier, x, y, vx: vx || 0, vy: vy || 0, r: R[tier], pr: prot || 0, st: 0, sc: prot > 0 ? 0.3 : 0, dead: false, mt: 0 };
+    var r = R[tier];
+    return { id: nid++, t: tier, x, y, vx: vx || 0, vy: vy || 0, r: r, m: r * r, pr: prot || 0, st: 0, sc: prot > 0 ? 0.3 : 0, dead: false, mt: 0 };
   }
 
   /* ── Continuous spawn — adaptive rate ── */
@@ -78,12 +79,13 @@
 
   function spawnInterval() {
     var alive = aliveCount();
-    if (alive > 50) return 0.9;
-    if (alive > 40) return 0.75;
-    if (alive > 25) return 0.6;
-    if (alive < 10) return 0.35;
-    if (alive < 15) return 0.4;
-    return 0.5;
+    if (alive > 50) return 1.6;
+    if (alive > 40) return 1.3;
+    if (alive > 30) return 1.1;
+    if (alive > 20) return 0.9;
+    if (alive < 8) return 0.5;
+    if (alive < 12) return 0.6;
+    return 0.75;
   }
 
   /* ── Spawn particles on merge ── */
@@ -168,25 +170,31 @@
     });
   }
 
-  /* ── Physics substep ── */
+  /* ── Physics substep — mass-based collisions with tangential friction ── */
   function substep(dt) {
     var nb = bods.length;
+
+    /* Integrate velocities and positions */
     for (var i = 0; i < nb; i++) {
       var b = bods[i];
       if (b.dead) continue;
-      b.vy += GRAV * dt;
-      b.vx *= 0.998; b.vy *= 0.998;
 
-      /* Bottom-zone damping — balls slow down as they settle near flask bottom */
-      var bottomZoneTop = CY + CRAD * 0.15;
-      if (b.y > bottomZoneTop) {
-        var depth = Math.min((b.y - bottomZoneTop) / (CRAD * 0.85), 1);
-        var bottomDamp = 1 - depth * depth * 0.012;
+      b.vy += GRAV * dt;
+
+      /* Air damping */
+      b.vx *= 0.997;
+      b.vy *= 0.997;
+
+      /* Bottom-zone damping — balls settle as they sink lower in flask */
+      if (b.y > CY) {
+        var depth = Math.min((b.y - CY) / CRAD, 1);
+        var bottomDamp = 1 - depth * depth * 0.015;
         b.vx *= bottomDamp;
         b.vy *= bottomDamp;
       }
 
-      b.x += b.vx * dt; b.y += b.vy * dt;
+      b.x += b.vx * dt;
+      b.y += b.vy * dt;
       if (b.pr > 0) b.pr -= dt;
       if (b.st > 0) b.st -= dt;
       if (b.sc < 1) b.sc += dt * 5;
@@ -210,18 +218,32 @@
         b.y = CY + ny * (CRAD - b.r);
         var vn = b.vx * nx + b.vy * ny;
         if (vn > 0) {
-          /* Softer bounce near the bottom — cushioning effect */
+          /* Wall restitution — softer near the bottom for cushioning */
           var wallRest = REST;
           if (b.y > CY + CRAD * 0.3) {
             var bDepth = Math.min((b.y - CY - CRAD * 0.3) / (CRAD * 0.7), 1);
-            wallRest *= (1 - bDepth * 0.35);
+            wallRest *= (1 - bDepth * 0.4);
           }
-          b.vx -= (1 + wallRest) * vn * nx;
-          b.vy -= (1 + wallRest) * vn * ny;
+
+          /* Tangential velocity for wall friction */
+          var vtx = b.vx - vn * nx;
+          var vty = b.vy - vn * ny;
+          var wallFriction = 0.12;
+
+          /* Reflect normal, apply friction to tangential */
+          b.vx -= (1 + wallRest) * vn * nx + vtx * wallFriction;
+          b.vy -= (1 + wallRest) * vn * ny + vty * wallFriction;
           b.st = 0.08;
+
+          /* Bounce sound for significant wall hits */
+          if (vn > 25 && sim - (sndT['bounce'] || 0) >= 0.05) {
+            evts.push({ t: sim, sfx: 'bounce', rate: 0.85 + rng() * 0.35 });
+            sndT['bounce'] = sim;
+          }
         }
       }
 
+      /* Tube walls */
       if (b.y < TUBE_BOT + b.r * 2) {
         if (b.x - b.r < CX - TUBE_HW) {
           b.x = CX - TUBE_HW + b.r;
@@ -240,26 +262,31 @@
       var a = bods[i];
       if (a.dead) continue;
       for (var j = i + 1; j < nb; j++) {
-        var b = bods[j];
-        if (b.dead) continue;
-        var dx = b.x - a.x, dy = b.y - a.y;
-        var mr = a.r + b.r;
+        var bb = bods[j];
+        if (bb.dead) continue;
+        var dx = bb.x - a.x, dy = bb.y - a.y;
+        var mr = a.r + bb.r;
         if (dx > mr || dx < -mr || dy > mr || dy < -mr) continue;
         var d2 = dx * dx + dy * dy;
         if (d2 >= mr * mr || d2 < 0.0001) continue;
         var d = Math.sqrt(d2);
 
-        if (a.t === b.t && a.pr <= 0 && b.pr <= 0 && a.t < N - 1) {
-          a.dead = true; b.dead = true;
+        if (a.t === bb.t && a.pr <= 0 && bb.pr <= 0 && a.t < N - 1) {
+          /* ── Merge ── */
+          a.dead = true; bb.dead = true;
           var nt = a.t + 1;
-          var mergeX = (a.x + b.x) / 2, mergeY = (a.y + b.y) / 2;
-          var tierPop = -15 - nt * 6;
-          var nb2 = mkBody(nt, mergeX, mergeY,
-            (a.vx + b.vx) * 0.3, Math.min((a.vy + b.vy) * 0.3 + tierPop, -10), 0.05);
-          nb2.mt = 0.5;
-          nb2.sc = 0;
-          nb2.st = 0.15;
-          toAdd.push(nb2);
+          var mergeX = (a.x + bb.x) / 2, mergeY = (a.y + bb.y) / 2;
+          var ma = a.m, mb = bb.m, totalM = ma + mb;
+
+          /* Momentum-weighted velocity with small upward pop */
+          var tierPop = -8 - nt * 3;
+          var newBod = mkBody(nt, mergeX, mergeY,
+            (a.vx * ma + bb.vx * mb) / totalM * 0.3,
+            Math.min((a.vy * ma + bb.vy * mb) / totalM * 0.3 + tierPop, -5), 0.05);
+          newBod.mt = 0.5;
+          newBod.sc = 0;
+          newBod.st = 0.15;
+          toAdd.push(newBod);
           merges++; lastMerge = sim;
           if (!unlocked.has(nt)) unlocked.add(nt);
 
@@ -288,15 +315,47 @@
           if (sim - (sndT[sk] || 0) >= 0.06) { evts.push({ t: sim, sfx: sk, rate: 1 + (rng() - 0.5) * 0.24 }); sndT[sk] = sim; }
           if (nt === N - 1) { done = true; doneT = sim; }
           break;
+
         } else {
-          var ov = mr - d, p = ov * 0.52;
+          /* ── Non-merge collision: mass-based impulse ── */
           var nx = dx / d, ny = dy / d;
-          a.x -= nx * p; a.y -= ny * p; b.x += nx * p; b.y += ny * p;
-          var dvn = (a.vx - b.vx) * nx + (a.vy - b.vy) * ny;
+          var ma = a.m, mb = bb.m, totalM = ma + mb;
+
+          /* Positional correction — mass-weighted so lighter balls move more */
+          var ov = mr - d;
+          a.x -= nx * ov * (mb / totalM);
+          a.y -= ny * ov * (mb / totalM);
+          bb.x += nx * ov * (ma / totalM);
+          bb.y += ny * ov * (ma / totalM);
+
+          /* Normal impulse with restitution */
+          var dvx = a.vx - bb.vx, dvy = a.vy - bb.vy;
+          var dvn = dvx * nx + dvy * ny;
           if (dvn > 0) {
-            var imp = dvn * REST;
-            a.vx -= imp * nx; a.vy -= imp * ny; b.vx += imp * nx; b.vy += imp * ny;
-            a.st = 0.05; b.st = 0.05;
+            var J = (1 + REST) * dvn / (1 / ma + 1 / mb);
+            a.vx -= (J / ma) * nx;
+            a.vy -= (J / ma) * ny;
+            bb.vx += (J / mb) * nx;
+            bb.vy += (J / mb) * ny;
+
+            /* Tangential friction — balls don't just slide past each other */
+            var dvtx = dvx - dvn * nx, dvty = dvy - dvn * ny;
+            var dvt = Math.sqrt(dvtx * dvtx + dvty * dvty);
+            if (dvt > 0.1) {
+              var fJ = Math.min(J * 0.15, dvt * ma * mb / totalM * 0.5);
+              a.vx -= (dvtx / dvt) * fJ / ma;
+              a.vy -= (dvty / dvt) * fJ / ma;
+              bb.vx += (dvtx / dvt) * fJ / mb;
+              bb.vy += (dvty / dvt) * fJ / mb;
+            }
+
+            a.st = 0.05; bb.st = 0.05;
+
+            /* Bounce sound for significant ball-ball hits */
+            if (dvn > 30 && sim - (sndT['bounce'] || 0) >= 0.05) {
+              evts.push({ t: sim, sfx: 'bounce', rate: 0.8 + rng() * 0.4 });
+              sndT['bounce'] = sim;
+            }
           }
         }
       }
@@ -317,7 +376,7 @@
         var tubeSpread = TUBE_HW * 1.6 - R[0] * 2;
         var sx = CX + (rng() - 0.5) * tubeSpread;
         bods.push(mkBody(0, sx, TUBE_TOP + R[0],
-          (rng() - 0.5) * 30, 8 + rng() * 18));
+          (rng() - 0.5) * 12, 2 + rng() * 6));
         spawned++;
       }
     }
@@ -351,8 +410,8 @@
       shakeX = 0; shakeY = 0;
     }
 
-    /* Anti-stall: attract nearest same-tier pair */
-    if (!done && sim - lastMerge > 1.0 && bods.length > 1) {
+    /* Anti-stall: gently attract nearest same-tier pair */
+    if (!done && sim - lastMerge > 2.5 && bods.length > 1) {
       var bestD2 = 1e9, bi = -1, bj = -1;
       for (var i = 0; i < bods.length; i++) {
         if (bods[i].dead) continue;
@@ -369,28 +428,11 @@
         var dx = b.x - a.x, dy = b.y - a.y;
         var d = Math.sqrt(dx * dx + dy * dy) || 1;
         var stallT = sim - lastMerge;
-        var tierBoost = 1 + a.t * 0.5;
-        var ramp = stallT < 2.0 ? stallT - 1.0 : 1.0 + (stallT - 2.0) * 3;
-        var force = (150 + ramp * 300) * tierBoost * DT;
+        var tierBoost = 1 + a.t * 0.3;
+        var ramp = Math.min((stallT - 2.5) * 0.4, 2.0);
+        var force = (60 + ramp * 100) * tierBoost * DT;
         a.vx += dx / d * force; a.vy += dy / d * force;
         b.vx -= dx / d * force; b.vy -= dy / d * force;
-
-        /* Random perturbation after 1.5s to break deadlocks */
-        if (stallT > 1.5) {
-          for (var pi2 = 0; pi2 < bods.length; pi2++) {
-            if (!bods[pi2].dead) {
-              bods[pi2].vx += (rng() - 0.5) * 40;
-              bods[pi2].vy += (rng() - 0.5) * 30;
-            }
-          }
-        }
-
-        if (stallT > 3.5 && d > a.r + b.r + 5) {
-          var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
-          a.x = mx - a.r * 0.5; b.x = mx + b.r * 0.5;
-          a.y = my; b.y = my;
-          a.vx = 0; a.vy = 0; b.vx = 0; b.vy = 0;
-        }
       }
     }
 
@@ -416,7 +458,7 @@
   }
 
   /* ── Slow-mo (5x) + extended hold ── */
-  var slomoStart = Math.max(0, Math.floor((doneT - 0.8) * FPS));
+  var slomoStart = Math.max(0, Math.floor((doneT - 1.2) * FPS));
   var doneFrame = Math.min(Math.floor(doneT * FPS), frames.length - 1);
   var mapped = [];
   for (var i = 0; i < Math.min(slomoStart, frames.length); i++) mapped.push(i);
