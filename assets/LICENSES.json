@@ -2414,5 +2414,37 @@
     "author": "joepayne",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-27T01:35:25.736Z"
+  },
+  {
+    "file": "assets/sfx/744142.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/nomentero/sounds/744142/",
+    "author": "nomentero",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-27T09:56:40.660Z"
+  },
+  {
+    "file": "assets/sfx/447917.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Breviceps/sounds/447917/",
+    "author": "Breviceps",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-27T09:56:42.952Z"
+  },
+  {
+    "file": "assets/sfx/831929.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/1bob/sounds/831929/",
+    "author": "1bob",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-27T09:56:43.824Z"
+  },
+  {
+    "file": "assets/sfx/445991.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Breviceps/sounds/445991/",
+    "author": "Breviceps",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-27T09:56:58.422Z"
   }
 ]
