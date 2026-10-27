@@ -181,14 +181,14 @@
 
       b.vy += GRAV * dt;
 
-      /* Air damping */
-      b.vx *= 0.997;
-      b.vy *= 0.997;
+      /* Air damping — light so horizontal movement persists */
+      b.vx *= 0.9992;
+      b.vy *= 0.9992;
 
       /* Bottom-zone damping — balls settle as they sink lower in flask */
       if (b.y > CY) {
         var depth = Math.min((b.y - CY) / CRAD, 1);
-        var bottomDamp = 1 - depth * depth * 0.015;
+        var bottomDamp = 1 - depth * depth * 0.006;
         b.vx *= bottomDamp;
         b.vy *= bottomDamp;
       }
@@ -373,10 +373,9 @@
       var interval = spawnInterval();
       while (spawnAcc >= interval) {
         spawnAcc -= interval;
-        var tubeSpread = TUBE_HW * 1.6 - R[0] * 2;
-        var sx = CX + (rng() - 0.5) * tubeSpread;
+        var sx = CX + (rng() - 0.5) * (TUBE_HW * 0.8);
         bods.push(mkBody(0, sx, TUBE_TOP + R[0],
-          (rng() - 0.5) * 12, 2 + rng() * 6));
+          (rng() - 0.5) * 100, 2 + rng() * 6));
         spawned++;
       }
     }
@@ -744,29 +743,6 @@
 
     /* End camera shake transform */
     ctx.restore();
-
-    /* Progress bar — tier progress below the arena (full at 100% during reveal) */
-    {
-      var maxTier = 0;
-      for (var ui = 0; ui < f.ul.length; ui++) {
-        if (f.ul[ui] > maxTier) maxTier = f.ul[ui];
-      }
-      var prog = f.dn ? 1 : maxTier / (N - 1);
-      var barX = 30, barY = CY + CRAD + 12, barW = W - 60, barH = 5;
-      ctx.fillStyle = 'rgba(255,255,255,0.12)';
-      ctx.fillRect(barX, barY, barW, barH);
-      if (prog > 0) {
-        var grd = ctx.createLinearGradient(barX, 0, barX + barW * prog, 0);
-        grd.addColorStop(0, tierColor(0));
-        grd.addColorStop(1, tierColor(maxTier));
-        ctx.fillStyle = grd;
-        ctx.fillRect(barX, barY, barW * prog, barH);
-        ctx.fillStyle = 'rgba(255,255,255,0.9)';
-        ctx.beginPath();
-        ctx.arc(barX + barW * prog, barY + barH / 2, 4, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
 
     /* Hook text — bold, below circle, with drop shadow */
     if (SPEC.hook && !f.dn) {
