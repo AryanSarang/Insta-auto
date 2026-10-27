@@ -2446,5 +2446,21 @@
     "author": "Breviceps",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-27T09:56:58.422Z"
+  },
+  {
+    "file": "assets/sfx/144000.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/ArriGD/sounds/144000/",
+    "author": "ArriGD",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-27T17:27:05.836Z"
+  },
+  {
+    "file": "assets/sfx/171485.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/xIceCoffeex/sounds/171485/",
+    "author": "xIceCoffeex",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-27T17:27:06.944Z"
   }
 ]
