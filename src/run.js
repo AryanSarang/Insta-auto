@@ -258,7 +258,7 @@ async function runOnce(config) {
     }
   }
 
-  const maxAttempts = config.maxAttempts || 3;
+  const maxAttempts = config.maxAttempts || 5;
   let result, reviewResult;
 
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
@@ -272,7 +272,6 @@ async function runOnce(config) {
 
       if (attempt < maxAttempts) {
         log(`Review failed (attempt ${attempt}/${maxAttempts}), regenerating...`);
-        const feedback = (reviewResult.issues || []).join('; ');
         spec = await generateLive(config, pillar);
       }
     } catch (e) {
@@ -282,6 +281,15 @@ async function runOnce(config) {
       }
       if (attempt >= maxAttempts) throw e;
       warn(`Attempt ${attempt} failed: ${e.message}`);
+      if (source === 'live' || source === 'queue') {
+        log(`Generating fresh theme for attempt ${attempt + 1}...`);
+        try {
+          spec = await generateLive(config, pillar);
+          source = 'live';
+        } catch (genErr) {
+          warn(`Theme generation failed: ${genErr.message}`);
+        }
+      }
     }
   }
 
@@ -331,32 +339,37 @@ async function fillQueue(n, config) {
 
   for (let i = 0; i < n; i++) {
     const pillar = pillars[i % pillars.length];
-    const runId = `fill-${Date.now()}`;
-    const outDir = join(ROOT, 'out', runId);
-    ensureDir(outDir);
+    let queued = false;
 
-    try {
-      const spec = await generateLive(config, pillar);
+    for (let attempt = 1; attempt <= 3 && !queued; attempt++) {
+      const runId = `fill-${Date.now()}`;
+      const outDir = join(ROOT, 'out', runId);
+      ensureDir(outDir);
 
-      let iconIndex;
-      try { iconIndex = await buildIconIndex(); } catch { iconIndex = {}; }
+      try {
+        const spec = await generateLive(config, pillar);
 
-      const result = await processSpec(spec, config, outDir);
-      const review = await reviewReel(outDir, result.reviewFrames, config);
+        let iconIndex;
+        try { iconIndex = await buildIconIndex(); } catch { iconIndex = {}; }
 
-      if (review.pass) {
-        spec._meta = { source: 'fill-queue', reviewed: true, reviewScore: review.score };
-        enqueue(spec, 'fill');
-        filled++;
-        log(`Queued ${filled}/${n}: "${spec.title}"`);
-      } else {
-        warn(`Spec "${spec.title}" failed review, skipping`);
-      }
-    } catch (e) {
-      warn(`Fill-queue item ${i + 1} failed: ${e.message}`);
-      if (e instanceof BackendError) {
-        warn('Backend unavailable, stopping fill-queue');
-        break;
+        const result = await processSpec(spec, config, outDir);
+        const review = await reviewReel(outDir, result.reviewFrames, config);
+
+        if (review.pass) {
+          spec._meta = { source: 'fill-queue', reviewed: true, reviewScore: review.score };
+          enqueue(spec, 'fill');
+          filled++;
+          queued = true;
+          log(`Queued ${filled}/${n}: "${spec.title}"`);
+        } else {
+          warn(`Spec "${spec.title}" failed review (attempt ${attempt}/3), retrying with new theme...`);
+        }
+      } catch (e) {
+        if (e instanceof BackendError) {
+          warn('Backend unavailable, stopping fill-queue');
+          return;
+        }
+        warn(`Fill-queue item ${i + 1} attempt ${attempt}/3 failed: ${e.message}`);
       }
     }
   }
