@@ -2470,5 +2470,29 @@
     "author": "nomiqbomi",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-27T18:34:41.077Z"
+  },
+  {
+    "file": "assets/sfx/744140.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/nomentero/sounds/744140/",
+    "author": "nomentero",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-27T19:50:36.073Z"
+  },
+  {
+    "file": "assets/sfx/220190.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/GameAudio/sounds/220190/",
+    "author": "GameAudio",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-27T19:50:36.985Z"
+  },
+  {
+    "file": "assets/sfx/400374.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/sabbyt2/sounds/400374/",
+    "author": "sabbyt2",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-27T19:50:38.995Z"
   }
 ]
