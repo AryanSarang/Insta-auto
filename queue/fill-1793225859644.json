@@ -1,0 +1,101 @@
+{
+  "title": "Maggot to Dino Overlord",
+  "hook": "Will the Worm reach its final form?",
+  "tiers": [
+    {
+      "name": "Worm",
+      "icon": "🪱"
+    },
+    {
+      "name": "Snail",
+      "icon": "🐌"
+    },
+    {
+      "name": "Frog",
+      "icon": "🐸"
+    },
+    {
+      "name": "Crocodile",
+      "icon": "🐊"
+    },
+    {
+      "name": "Turtle",
+      "icon": "🐢"
+    },
+    {
+      "name": "T-Rex",
+      "icon": "🦖"
+    },
+    {
+      "name": "Dragon",
+      "icon": "🐉"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "plop",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "pop",
+        "style": "pop"
+      },
+      {
+        "query": "boing",
+        "style": "boing"
+      },
+      {
+        "query": "squeak",
+        "style": "squeak"
+      },
+      {
+        "query": "chomp",
+        "style": "impact"
+      },
+      {
+        "query": "gong",
+        "style": "impact"
+      },
+      {
+        "query": "roar",
+        "style": "cartoon"
+      }
+    ],
+    "final": {
+      "query": "fanfare",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "bowl",
+    "color": "#8bc34a",
+    "label": "Swamp Snack"
+  },
+  "palette": {
+    "bg": "#1b3a2a",
+    "text": "#f1f8e9",
+    "accent": "#ffca28"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "From dirt snack to fire-breathing landlord.",
+  "mood": "bouncy",
+  "caption": "It started as a tiny worm just minding its own business in the mud. Then it got slimy ambitions. Snail, frog, croc, turtle, T-Rex, and finally a fire-breathing dragon who now owns the whole swamp. Nobody told the worm it was allowed to dream this big, but here we are. Which creature in the chain was your favorite glow-up? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#evolution",
+    "#asmr",
+    "#satisfyingvideos"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-10-28T22:17:39.644Z"
+  }
+}

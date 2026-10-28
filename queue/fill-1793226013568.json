@@ -1,0 +1,102 @@
+{
+  "title": "Cassette to The Cloud",
+  "hook": "Will the Cassette reach its final form?",
+  "tiers": [
+    {
+      "name": "Cassette",
+      "icon": "📼"
+    },
+    {
+      "name": "Floppy Disk",
+      "icon": "💾"
+    },
+    {
+      "name": "CD",
+      "icon": "💿"
+    },
+    {
+      "name": "Hard Drive",
+      "icon": "💽"
+    },
+    {
+      "name": "Smartphone",
+      "icon": "📱"
+    },
+    {
+      "name": "The Cloud",
+      "icon": "☁️"
+    },
+    {
+      "name": "The Internet",
+      "icon": "🌐"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "tap",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "click",
+        "style": "pop"
+      },
+      {
+        "query": "blip",
+        "style": "pop"
+      },
+      {
+        "query": "cd insert",
+        "style": "cartoon"
+      },
+      {
+        "query": "notification",
+        "style": "magic"
+      },
+      {
+        "query": "whoosh",
+        "style": "magic"
+      },
+      {
+        "query": "explosion",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "fanfare",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "box",
+    "color": "#8e8ea8",
+    "label": "STORAGE: 99% FULL"
+  },
+  "palette": {
+    "bg": "#1b1f3b",
+    "text": "#f4f1ff",
+    "accent": "#39e6c4"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "Plot twist: it was just someone else's computer",
+  "mood": "retro",
+  "caption": "Once upon a time, a lonely cassette rewound its own tape and dreamed big. It squished into a floppy, got shiny as a CD, bulked up into a hard drive, learned to fit in your pocket as a smartphone, then floated up to the sky and became The Cloud. And now it runs the whole internet. Meanwhile your phone still says storage is full. Which old tech do you miss the most?  Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#asmr",
+    "#retrotech",
+    "#nostalgia",
+    "#satisfyingvideo"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-10-28T22:20:13.568Z"
+  }
+}
