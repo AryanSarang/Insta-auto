@@ -31,16 +31,16 @@
   const CX = W / 2;
   const CY = 280;
   const CRAD = 155;
-  const TUBE_HW = 18;
+  const TUBE_HW = 36;
   const TUBE_TOP = 12;
   const TUBE_BOT = CY - Math.sqrt(CRAD * CRAD - TUBE_HW * TUBE_HW);
   const TUBE_ANGLE = Math.asin(TUBE_HW / CRAD);
 
   /* ── Tier radii ── */
   const GR = 1.25;
-  const targetMaxR = CRAD * 0.42;
+  const targetMaxR = CRAD * 0.30;
   const computedBase = targetMaxR / Math.pow(GR, N - 1);
-  const baseR = Math.max(14, computedBase);
+  const baseR = Math.max(10, computedBase);
   const R = [];
   for (let i = 0; i < N; i++) R.push(baseR * Math.pow(GR, i));
   if (R[N - 1] > targetMaxR) {

@@ -18,8 +18,8 @@ export function validateSpec(spec) {
   if (typeof spec.hook !== 'string' || !spec.hook.trim()) push('missing hook');
   if (spec.hook && spec.hook.length > 60) spec.hook = spec.hook.slice(0, 57) + '...';
 
-  if (!Array.isArray(spec.tiers) || spec.tiers.length < 7 || spec.tiers.length > 8) {
-    push(`tiers must have 7-8 entries, got ${spec.tiers?.length}`);
+  if (!Array.isArray(spec.tiers) || spec.tiers.length !== 7) {
+    push(`tiers must have exactly 7 entries, got ${spec.tiers?.length}`);
   } else {
     for (const [i, t] of spec.tiers.entries()) {
       if (typeof t.name !== 'string' || !t.name.trim()) push(`tier ${i} missing name`);

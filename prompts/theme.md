@@ -20,7 +20,7 @@ Return ONLY one JSON object — no markdown, no explanation, no code fences.
 
 {
   "title": "internal title",
-  "hook": "big on-screen question for the first ~2.5 s, max 40 chars (e.g. 'Will it reach the final form?' or 'Can the chick become a dragon?'). NEVER include a number like 64 or 128.",
+  "hook": "always use the format 'Will the [tier-0 name] reach its final form?' — max 45 chars. NEVER include a number like 64 or 128.",
   "tiers": [ { "name": "Chick", "icon": "🐣" }, ..., { "name": "Dragon", "icon": "🐉" } ],
   "sounds": {
     "bounce": { "query": "short Freesound query for wall-hit sound (soft pop, tap, ping)", "style": "pop" },
@@ -55,7 +55,7 @@ Return ONLY one JSON object — no markdown, no explanation, no code fences.
 - The evolution should feel inevitable: "of course a tadpole becomes a frog becomes a lizard becomes a dragon."
 
 ## Icon quality rules (CRITICAL — icons must read clearly on a phone screen)
-- Tier-0 items appear as small balls (~28px on screen, ~84px at 3× DPI). They must be recognizable at this size.
+- Tier-0 items appear as small balls (~20px on screen, ~60px at 3× DPI). They must be recognizable at this size.
 - BEST tier-0 icons (simple, round, colorful, clear silhouette):
   🐣 🐛 🐜 🐟 🌱 💧 ⭐ 🔵 🟡 🍎 🐾 🥚 🦠 🐝 🐌 🪱
 - AVOID for early tiers (too complex when tiny):
@@ -81,18 +81,16 @@ Return ONLY one JSON object — no markdown, no explanation, no code fences.
 
 ## Style rules
 - Think "bouncing ball + 2048 merge game" — the satisfying feel of watching balls collide and evolve is the core appeal.
-- The hook must make the viewer curious enough to watch to the end. Frame it as a question about the evolution journey: "Will it reach the final form?", "Can the X become Y?", "What happens when X merges?". NEVER put a specific number in the hook (no "64", "128", etc.) — balls drop continuously.
+- The hook must always be "Will the [tier-0 name] reach its final form?" — this is the only format. NEVER put a specific number in the hook (no "64", "128", etc.) — balls drop continuously.
 - The punchline (finalText) and caption carry the humour. The punchline should be a witty one-liner that pays off the whole evolution journey.
 - Prefer moods like "bouncy", "meme", "retro", or "light" for the satisfying game vibe. Use "dark" or "loud" sparingly for dramatic themes.
 - Vary containers, palettes, moods, and physics across different specs.
 - The caption should tell a tiny story, end with a question that invites comments, then the CTA.
 - Hashtags: 3-6 relevant tags. Always include #oddlysatisfying and #mergegame.
 
-## Tier count guidance (IMPORTANT — minimum 7 tiers)
-- 7 tiers: Standard length (~60-90s). Best balance of variety and pacing. DEFAULT CHOICE.
-- 8 tiers: Longer, epic videos (~80-120s). Use for rich themes with many natural stages.
-- NEVER use fewer than 7 tiers. Videos must be at least 60 seconds long.
-- Videos can run up to 2 minutes if the evolution journey needs it. Let the simulation breathe naturally.
+## Tier count guidance (IMPORTANT — exactly 7 tiers)
+- Always use exactly 7 tiers. Videos are capped at 59 seconds.
+- NEVER use fewer than 7 or more than 7 tiers.
 
 ## Spawning and pacing (important for hook/caption)
 - Balls drop CONTINUOUSLY into the flask — there is NO fixed number of balls.
