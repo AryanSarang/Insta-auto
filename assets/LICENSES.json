@@ -2822,5 +2822,53 @@
     "author": "ShangusBurger",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-28T05:42:40.070Z"
+  },
+  {
+    "file": "assets/icons/1f33d.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-28T08:54:06.808Z"
+  },
+  {
+    "file": "assets/icons/1f37f.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-28T08:54:06.925Z"
+  },
+  {
+    "file": "assets/icons/1f35f.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-28T08:54:06.999Z"
+  },
+  {
+    "file": "assets/sfx/165870.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/franzzle/sounds/165870/",
+    "author": "franzzle",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T08:54:18.441Z"
+  },
+  {
+    "file": "assets/sfx/718593.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/JoMungus/sounds/718593/",
+    "author": "JoMungus",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T08:54:19.338Z"
+  },
+  {
+    "file": "assets/sfx/198390.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/ani_music/sounds/198390/",
+    "author": "ani_music",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T08:54:21.290Z"
   }
 ]
