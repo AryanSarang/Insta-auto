@@ -2870,5 +2870,29 @@
     "author": "ani_music",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-28T08:54:21.290Z"
+  },
+  {
+    "file": "assets/sfx/728224.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/disman/sounds/728224/",
+    "author": "disman",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T10:43:53.743Z"
+  },
+  {
+    "file": "assets/sfx/614832.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/arseniiv/sounds/614832/",
+    "author": "arseniiv",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T10:43:54.597Z"
+  },
+  {
+    "file": "assets/sfx/371753.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/klcisa/sounds/371753/",
+    "author": "klcisa",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T10:43:55.170Z"
   }
 ]
