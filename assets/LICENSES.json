@@ -2702,5 +2702,77 @@
     "author": "unfa",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-28T01:32:57.348Z"
+  },
+  {
+    "file": "assets/sfx/319803.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/zmobie/sounds/319803/",
+    "author": "zmobie",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T05:29:23.130Z"
+  },
+  {
+    "file": "assets/sfx/710162.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/omgitsjo/sounds/710162/",
+    "author": "omgitsjo",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T05:29:24.605Z"
+  },
+  {
+    "file": "assets/sfx/404758.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/OwlStorm/sounds/404758/",
+    "author": "OwlStorm",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T05:29:26.284Z"
+  },
+  {
+    "file": "assets/icons/1f518.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-28T05:29:34.387Z"
+  },
+  {
+    "file": "assets/sfx/766640.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/StavSounds/sounds/766640/",
+    "author": "StavSounds",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T05:29:45.606Z"
+  },
+  {
+    "file": "assets/sfx/521377.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Jarusca/sounds/521377/",
+    "author": "Jarusca",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T05:29:47.389Z"
+  },
+  {
+    "file": "assets/icons/1f6d2.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-28T05:29:54.132Z"
+  },
+  {
+    "file": "assets/sfx/477630.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Joao_Janz/sounds/477630/",
+    "author": "Joao_Janz",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T05:30:50.285Z"
+  },
+  {
+    "file": "assets/sfx/477807.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Saltbearer/sounds/477807/",
+    "author": "Saltbearer",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T05:30:51.380Z"
   }
 ]
