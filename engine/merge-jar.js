@@ -65,11 +65,11 @@
 
   function mkBody(tier, x, y, vx, vy, prot) {
     var r = R[tier];
-    return { id: nid++, t: tier, x, y, vx: vx || 0, vy: vy || 0, r: r, m: r * r, pr: prot || 0, st: 0, sc: prot > 0 ? 0.3 : 0, dead: false, mt: 0 };
+    return { id: nid++, t: tier, x, y, vx: vx || 0, vy: vy || 0, r: r, m: r * r * r, pr: prot || 0, st: 0, sc: prot > 0 ? 0.3 : 0, dead: false, mt: 0 };
   }
 
   /* ── Continuous spawn — adaptive rate ── */
-  let spawnAcc = 0;
+  let spawnAcc = 0, spawnSide = 0;
 
   function aliveCount() {
     let c = 0;
@@ -79,13 +79,13 @@
 
   function spawnInterval() {
     var alive = aliveCount();
-    if (alive > 50) return 1.6;
-    if (alive > 40) return 1.3;
-    if (alive > 30) return 1.1;
-    if (alive > 20) return 0.9;
-    if (alive < 8) return 0.5;
-    if (alive < 12) return 0.6;
-    return 0.75;
+    if (alive > 50) return 1.1;
+    if (alive > 40) return 0.9;
+    if (alive > 30) return 0.75;
+    if (alive > 20) return 0.6;
+    if (alive < 8) return 0.3;
+    if (alive < 12) return 0.4;
+    return 0.5;
   }
 
   /* ── Spawn particles on merge ── */
@@ -281,8 +281,8 @@
           /* Momentum-weighted velocity with small upward pop */
           var tierPop = -8 - nt * 3;
           var newBod = mkBody(nt, mergeX, mergeY,
-            (a.vx * ma + bb.vx * mb) / totalM * 0.3,
-            Math.min((a.vy * ma + bb.vy * mb) / totalM * 0.3 + tierPop, -5), 0.05);
+            (a.vx * ma + bb.vx * mb) / totalM * 0.5,
+            Math.min((a.vy * ma + bb.vy * mb) / totalM * 0.5 + tierPop, -5), 0.08);
           newBod.mt = 0.5;
           newBod.sc = 0;
           newBod.st = 0.15;
@@ -373,9 +373,11 @@
       var interval = spawnInterval();
       while (spawnAcc >= interval) {
         spawnAcc -= interval;
-        var sx = CX + (rng() - 0.5) * (TUBE_HW * 0.8);
-        bods.push(mkBody(0, sx, TUBE_TOP + R[0],
-          (rng() - 0.5) * 100, 2 + rng() * 6));
+        var side = (spawnSide % 2 === 0) ? -1 : 1;
+        var sx = CX + side * rng() * (TUBE_HW - R[0]);
+        bods.push(mkBody(0, sx, TUBE_TOP - R[0],
+          side * (10 + rng() * 15), 10 + rng() * 10, 1.0));
+        spawnSide++;
         spawned++;
       }
     }
@@ -409,9 +411,9 @@
       shakeX = 0; shakeY = 0;
     }
 
-    /* Anti-stall: gently attract nearest same-tier pair */
-    if (!done && sim - lastMerge > 2.5 && bods.length > 1) {
-      var bestD2 = 1e9, bi = -1, bj = -1;
+    /* Anti-stall: attract highest-tier same-tier pair (nearest if tied) */
+    if (!done && sim - lastMerge > 1.8 && bods.length > 1) {
+      var bestTier = -1, bestD2 = 1e9, bi = -1, bj = -1;
       for (var i = 0; i < bods.length; i++) {
         if (bods[i].dead) continue;
         for (var j = i + 1; j < bods.length; j++) {
@@ -419,7 +421,9 @@
           if (bods[i].t !== bods[j].t || bods[i].t >= N - 1) continue;
           var dx = bods[j].x - bods[i].x, dy = bods[j].y - bods[i].y;
           var d2 = dx * dx + dy * dy;
-          if (d2 < bestD2) { bestD2 = d2; bi = i; bj = j; }
+          if (bods[i].t > bestTier || (bods[i].t === bestTier && d2 < bestD2)) {
+            bestTier = bods[i].t; bestD2 = d2; bi = i; bj = j;
+          }
         }
       }
       if (bi >= 0) {
@@ -427,9 +431,10 @@
         var dx = b.x - a.x, dy = b.y - a.y;
         var d = Math.sqrt(dx * dx + dy * dy) || 1;
         var stallT = sim - lastMerge;
-        var tierBoost = 1 + a.t * 0.3;
-        var ramp = Math.min((stallT - 2.5) * 0.4, 2.0);
-        var force = (60 + ramp * 100) * tierBoost * DT;
+        var tierBoost = 1 + a.t * 0.5;
+        var ramp = Math.min((stallT - 1.8) * 0.6, 3.0);
+        var timePressure = (!done && sim > maxSim * 0.6) ? 1 + (sim - maxSim * 0.6) / (maxSim * 0.4) * 3.0 : 1.0;
+        var force = (80 + ramp * 140) * tierBoost * timePressure * DT;
         a.vx += dx / d * force; a.vy += dy / d * force;
         b.vx -= dx / d * force; b.vy -= dy / d * force;
       }
