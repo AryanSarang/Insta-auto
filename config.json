@@ -18,7 +18,7 @@
   ],
   "video": {
     "minSeconds": 30,
-    "maxSeconds": 90,
+    "maxSeconds": 60,
     "fps": 30
   },
   "hashtags": {
