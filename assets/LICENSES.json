@@ -2630,5 +2630,77 @@
     "author": "GameAudio",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-27T21:57:44.711Z"
+  },
+  {
+    "file": "assets/icons/1f4df.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-28T01:32:45.442Z"
+  },
+  {
+    "file": "assets/icons/1f4e1.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-28T01:32:45.555Z"
+  },
+  {
+    "file": "assets/icons/1f4f6.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-28T01:32:45.693Z"
+  },
+  {
+    "file": "assets/sfx/540902.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/solernix/sounds/540902/",
+    "author": "solernix",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T01:32:53.549Z"
+  },
+  {
+    "file": "assets/sfx/666296.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/ChristopherJngs/sounds/666296/",
+    "author": "ChristopherJngs",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T01:32:54.385Z"
+  },
+  {
+    "file": "assets/sfx/536748.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/egomassive/sounds/536748/",
+    "author": "egomassive",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T01:32:54.993Z"
+  },
+  {
+    "file": "assets/sfx/478343.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Joao_Janz/sounds/478343/",
+    "author": "Joao_Janz",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T01:32:55.873Z"
+  },
+  {
+    "file": "assets/sfx/121254.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Quote/sounds/121254/",
+    "author": "Quote",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T01:32:56.544Z"
+  },
+  {
+    "file": "assets/sfx/584179.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/unfa/sounds/584179/",
+    "author": "unfa",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-28T01:32:57.348Z"
   }
 ]
