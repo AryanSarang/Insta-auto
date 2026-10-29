@@ -3174,5 +3174,21 @@
     "author": "vintprox",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-29T12:23:54.435Z"
+  },
+  {
+    "file": "assets/sfx/191012.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/waterboy920/sounds/191012/",
+    "author": "waterboy920",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-29T22:31:18.047Z"
+  },
+  {
+    "file": "assets/sfx/810485.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/CVLTIV8R/sounds/810485/",
+    "author": "CVLTIV8R",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-29T22:31:19.319Z"
   }
 ]

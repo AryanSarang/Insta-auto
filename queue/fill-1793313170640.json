@@ -1,0 +1,101 @@
+{
+  "title": "Button to Robot Brain",
+  "hook": "Will the Button reach its final form?",
+  "tiers": [
+    {
+      "name": "Button",
+      "icon": "🔘"
+    },
+    {
+      "name": "Radio",
+      "icon": "📻"
+    },
+    {
+      "name": "TV",
+      "icon": "📺"
+    },
+    {
+      "name": "Desktop",
+      "icon": "🖥️"
+    },
+    {
+      "name": "Laptop",
+      "icon": "💻"
+    },
+    {
+      "name": "Phone",
+      "icon": "📱"
+    },
+    {
+      "name": "Robot",
+      "icon": "🤖"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "tap",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "click",
+        "style": "pop"
+      },
+      {
+        "query": "radio static",
+        "style": "cartoon"
+      },
+      {
+        "query": "blip",
+        "style": "boing"
+      },
+      {
+        "query": "startup chime",
+        "style": "magic"
+      },
+      {
+        "query": "notification",
+        "style": "magic"
+      },
+      {
+        "query": "power up",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "fanfare",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "box",
+    "color": "#6C7A89",
+    "label": "TECH TRASH BIN"
+  },
+  "palette": {
+    "bg": "#0F1B2D",
+    "text": "#E8F1FF",
+    "accent": "#00E5FF"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "Started as a button, now it judges my search history",
+  "mood": "retro",
+  "caption": "It all began with one tiny button that just wanted to be pressed. Then it got a radio voice, a TV career, a desk job, went freelance on a laptop, moved into your pocket, and finally became a robot that knows what you Googled at 3am. Every merge is a decade of progress in one satisfying click. Which gadget would you refuse to give up? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#technology",
+    "#asmr",
+    "#evolution"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 7,
+    "enqueuedAt": "2026-10-29T22:32:50.640Z"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "title": "Worm to Scaly Royalty",
+  "hook": "Will the Worm reach its final form?",
+  "tiers": [
+    {
+      "name": "Worm",
+      "icon": "🪱"
+    },
+    {
+      "name": "Snake",
+      "icon": "🐍"
+    },
+    {
+      "name": "Lizard",
+      "icon": "🦎"
+    },
+    {
+      "name": "Crocodile",
+      "icon": "🐊"
+    },
+    {
+      "name": "T-Rex",
+      "icon": "🦖"
+    },
+    {
+      "name": "Dragon",
+      "icon": "🐲"
+    },
+    {
+      "name": "Dragon King",
+      "icon": "🐉",
+      "accessory": "👑"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "tap",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "pop",
+        "style": "pop"
+      },
+      {
+        "query": "squeak",
+        "style": "squeak"
+      },
+      {
+        "query": "boing",
+        "style": "boing"
+      },
+      {
+        "query": "chomp",
+        "style": "impact"
+      },
+      {
+        "query": "roar",
+        "style": "impact"
+      },
+      {
+        "query": "thunder",
+        "style": "magic"
+      }
+    ],
+    "final": {
+      "query": "fanfare",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "bowl",
+    "color": "#8bc34a",
+    "label": "Wiggle Bowl"
+  },
+  "palette": {
+    "bg": "#1f3a2b",
+    "text": "#f5f7e1",
+    "accent": "#ffb300"
+  },
+  "physics": {
+    "bounciness": 0.78,
+    "gravity": "normal"
+  },
+  "finalText": "From dirt snack to dinosaur landlord. Rent is due.",
+  "mood": "bouncy",
+  "caption": "It started as a tiny worm minding its own business in the dirt. Then it bumped into another worm, and suddenly it was a snake with big plans. A few wiggles later it's a lizard, a crocodile, a T-Rex, and finally a crowned dragon who owns the whole bowl. Zero career advice, 100% scales. Which stage of the evolution would you want to stay at forever? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#evolution",
+    "#asmr",
+    "#satisfyingvideos"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-10-29T22:30:58.522Z"
+  }
+}
