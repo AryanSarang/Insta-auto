@@ -25,7 +25,7 @@
   const maxSim = maxDur + 5;
 
   const GRAV = ({ low: 100, normal: 180, high: 300 })[SPEC.physics?.gravity] || 180;
-  const REST = Math.min(SPEC.physics?.bounciness || 0.7, 0.85);
+  const REST = Math.min(SPEC.physics?.bounciness || 0.8, 0.92);
 
   /* ── Circular flask ── */
   const CX = W / 2;
@@ -65,7 +65,7 @@
 
   function mkBody(tier, x, y, vx, vy, prot) {
     var r = R[tier];
-    return { id: nid++, t: tier, x, y, vx: vx || 0, vy: vy || 0, r: r, m: r * r * r, pr: prot || 0, st: 0, si: 0, snx: 0, sny: 1, sc: prot > 0 ? 0.3 : 0, dead: false, mt: 0 };
+    return { id: nid++, t: tier, x, y, vx: vx || 0, vy: vy || 0, r: r, m: r * r * r, pr: prot || 0, si: 0, snx: 0, sny: 1, svx: 1, svy: 1, sc: prot > 0 ? 0.3 : 0, dead: false, mt: 0 };
   }
 
   /* ── Continuous spawn — adaptive rate ── */
@@ -133,12 +133,8 @@
     for (var i = 0; i < n; i++) {
       var b = live[i], o = i * 7;
       d[o] = b.x; d[o + 1] = b.y; d[o + 2] = b.r;
-      var si = b.si || 0;
-      var stretchAmt = si * 0.35;
-      var squashAmt = si * 0.28;
-      var anx = Math.abs(b.snx), any = Math.abs(b.sny);
-      d[o + 3] = 1 + stretchAmt * any - squashAmt * anx;
-      d[o + 4] = 1 + stretchAmt * anx - squashAmt * any;
+      d[o + 3] = b.svx;
+      d[o + 4] = b.svy;
       d[o + 5] = Math.min(1, b.sc);
       d[o + 6] = Math.max(0, b.mt);
       tr[i] = b.t;
@@ -189,19 +185,23 @@
       b.vx *= 0.9992;
       b.vy *= 0.9992;
 
-      /* Bottom-zone damping — very gentle so balls stay bouncy */
-      if (b.y > CY + CRAD * 0.6) {
-        var depth = Math.min((b.y - CY - CRAD * 0.6) / (CRAD * 0.4), 1);
-        var bottomDamp = 1 - depth * depth * 0.002;
-        b.vx *= bottomDamp;
-        b.vy *= bottomDamp;
+      /* Floor repulsion — gentle upward push near bottom keeps balls bouncing */
+      if (b.y > CY + CRAD * 0.65) {
+        var depth = Math.min((b.y - CY - CRAD * 0.65) / (CRAD * 0.35), 1);
+        b.vy -= depth * depth * 60 * dt;
+        b.vx += (rng() - 0.5) * depth * 20 * dt;
       }
 
       b.x += b.vx * dt;
       b.y += b.vy * dt;
       if (b.pr > 0) b.pr -= dt;
-      if (b.si > 0) b.si *= Math.pow(0.12, dt);
-      if (b.si < 0.01) b.si = 0;
+      if (b.si > 0.001) { b.si *= Math.pow(0.04, dt); } else { b.si = 0; }
+      var anx = Math.abs(b.snx), any = Math.abs(b.sny);
+      var tgtX = 1 + b.si * 0.22 * any - b.si * 0.18 * anx;
+      var tgtY = 1 + b.si * 0.22 * anx - b.si * 0.18 * any;
+      var lerpSpd = Math.pow(0.001, dt);
+      b.svx = b.svx * lerpSpd + tgtX * (1 - lerpSpd);
+      b.svy = b.svy * lerpSpd + tgtY * (1 - lerpSpd);
       if (b.sc < 1) b.sc += dt * 5;
       if (b.mt > 0) b.mt -= dt;
     }
@@ -238,9 +238,17 @@
           /* Reflect normal, apply friction to tangential */
           b.vx -= (1 + wallRest) * vn * nx + vtx * wallFriction;
           b.vy -= (1 + wallRest) * vn * ny + vty * wallFriction;
+
+          /* Minimum bounce velocity — keeps big balls lively */
+          var speed = Math.sqrt(b.vx * b.vx + b.vy * b.vy);
+          var minBounce = 30 + b.r * 0.8;
+          if (speed < minBounce && speed > 0.5) {
+            var boost = minBounce / speed;
+            b.vx *= boost; b.vy *= boost;
+          }
           var impactV = Math.abs(vn);
-          b.si = Math.min(impactV / (b.r * 3 + 40), 1.0);
-          b.snx = nx; b.sny = ny;
+          var newSi = Math.min(impactV / (b.r * 2 + 30), 1.0);
+          if (newSi > b.si) { b.si = newSi; b.snx = nx; b.sny = ny; }
 
           /* Bounce sound for significant wall hits */
           if (vn > 25 && sim - (sndT['bounce'] || 0) >= 0.05) {
@@ -254,11 +262,11 @@
       if (b.y < TUBE_BOT + b.r * 2) {
         if (b.x - b.r < CX - TUBE_HW) {
           b.x = CX - TUBE_HW + b.r;
-          if (b.vx < 0) { b.vx = -b.vx * REST; b.si = Math.min(Math.abs(b.vx) / (b.r * 3 + 40), 0.6); b.snx = -1; b.sny = 0; }
+          if (b.vx < 0) { b.vx = -b.vx * REST; var ts = Math.min(Math.abs(b.vx) / (b.r * 2 + 30), 0.6); if (ts > b.si) { b.si = ts; b.snx = -1; b.sny = 0; } }
         }
         if (b.x + b.r > CX + TUBE_HW) {
           b.x = CX + TUBE_HW - b.r;
-          if (b.vx > 0) { b.vx = -b.vx * REST; b.si = Math.min(Math.abs(b.vx) / (b.r * 3 + 40), 0.6); b.snx = 1; b.sny = 0; }
+          if (b.vx > 0) { b.vx = -b.vx * REST; var ts = Math.min(Math.abs(b.vx) / (b.r * 2 + 30), 0.6); if (ts > b.si) { b.si = ts; b.snx = 1; b.sny = 0; } }
         }
       }
     }
@@ -356,9 +364,9 @@
               bb.vy += (dvty / dvt) * fJ / mb;
             }
 
-            var impactStr = Math.min(dvn / (Math.min(a.r, bb.r) * 3 + 40), 1.0);
-            a.si = impactStr; a.snx = -nx; a.sny = -ny;
-            bb.si = impactStr; bb.snx = nx; bb.sny = ny;
+            var impactStr = Math.min(dvn / (Math.min(a.r, bb.r) * 2 + 30), 1.0);
+            if (impactStr > a.si) { a.si = impactStr; a.snx = -nx; a.sny = -ny; }
+            if (impactStr > bb.si) { bb.si = impactStr; bb.snx = nx; bb.sny = ny; }
 
             /* Bounce sound for significant ball-ball hits */
             if (dvn > 30 && sim - (sndT['bounce'] || 0) >= 0.05) {
