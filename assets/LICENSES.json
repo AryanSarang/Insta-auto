@@ -3086,5 +3086,29 @@
     "author": "magnuswaker",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-29T11:42:40.983Z"
+  },
+  {
+    "file": "assets/icons/1f3b3.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-29T11:59:04.011Z"
+  },
+  {
+    "file": "assets/sfx/851452.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/hashtagsmcgee/sounds/851452/",
+    "author": "hashtagsmcgee",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-29T11:59:12.748Z"
+  },
+  {
+    "file": "assets/sfx/514385.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/SieuAmThanh/sounds/514385/",
+    "author": "SieuAmThanh",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-29T11:59:14.774Z"
   }
 ]
