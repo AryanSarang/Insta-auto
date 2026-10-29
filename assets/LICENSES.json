@@ -3110,5 +3110,69 @@
     "author": "SieuAmThanh",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-29T11:59:14.774Z"
+  },
+  {
+    "file": "assets/icons/1f439.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-29T12:23:40.029Z"
+  },
+  {
+    "file": "assets/icons/1f415.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-29T12:23:40.150Z"
+  },
+  {
+    "file": "assets/icons/1f434.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-29T12:23:40.243Z"
+  },
+  {
+    "file": "assets/icons/1f418.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-29T12:23:40.513Z"
+  },
+  {
+    "file": "assets/sfx/800278.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/SecureSubset/sounds/800278/",
+    "author": "SecureSubset",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-29T12:23:52.413Z"
+  },
+  {
+    "file": "assets/sfx/269571.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/shadoWisp/sounds/269571/",
+    "author": "shadoWisp",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-29T12:23:53.132Z"
+  },
+  {
+    "file": "assets/sfx/684527.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/shakezerz/sounds/684527/",
+    "author": "shakezerz",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-29T12:23:53.891Z"
+  },
+  {
+    "file": "assets/sfx/854137.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/vintprox/sounds/854137/",
+    "author": "vintprox",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-29T12:23:54.435Z"
   }
 ]
