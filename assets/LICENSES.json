@@ -3062,5 +3062,29 @@
     "author": "CVLTIV8R",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-29T11:00:30.547Z"
+  },
+  {
+    "file": "assets/sfx/388269.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Sami_Kullstr%C3%B6m/sounds/388269/",
+    "author": "Sami_Kullström",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-29T11:42:37.330Z"
+  },
+  {
+    "file": "assets/sfx/186931.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/ReadeOnly/sounds/186931/",
+    "author": "ReadeOnly",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-29T11:42:39.907Z"
+  },
+  {
+    "file": "assets/sfx/641042.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/magnuswaker/sounds/641042/",
+    "author": "magnuswaker",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-29T11:42:40.983Z"
   }
 ]
