@@ -470,20 +470,37 @@
     return;
   }
 
-  /* ── Slow-mo (5x) + extended hold ── */
+  /* ── Slow-mo + extended hold — fit within maxDur ── */
   var slomoStart = Math.max(0, Math.floor((doneT - 1.2) * FPS));
   var doneFrame = Math.min(Math.floor(doneT * FPS), frames.length - 1);
   var mapped = [];
   for (var i = 0; i < Math.min(slomoStart, frames.length); i++) mapped.push(i);
+  var normalDur = mapped.length / FPS;
+  var slomoFrameCount = doneFrame - slomoStart + 1;
+  var slomoMult = 5;
+  if (normalDur + slomoFrameCount * slomoMult / FPS + 2 > maxDur) {
+    slomoMult = Math.max(2, Math.floor((maxDur - normalDur - 3) * FPS / slomoFrameCount));
+  }
   for (var i = slomoStart; i <= doneFrame; i++) {
-    for (var rep = 0; rep < 5; rep++) mapped.push(i);
+    for (var rep = 0; rep < slomoMult; rep++) mapped.push(i);
   }
   var holdIdx = Math.min(doneFrame + 1, frames.length - 1);
-  var baseHoldSec = 5.0;
-  var minDur = SPEC.minSeconds || 60;
+  var minDur = SPEC.minSeconds || 30;
   var currentDur = mapped.length / FPS;
-  var holdSec = Math.max(baseHoldSec, minDur - currentDur);
+  var holdSec = Math.min(5.0, Math.max(2.0, maxDur - currentDur - 0.5));
+  if (currentDur >= maxDur) holdSec = 0;
+  else if (holdSec < 0.5) holdSec = 0;
   for (var h = 0; h < Math.round(holdSec * FPS); h++) mapped.push(holdIdx);
+
+  /* Pad to minDur if needed */
+  if (mapped.length / FPS < minDur && holdIdx < frames.length) {
+    var padFrames = Math.ceil((minDur - mapped.length / FPS) * FPS);
+    for (var p = 0; p < padFrames; p++) mapped.push(holdIdx);
+  }
+
+  /* Hard cap at maxDur */
+  var maxMapped = Math.floor(maxDur * FPS);
+  if (mapped.length > maxMapped) mapped.length = maxMapped;
 
   /* ── Clean hold frame: only final-tier body, centered ── */
   var holdFrame = frames[holdIdx];
