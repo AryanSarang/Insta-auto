@@ -3038,5 +3038,29 @@
     "author": "Logicogonist",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-29T01:55:29.255Z"
+  },
+  {
+    "file": "assets/icons/1f3c8.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-29T11:00:16.831Z"
+  },
+  {
+    "file": "assets/icons/1f3df.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-29T11:00:16.918Z"
+  },
+  {
+    "file": "assets/sfx/809826.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/CVLTIV8R/sounds/809826/",
+    "author": "CVLTIV8R",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-29T11:00:30.547Z"
   }
 ]
