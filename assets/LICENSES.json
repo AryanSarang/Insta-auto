@@ -3190,5 +3190,29 @@
     "author": "CVLTIV8R",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-29T22:31:19.319Z"
+  },
+  {
+    "file": "assets/sfx/262309.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/steffcaffrey/sounds/262309/",
+    "author": "steffcaffrey",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-30T02:05:50.157Z"
+  },
+  {
+    "file": "assets/sfx/826834.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/rickismyname/sounds/826834/",
+    "author": "rickismyname",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-30T02:05:50.905Z"
+  },
+  {
+    "file": "assets/sfx/807391.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Vrymaa/sounds/807391/",
+    "author": "Vrymaa",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-30T02:05:52.981Z"
   }
 ]
