@@ -1,0 +1,101 @@
+{
+  "title": "Mosquito to Dino Nap King",
+  "hook": "Will the Mosquito reach its final form?",
+  "tiers": [
+    {
+      "name": "Mosquito",
+      "icon": "🦟"
+    },
+    {
+      "name": "Frog",
+      "icon": "🐸"
+    },
+    {
+      "name": "Snake",
+      "icon": "🐍"
+    },
+    {
+      "name": "Crocodile",
+      "icon": "🐊"
+    },
+    {
+      "name": "Elephant",
+      "icon": "🐘"
+    },
+    {
+      "name": "T-Rex",
+      "icon": "🦖"
+    },
+    {
+      "name": "Dragon",
+      "icon": "🐉"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "pop",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "bubble pop",
+        "style": "pop"
+      },
+      {
+        "query": "boing",
+        "style": "boing"
+      },
+      {
+        "query": "squeak",
+        "style": "squeak"
+      },
+      {
+        "query": "chomp",
+        "style": "impact"
+      },
+      {
+        "query": "trumpet",
+        "style": "cartoon"
+      },
+      {
+        "query": "roar",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "fanfare",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "bowl",
+    "color": "#6BCB77",
+    "label": "Food Chain"
+  },
+  "palette": {
+    "bg": "#1B2A41",
+    "text": "#FFFFFF",
+    "accent": "#FFD93D"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "Plot twist: the food chain ate itself into a dragon",
+  "mood": "bouncy",
+  "caption": "It started with one tiny mosquito buzzing around looking for a snack. Then a frog showed up hungry. Then a snake. Then a croc. Then somehow an elephant, a T-Rex, and finally a full-on dragon who just wanted a quiet nap. Nobody asked for this food chain, but here we are, and it's weirdly relaxing to watch. Which animal in the chain surprised you the most?\n\nFollow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#evolution",
+    "#asmr",
+    "#satisfyingvideo"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-10-30T21:59:55.826Z"
+  }
+}

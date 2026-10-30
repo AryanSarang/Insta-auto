@@ -3214,5 +3214,21 @@
     "author": "Vrymaa",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-30T02:05:52.981Z"
+  },
+  {
+    "file": "assets/icons/1f99f.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-30T21:58:15.496Z"
+  },
+  {
+    "file": "assets/sfx/220187.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/GameAudio/sounds/220187/",
+    "author": "GameAudio",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-30T22:00:17.378Z"
   }
 ]

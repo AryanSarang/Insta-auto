@@ -1,0 +1,101 @@
+{
+  "title": "Pager to Pocket Genius",
+  "hook": "Will the Pager reach its final form?",
+  "tiers": [
+    {
+      "name": "Pager",
+      "icon": "📟"
+    },
+    {
+      "name": "Rotary Phone",
+      "icon": "☎️"
+    },
+    {
+      "name": "Floppy Disk",
+      "icon": "💾"
+    },
+    {
+      "name": "Old TV",
+      "icon": "📺"
+    },
+    {
+      "name": "Laptop",
+      "icon": "💻"
+    },
+    {
+      "name": "Smartphone",
+      "icon": "📱"
+    },
+    {
+      "name": "Robot Overmind",
+      "icon": "🤖"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "tap",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "beep",
+        "style": "pop"
+      },
+      {
+        "query": "phone ring",
+        "style": "cartoon"
+      },
+      {
+        "query": "click",
+        "style": "pop"
+      },
+      {
+        "query": "static",
+        "style": "impact"
+      },
+      {
+        "query": "power up",
+        "style": "magic"
+      },
+      {
+        "query": "notification",
+        "style": "magic"
+      }
+    ],
+    "final": {
+      "query": "orchestral hit",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "box",
+    "color": "#8e8a7a",
+    "label": "BEIGE BOX ERA"
+  },
+  "palette": {
+    "bg": "#1b1f3b",
+    "text": "#f4f1de",
+    "accent": "#39ff88"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "It started with a beep. Now it has opinions.",
+  "mood": "retro",
+  "caption": "We dropped a humble pager into the arena and let physics handle the upgrades. Beep by beep it became a phone, a floppy disk, a chunky TV, a laptop, and a smartphone that is 97% battery anxiety. Then two phones collided and something with a very smooth voice woke up. Every merge is a software update you actually wanted. Which gadget from your childhood deserves a spot in the chain? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#retrotech",
+    "#asmr",
+    "#satisfyingvideos"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-10-30T22:01:47.722Z"
+  }
+}
