@@ -1,0 +1,103 @@
+{
+  "title": "Balloon to Rocket Launch",
+  "hook": "Will the Balloon reach its final form?",
+  "tiers": [
+    {
+      "name": "Balloon",
+      "icon": "🎈"
+    },
+    {
+      "name": "Kite",
+      "icon": "🪁"
+    },
+    {
+      "name": "Parachute",
+      "icon": "🪂"
+    },
+    {
+      "name": "Chopper",
+      "icon": "🚁"
+    },
+    {
+      "name": "Prop Plane",
+      "icon": "🛩️"
+    },
+    {
+      "name": "Jet",
+      "icon": "✈️"
+    },
+    {
+      "name": "Rocket",
+      "icon": "🚀",
+      "accessory": "👑"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "pop",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "balloon pop",
+        "style": "pop"
+      },
+      {
+        "query": "boing",
+        "style": "boing"
+      },
+      {
+        "query": "whoosh",
+        "style": "cartoon"
+      },
+      {
+        "query": "helicopter",
+        "style": "impact"
+      },
+      {
+        "query": "propeller",
+        "style": "impact"
+      },
+      {
+        "query": "jet engine",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "rocket launch",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "glass",
+    "color": "#9bd7ff",
+    "label": "UP, UP, AWAY"
+  },
+  "palette": {
+    "bg": "#1b2a6b",
+    "text": "#ffffff",
+    "accent": "#ff6b6b"
+  },
+  "physics": {
+    "bounciness": 0.8,
+    "gravity": "low"
+  },
+  "finalText": "Started as party décor, ended up leaving the planet",
+  "mood": "bouncy",
+  "caption": "It all began with a sad little balloon at a birthday party. It floated up, got tangled with a kite, then borrowed a parachute, grew a spinning hat, sprouted wings, strapped on a jet engine, and decided that the sky was simply not high enough. Now it's a crowned rocket and it will not be taking questions. Humanity took thousands of years to get from a balloon to a rocket. This one did it in under a minute, and honestly looks more confident about it. Which invention would you want to see merge next? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#satisfying",
+    "#asmr",
+    "#evolution",
+    "#physics"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-10-31T21:08:17.863Z"
+  }
+}

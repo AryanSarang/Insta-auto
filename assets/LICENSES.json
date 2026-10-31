@@ -3286,5 +3286,93 @@
     "author": "randbsoundbites",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-10-31T10:30:34.441Z"
+  },
+  {
+    "file": "assets/icons/1f41e.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-31T21:03:08.869Z"
+  },
+  {
+    "file": "assets/icons/1f388.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-31T21:05:51.220Z"
+  },
+  {
+    "file": "assets/icons/1fa81.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-31T21:05:51.368Z"
+  },
+  {
+    "file": "assets/icons/1fa82.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-31T21:05:51.473Z"
+  },
+  {
+    "file": "assets/icons/1f681.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-31T21:05:51.586Z"
+  },
+  {
+    "file": "assets/icons/1f6e9.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-10-31T21:05:51.690Z"
+  },
+  {
+    "file": "assets/sfx/570459.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/SplendidJams/sounds/570459/",
+    "author": "SplendidJams",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-31T21:05:59.713Z"
+  },
+  {
+    "file": "assets/sfx/494789.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/brandondelehoy/sounds/494789/",
+    "author": "brandondelehoy",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-31T21:06:01.030Z"
+  },
+  {
+    "file": "assets/sfx/741359.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Mish7913/sounds/741359/",
+    "author": "Mish7913",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-31T21:06:02.046Z"
+  },
+  {
+    "file": "assets/sfx/741363.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Mish7913/sounds/741363/",
+    "author": "Mish7913",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-31T21:06:02.903Z"
+  },
+  {
+    "file": "assets/sfx/458377.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Mozfoo/sounds/458377/",
+    "author": "Mozfoo",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-10-31T21:06:03.823Z"
   }
 ]

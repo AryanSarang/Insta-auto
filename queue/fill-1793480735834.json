@@ -1,0 +1,102 @@
+{
+  "title": "Ant to Jurassic Landlord",
+  "hook": "Will the Ant reach its final form?",
+  "tiers": [
+    {
+      "name": "Ant",
+      "icon": "🐜"
+    },
+    {
+      "name": "Ladybug",
+      "icon": "🐞"
+    },
+    {
+      "name": "Bee",
+      "icon": "🐝"
+    },
+    {
+      "name": "Butterfly",
+      "icon": "🦋"
+    },
+    {
+      "name": "Lizard",
+      "icon": "🦎"
+    },
+    {
+      "name": "Crocodile",
+      "icon": "🐊"
+    },
+    {
+      "name": "T-Rex",
+      "icon": "🦖",
+      "accessory": "👑"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "tap",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "pop",
+        "style": "pop"
+      },
+      {
+        "query": "blip",
+        "style": "pop"
+      },
+      {
+        "query": "boing",
+        "style": "boing"
+      },
+      {
+        "query": "squeak",
+        "style": "squeak"
+      },
+      {
+        "query": "chomp",
+        "style": "impact"
+      },
+      {
+        "query": "roar",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "fanfare",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "jar",
+    "color": "#7ED957",
+    "label": "Evolution Jar"
+  },
+  "palette": {
+    "bg": "#1F3B2C",
+    "text": "#FFF8E1",
+    "accent": "#FFB400"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "Started as a picnic crasher, now owns the whole forest",
+  "mood": "bouncy",
+  "caption": "It all began with one tiny ant who was just trying to steal a crumb. Then it met another ant, glow-upped into a ladybug, buzzed into a bee, got fancy as a butterfly, grew legs and attitude as a lizard, got a very big smile as a croc, and ended up as a T-Rex wearing a crown. Millions of years of evolution in under a minute, and it still has no idea where the picnic went. Which creature in the chain was your favorite glow-up? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#evolution",
+    "#asmr",
+    "#satisfyingvideo"
+  ],
+  "seed": 482915,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-10-31T21:05:35.834Z"
+  }
+}
