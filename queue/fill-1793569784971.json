@@ -1,0 +1,101 @@
+{
+  "title": "Gear to Mars Commute",
+  "hook": "Will the Gear reach its final form?",
+  "tiers": [
+    {
+      "name": "Gear",
+      "icon": "⚙️"
+    },
+    {
+      "name": "Alarm Clock",
+      "icon": "⏰"
+    },
+    {
+      "name": "Radio",
+      "icon": "📻"
+    },
+    {
+      "name": "Television",
+      "icon": "📺"
+    },
+    {
+      "name": "Laptop",
+      "icon": "💻"
+    },
+    {
+      "name": "Robot",
+      "icon": "🤖"
+    },
+    {
+      "name": "Rocket",
+      "icon": "🚀"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "tap",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "click",
+        "style": "pop"
+      },
+      {
+        "query": "alarm bell",
+        "style": "cartoon"
+      },
+      {
+        "query": "radio static",
+        "style": "squeak"
+      },
+      {
+        "query": "power on",
+        "style": "magic"
+      },
+      {
+        "query": "keyboard typing",
+        "style": "impact"
+      },
+      {
+        "query": "robot",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "rocket launch",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "box",
+    "color": "#5ad1e6",
+    "label": "Tech Lab"
+  },
+  "palette": {
+    "bg": "#1b1f3b",
+    "text": "#f5f7ff",
+    "accent": "#ff7a3d"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "From one tiny gear to quitting your job on Mars",
+  "mood": "retro",
+  "caption": "It started as one humble little gear, rattling around with big dreams. Then it learned to wake you up too early, hum along to the radio, binge TV, open 47 browser tabs, gain a personality, and finally escape Earth entirely. Honestly, relatable growth. Every merge is another upgrade nobody asked for but everyone ended up needing. Which gadget in this chain could you not live without? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#evolution",
+    "#technology",
+    "#asmr"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-01T21:49:44.971Z"
+  }
+}

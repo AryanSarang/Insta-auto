@@ -1,0 +1,103 @@
+{
+  "title": "Tiny Bubble Fish to Kraken Kingpin",
+  "hook": "Will the Guppy reach its final form?",
+  "tiers": [
+    {
+      "name": "Guppy",
+      "icon": "🐟"
+    },
+    {
+      "name": "Tropical Fish",
+      "icon": "🐠"
+    },
+    {
+      "name": "Pufferfish",
+      "icon": "🐡"
+    },
+    {
+      "name": "Octopus",
+      "icon": "🐙"
+    },
+    {
+      "name": "Shark",
+      "icon": "🦈"
+    },
+    {
+      "name": "Whale",
+      "icon": "🐳"
+    },
+    {
+      "name": "Kraken",
+      "icon": "🦑",
+      "accessory": "👑"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "bubble",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "bubble pop",
+        "style": "pop"
+      },
+      {
+        "query": "blip",
+        "style": "boing"
+      },
+      {
+        "query": "squeak",
+        "style": "squeak"
+      },
+      {
+        "query": "splash",
+        "style": "cartoon"
+      },
+      {
+        "query": "chomp",
+        "style": "impact"
+      },
+      {
+        "query": "thunder",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "fanfare",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "bowl",
+    "color": "#4fc3f7",
+    "label": "Fish Bowl Fights"
+  },
+  "palette": {
+    "bg": "#062b4a",
+    "text": "#e0f7fa",
+    "accent": "#ff7043"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "From fishbowl to running the whole ocean",
+  "mood": "bouncy",
+  "caption": "It started as one tiny guppy with big dreams and a very small bowl. Then it met another guppy. Then a pufferfish got offended. Then an octopus joined the group chat, a shark started a podcast, and suddenly a whale was paying rent to a kraken wearing a crown. This is what happens when you refuse to stay in your lane (or your fishbowl). Which sea creature do you think deserves the crown more than the kraken?\n\nFollow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#asmr",
+    "#evolution",
+    "#satisfyingvideos",
+    "#ocean"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-01T21:47:26.804Z"
+  }
+}
