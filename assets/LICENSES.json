@@ -3590,5 +3590,21 @@
     "author": "Reitanna",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-03T00:37:56.630Z"
+  },
+  {
+    "file": "assets/sfx/353125.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/BenjaminNelan/sounds/353125/",
+    "author": "BenjaminNelan",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-03T03:36:43.719Z"
+  },
+  {
+    "file": "assets/sfx/445100.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/lezaarth/sounds/445100/",
+    "author": "lezaarth",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-03T03:36:45.320Z"
   }
 ]
