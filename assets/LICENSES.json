@@ -3518,5 +3518,77 @@
     "author": "dev9998",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-02T12:43:41.319Z"
+  },
+  {
+    "file": "assets/icons/1f423.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-03T00:35:29.455Z"
+  },
+  {
+    "file": "assets/icons/1f425.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-03T00:35:29.608Z"
+  },
+  {
+    "file": "assets/icons/1f414.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-03T00:35:29.769Z"
+  },
+  {
+    "file": "assets/icons/1f983.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-03T00:35:29.908Z"
+  },
+  {
+    "file": "assets/icons/1f99a.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-03T00:35:30.094Z"
+  },
+  {
+    "file": "assets/sfx/217760.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Reitanna/sounds/217760/",
+    "author": "Reitanna",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-03T00:35:37.866Z"
+  },
+  {
+    "file": "assets/sfx/710868.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/NapierFreesound/sounds/710868/",
+    "author": "NapierFreesound",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-03T00:35:39.772Z"
+  },
+  {
+    "file": "assets/sfx/330966.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/deleted_user_2104797/sounds/330966/",
+    "author": "deleted_user_2104797",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-03T00:35:40.514Z"
+  },
+  {
+    "file": "assets/sfx/343921.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Reitanna/sounds/343921/",
+    "author": "Reitanna",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-03T00:37:56.630Z"
   }
 ]

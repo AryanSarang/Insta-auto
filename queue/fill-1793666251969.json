@@ -1,0 +1,101 @@
+{
+  "title": "Sprout to Dino Sprout Overlord",
+  "hook": "Will the Egg reach its final form?",
+  "tiers": [
+    {
+      "name": "Egg",
+      "icon": "🥚"
+    },
+    {
+      "name": "Hatchling",
+      "icon": "🐣"
+    },
+    {
+      "name": "Chick",
+      "icon": "🐥"
+    },
+    {
+      "name": "Chicken",
+      "icon": "🐔"
+    },
+    {
+      "name": "Turkey",
+      "icon": "🦃"
+    },
+    {
+      "name": "Peacock",
+      "icon": "🦚"
+    },
+    {
+      "name": "T-Rex",
+      "icon": "🦖"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "pop",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "crack",
+        "style": "pop"
+      },
+      {
+        "query": "squeak",
+        "style": "squeak"
+      },
+      {
+        "query": "boing",
+        "style": "boing"
+      },
+      {
+        "query": "squawk",
+        "style": "cartoon"
+      },
+      {
+        "query": "wing flap",
+        "style": "impact"
+      },
+      {
+        "query": "roar",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "orchestral hit",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "bowl",
+    "color": "#F4D9A6",
+    "label": "Nest Egg"
+  },
+  "palette": {
+    "bg": "#FFF3D6",
+    "text": "#3B2A1A",
+    "accent": "#FF8A3D"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "Turns out the chicken came first. Then it got ambitious.",
+  "mood": "bouncy",
+  "caption": "Nobody warned the farm that one tiny egg had big dreams. First it cracked, then it fluffed, then it strutted, and somewhere between the turkey and the peacock it started getting very, very tall. Now it has teeth and absolutely no respect for the fence. Watching these eggs crack and merge is the most satisfying way to rewrite the chicken-or-egg debate. Which came first: the chicken or the T-Rex? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#evolution",
+    "#asmr",
+    "#satisfyingvideo"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-03T00:37:31.969Z"
+  }
+}

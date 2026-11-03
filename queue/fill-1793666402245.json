@@ -1,0 +1,101 @@
+{
+  "title": "Battery to Robot Overlord Remote",
+  "hook": "Will the Battery reach its final form?",
+  "tiers": [
+    {
+      "name": "Battery",
+      "icon": "🔋"
+    },
+    {
+      "name": "Light Bulb",
+      "icon": "💡"
+    },
+    {
+      "name": "Radio",
+      "icon": "📻"
+    },
+    {
+      "name": "Television",
+      "icon": "📺"
+    },
+    {
+      "name": "Game Console",
+      "icon": "🎮"
+    },
+    {
+      "name": "Laptop",
+      "icon": "💻"
+    },
+    {
+      "name": "Robot Ruler",
+      "icon": "🤖"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "ping",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "blip",
+        "style": "pop"
+      },
+      {
+        "query": "ding",
+        "style": "magic"
+      },
+      {
+        "query": "radio static",
+        "style": "cartoon"
+      },
+      {
+        "query": "boing",
+        "style": "boing"
+      },
+      {
+        "query": "power up",
+        "style": "magic"
+      },
+      {
+        "query": "robot voice",
+        "style": "voice"
+      }
+    ],
+    "final": {
+      "query": "fanfare",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "box",
+    "color": "#22d3ee",
+    "label": "PLUG IN"
+  },
+  "palette": {
+    "bg": "#0f172a",
+    "text": "#f8fafc",
+    "accent": "#facc15"
+  },
+  "physics": {
+    "bounciness": 0.8,
+    "gravity": "normal"
+  },
+  "finalText": "Started as an AA. Now it runs your life.",
+  "mood": "retro",
+  "caption": "One tiny battery rolls in with a dream: to become more than a remote control sidekick. It lights up, tunes in, glows on the screen, levels up to gaming, goes portable, and finally gets a crown and takes over the whole living room. Every merge is a little jolt of satisfaction. Which gadget from this chain did you wear out the most as a kid?\n\nFollow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#technology",
+    "#asmr",
+    "#evolution"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-03T00:40:02.245Z"
+  }
+}
