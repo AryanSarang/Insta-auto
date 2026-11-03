@@ -3606,5 +3606,13 @@
     "author": "lezaarth",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-03T03:36:45.320Z"
+  },
+  {
+    "file": "assets/icons/2604.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-03T12:09:22.135Z"
   }
 ]
