@@ -1,0 +1,102 @@
+{
+  "title": "Chick to Chicken Dino Dragon",
+  "hook": "Will the Chick reach its final form?",
+  "tiers": [
+    {
+      "name": "Chick",
+      "icon": "🐣"
+    },
+    {
+      "name": "Hen",
+      "icon": "🐔"
+    },
+    {
+      "name": "Turkey",
+      "icon": "🦃"
+    },
+    {
+      "name": "Peacock",
+      "icon": "🦚"
+    },
+    {
+      "name": "Eagle",
+      "icon": "🦅"
+    },
+    {
+      "name": "T-Rex",
+      "icon": "🦖"
+    },
+    {
+      "name": "Dragon",
+      "icon": "🐉",
+      "accessory": "👑"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "pop",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "chick peep",
+        "style": "squeak"
+      },
+      {
+        "query": "chicken cluck",
+        "style": "cartoon"
+      },
+      {
+        "query": "turkey gobble",
+        "style": "cartoon"
+      },
+      {
+        "query": "bird squawk",
+        "style": "impact"
+      },
+      {
+        "query": "eagle screech",
+        "style": "impact"
+      },
+      {
+        "query": "monster roar",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "fanfare",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "bowl",
+    "color": "#F4B860",
+    "label": "Coop Upgrade"
+  },
+  "palette": {
+    "bg": "#2B1B3D",
+    "text": "#FFF4D6",
+    "accent": "#FF7A45"
+  },
+  "physics": {
+    "bounciness": 0.78,
+    "gravity": "normal"
+  },
+  "finalText": "Chickens were dinosaurs all along. Respect.",
+  "mood": "bouncy",
+  "caption": "It started as one tiny, fluffy chick. Then it learned to cluck, gobble, strut, and soar. Then it remembered its ancestors were literally dinosaurs and went full T-Rex. Then it decided that was not enough and grew wings AND a crown. Science says birds are living dinosaurs, so this is basically a family reunion with extra steps. Which tier was the most satisfying merge for you: the turkey, the peacock, or the dragon? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#evolution",
+    "#asmr",
+    "#satisfyingvideo"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-03T22:59:35.664Z"
+  }
+}

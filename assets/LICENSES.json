@@ -3614,5 +3614,85 @@
     "author": "Microsoft",
     "license": "MIT",
     "fetchedAt": "2026-11-03T12:09:22.135Z"
+  },
+  {
+    "file": "assets/sfx/445958.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Breviceps/sounds/445958/",
+    "author": "Breviceps",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-03T22:57:25.083Z"
+  },
+  {
+    "file": "assets/sfx/668804.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/MBPL/sounds/668804/",
+    "author": "MBPL",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-03T22:57:25.905Z"
+  },
+  {
+    "file": "assets/sfx/233124.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/JarredGibb/sounds/233124/",
+    "author": "JarredGibb",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-03T22:57:26.743Z"
+  },
+  {
+    "file": "assets/sfx/727396.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Mastersoundboy2005/sounds/727396/",
+    "author": "Mastersoundboy2005",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-03T22:57:27.578Z"
+  },
+  {
+    "file": "assets/icons/1f684.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-03T22:59:53.362Z"
+  },
+  {
+    "file": "assets/icons/1f576.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-03T22:59:53.684Z"
+  },
+  {
+    "file": "assets/sfx/340666.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/mickyman5000/sounds/340666/",
+    "author": "mickyman5000",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-03T23:00:02.691Z"
+  },
+  {
+    "file": "assets/sfx/719876.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Mastersoundboy2005/sounds/719876/",
+    "author": "Mastersoundboy2005",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-03T23:00:03.542Z"
+  },
+  {
+    "file": "assets/sfx/633869.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/deleted_user_13502068/sounds/633869/",
+    "author": "deleted_user_13502068",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-03T23:00:04.195Z"
+  },
+  {
+    "file": "assets/sfx/617902.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/ImAFoley/sounds/617902/",
+    "author": "ImAFoley",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-03T23:00:05.769Z"
   }
 ]

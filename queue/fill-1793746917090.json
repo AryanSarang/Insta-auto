@@ -1,0 +1,102 @@
+{
+  "title": "Scooter to Warp Traffic",
+  "hook": "Will the Scooter reach its final form?",
+  "tiers": [
+    {
+      "name": "Scooter",
+      "icon": "🛴"
+    },
+    {
+      "name": "Bicycle",
+      "icon": "🚲"
+    },
+    {
+      "name": "Moped",
+      "icon": "🛵"
+    },
+    {
+      "name": "Motorbike",
+      "icon": "🏍️"
+    },
+    {
+      "name": "Car",
+      "icon": "🚗"
+    },
+    {
+      "name": "Bullet Train",
+      "icon": "🚄"
+    },
+    {
+      "name": "Rocket",
+      "icon": "🚀",
+      "accessory": "🕶️"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "tap",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "bike bell",
+        "style": "pop"
+      },
+      {
+        "query": "boing",
+        "style": "boing"
+      },
+      {
+        "query": "scooter horn",
+        "style": "cartoon"
+      },
+      {
+        "query": "engine rev",
+        "style": "impact"
+      },
+      {
+        "query": "car horn",
+        "style": "impact"
+      },
+      {
+        "query": "train whistle",
+        "style": "magic"
+      }
+    ],
+    "final": {
+      "query": "rocket launch",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "bowl",
+    "color": "#ffb703",
+    "label": "RUSH HOUR"
+  },
+  "palette": {
+    "bg": "#1b1f3b",
+    "text": "#ffffff",
+    "accent": "#ff5d8f"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "Still stuck in traffic. But in orbit.",
+  "mood": "bouncy",
+  "caption": "It started with a tiny scooter just trying to get to school on time. Then it got a pedal upgrade, a motor, a roof, and a serious need for speed. Now it's skipping the commute entirely and parking in space. Zero traffic, infinite legroom, and still no parking spot. Which ride in this chain would you take to work every day?\n\nFollow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#asmr",
+    "#satisfyingvideos",
+    "#evolution"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-03T23:01:57.090Z"
+  }
+}
