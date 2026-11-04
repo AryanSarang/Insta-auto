@@ -1,0 +1,102 @@
+{
+  "title": "Shrimp Cocktail Revenge",
+  "hook": "Will the Shrimp reach its final form?",
+  "tiers": [
+    {
+      "name": "Shrimp",
+      "icon": "🦐"
+    },
+    {
+      "name": "Crab",
+      "icon": "🦀"
+    },
+    {
+      "name": "Lobster",
+      "icon": "🦞"
+    },
+    {
+      "name": "Octopus",
+      "icon": "🐙"
+    },
+    {
+      "name": "Shark",
+      "icon": "🦈"
+    },
+    {
+      "name": "Crocodile",
+      "icon": "🐊"
+    },
+    {
+      "name": "Sea Dragon",
+      "icon": "🐉",
+      "accessory": "👑"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "bubble",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "pop",
+        "style": "pop"
+      },
+      {
+        "query": "claw snap",
+        "style": "squeak"
+      },
+      {
+        "query": "splash",
+        "style": "cartoon"
+      },
+      {
+        "query": "gulp",
+        "style": "boing"
+      },
+      {
+        "query": "chomp",
+        "style": "impact"
+      },
+      {
+        "query": "roar",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "orchestral hit",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "bowl",
+    "color": "#ff8a65",
+    "label": "Cocktail Glass of Doom"
+  },
+  "palette": {
+    "bg": "#0b3c5d",
+    "text": "#fff6e5",
+    "accent": "#ff6f59"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "Plot twist: the cocktail eats YOU now",
+  "mood": "bouncy",
+  "caption": "It started as a tiny shrimp minding its business, about to be dunked in cocktail sauce. Then it got a little angry. It leveled up into a crab, a lobster, an octopus, a shark, a crocodile, and finally a crown-wearing sea dragon who runs the whole buffet. Never underestimate the smallest thing on the plate! Which creature would you NOT want to meet in the ocean? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#evolution",
+    "#asmr",
+    "#satisfyingvideo"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-04T23:17:45.331Z"
+  }
+}

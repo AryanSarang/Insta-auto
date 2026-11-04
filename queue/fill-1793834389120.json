@@ -1,0 +1,102 @@
+{
+  "title": "Sand Grain to Time Machine",
+  "hook": "Will the Sand Grain reach its final form?",
+  "tiers": [
+    {
+      "name": "Sand Grain",
+      "icon": "🟡"
+    },
+    {
+      "name": "Hourglass",
+      "icon": "⏳"
+    },
+    {
+      "name": "Alarm Clock",
+      "icon": "⏰"
+    },
+    {
+      "name": "Wristwatch",
+      "icon": "⌚"
+    },
+    {
+      "name": "Smartphone",
+      "icon": "📱"
+    },
+    {
+      "name": "Laptop",
+      "icon": "💻"
+    },
+    {
+      "name": "Time Machine",
+      "icon": "🕰️",
+      "accessory": "⚡"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "tap",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "pop",
+        "style": "pop"
+      },
+      {
+        "query": "tick",
+        "style": "pop"
+      },
+      {
+        "query": "alarm clock",
+        "style": "cartoon"
+      },
+      {
+        "query": "ding",
+        "style": "magic"
+      },
+      {
+        "query": "beep",
+        "style": "cartoon"
+      },
+      {
+        "query": "whoosh",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "fanfare",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "glass",
+    "color": "#5fd3c8",
+    "label": "TIME"
+  },
+  "palette": {
+    "bg": "#1b1f3b",
+    "text": "#fdf6e3",
+    "accent": "#ffb347"
+  },
+  "physics": {
+    "bounciness": 0.72,
+    "gravity": "normal"
+  },
+  "finalText": "Still late. But now with notifications.",
+  "mood": "retro",
+  "caption": "It started as one lonely grain of sand with big dreams. Then it became an hourglass, got loud as an alarm clock, strapped itself to your wrist, learned to doomscroll on a phone, opened 47 tabs on a laptop, and finally invented a time machine... just so it could be five minutes early for once. Spoiler: it still missed the bus. Which stage of this glow-up would you travel back in time to see? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#asmr",
+    "#satisfying",
+    "#technology"
+  ],
+  "seed": 482915,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-04T23:19:49.120Z"
+  }
+}

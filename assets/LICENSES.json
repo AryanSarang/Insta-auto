@@ -3694,5 +3694,85 @@
     "author": "ImAFoley",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-03T23:00:05.769Z"
+  },
+  {
+    "file": "assets/icons/1f990.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-04T23:15:57.503Z"
+  },
+  {
+    "file": "assets/icons/1f980.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-04T23:15:57.601Z"
+  },
+  {
+    "file": "assets/icons/1f99e.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-04T23:15:57.691Z"
+  },
+  {
+    "file": "assets/icons/23f3.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-04T23:18:04.686Z"
+  },
+  {
+    "file": "assets/icons/231a.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-04T23:18:04.870Z"
+  },
+  {
+    "file": "assets/sfx/332671.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Reitanna/sounds/332671/",
+    "author": "Reitanna",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-04T23:18:12.434Z"
+  },
+  {
+    "file": "assets/sfx/182351.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Kesu/sounds/182351/",
+    "author": "Kesu",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-04T23:18:13.240Z"
+  },
+  {
+    "file": "assets/sfx/616295.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/wwstudioswastaken/sounds/616295/",
+    "author": "wwstudioswastaken",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-04T23:18:14.273Z"
+  },
+  {
+    "file": "assets/sfx/154887.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/unfa/sounds/154887/",
+    "author": "unfa",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-04T23:18:15.256Z"
+  },
+  {
+    "file": "assets/sfx/830856.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/MeanRaccoon/sounds/830856/",
+    "author": "MeanRaccoon",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-04T23:18:16.138Z"
   }
 ]
