@@ -3974,5 +3974,69 @@
     "author": "nolhananas",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-06T16:41:03.024Z"
+  },
+  {
+    "file": "assets/icons/1f7e4.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-06T16:59:01.733Z"
+  },
+  {
+    "file": "assets/icons/1f9c0.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-06T16:59:01.845Z"
+  },
+  {
+    "file": "assets/icons/1f344.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-06T16:59:01.946Z"
+  },
+  {
+    "file": "assets/icons/1f578.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-06T16:59:02.074Z"
+  },
+  {
+    "file": "assets/sfx/578794.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/nomiqbomi/sounds/578794/",
+    "author": "nomiqbomi",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-06T16:59:09.128Z"
+  },
+  {
+    "file": "assets/sfx/518799.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Mateusz_Chenc/sounds/518799/",
+    "author": "Mateusz_Chenc",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-06T16:59:12.092Z"
+  },
+  {
+    "file": "assets/sfx/395500.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/plasterbrain/sounds/395500/",
+    "author": "plasterbrain",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-06T16:59:13.964Z"
+  },
+  {
+    "file": "assets/sfx/609909.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/AntumDeluge/sounds/609909/",
+    "author": "AntumDeluge",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-06T16:59:14.887Z"
   }
 ]
