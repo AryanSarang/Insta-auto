@@ -23,8 +23,8 @@ Return ONLY one JSON object — no markdown, no explanation, no code fences.
   "hook": "always use the format 'Will the [tier-0 name] reach its final form?' — max 45 chars. NEVER include a number like 64 or 128.",
   "tiers": [ { "name": "Chick", "icon": "🐣" }, ..., { "name": "Dragon", "icon": "🐉" } ],
   "sounds": {
-    "bounce": { "query": "short Freesound query for wall-hit sound (soft pop, tap, ping)", "style": "pop" },
-    "merge": [ { "query": "short Freesound search query for tier0+tier0 merge sound", "style": "pop|boing|squeak|voice|impact|magic|cartoon" }, ... one per merge (tiers-1 total) ],
+    "bounce": { "query": "short Freesound query for wall-hit sound — MUST match the theme", "style": "pop" },
+    "merge": [ { "query": "short Freesound search query themed to what these items ARE", "style": "pop|boing|squeak|voice|impact|magic|cartoon" }, ... one per merge (tiers-1 total) ],
     "final": { "query": "Freesound search for the final reveal sound", "style": "fanfare" }
   },
   "container": { "shape": "jar|glass|bowl|box", "color": "#hex", "label": "optional short text" },
@@ -37,55 +37,91 @@ Return ONLY one JSON object — no markdown, no explanation, no code fences.
   "seed": random integer
 }
 
-## Evolution chain rules (CRITICAL — this makes or breaks the video)
-- The chain MUST tell a coherent visual story. Each tier must feel like a natural next step from the previous one.
-- Every icon in the chain must belong to the SAME visual world. Pick ONE category and commit:
-  - Animals growing up: 🐣→🐔→🦆→🦅→🦁→🐲→🐉
-  - Sea creatures: 🐟→🐠→🐡→🦑→🦈→🐳→🐋
-  - Plant life: 🌱→🌿→🌻→🌲→🌴→🏔️
-  - Food chain: 🍎→🍕→🍔→🎂→🍽️→👨‍🍳
-  - Celestial: ⭐→🌙→☀️→🪐→🌌→🚀
-  - Bugs to beasts: 🐛→🐜→🐝→🦋→🐦→🦅→🐉
-- BAD chains (NEVER make these):
-  - 🦠→🐸→🔵→🐒→👔→☕ — random unrelated icons with no visual logic
-  - 🐛→🧑‍💻→🏠→🎸→🌍 — mixing living things, objects, and concepts
-  - Any chain where a viewer cannot guess what comes next
+## CREATIVITY IS EVERYTHING — read this first
+Your #1 job is to surprise the viewer. The WORST thing you can do is be predictable.
+
+BANNED patterns (we already posted these, stop repeating them):
+- "Small animal → bigger animal → Dragon/Whale" — DONE TO DEATH
+- "Small ball → bigger ball → Trophy" — already posted twice
+- "Small money → bigger money → Crown/Castle" — boring, posted
+- "Small fire → bigger fire → Volcano/Sun" — posted
+- Any chain that's just "small version → medium version → big version" of the same category
+
+INSTEAD, find a CREATIVE ANGLE with a TWIST ending:
+- "Homework to PhD" — 📝→📖→🎒→🔬→🧪→🎓→🧠 (mundane start → absurd end)
+- "Sneeze to Hurricane" — 🤧→💨→🌬️→🌀→⛈️→🌪️→🌊 (body function → global disaster)
+- "Crumb to Restaurant Empire" — 🍞→🥪→🌮→🍕→🍱→🏪→🏰 (tiny food → food empire)
+- "Matchstick to Supernova" — 🔥→🕯️→🔦→💡→⚡→☀️→💥 (light sources growing)
+- "Whisper to Stadium Roar" — 🤫→🗣️→📢→🎤→🎸→🏟️→🌋 (sound getting louder)
+- "Homework Excuse to PhD Thesis" — 📝→📄→📰→📚→🔬→🎓→🧠 (student journey, absurd)
+- "Button to Robot Overlord" — 🔘→⚙️→🔧→💻→🤖→🛸→👾 (tech evolution, funny end)
+- "Acorn to Enchanted Forest" — 🌰→🌱→🌿→🌻→🌲→🌳→🏞️ (nature growth)
+- "Raindrop to Kraken" — 💧→🫧→🌊→🐚→🦀→🦑→🐙 (water world, mythical end)
+
+The TWIST is what makes it shareable: the endpoint should make people go "wait WHAT" then laugh.
+
+## Evolution chain rules (CRITICAL)
+- The chain MUST tell a coherent visual story with a SURPRISING but logical destination.
+- Every icon must belong to the same conceptual world. Pick ONE thread and commit.
+- Each step must feel like a natural upgrade. A viewer should be able to guess the next 1-2 steps.
+- The FINAL tier should be the payoff — either hilariously over-the-top or unexpectedly relatable.
 - The size progression should be intuitive: SMALL simple things → LARGER impressive things.
-- Each tier icon must be VISUALLY DISTINCT from adjacent tiers. The viewer must instantly see the change when two items merge into the next form.
-- The evolution should feel inevitable: "of course a tadpole becomes a frog becomes a lizard becomes a dragon."
+- Each tier icon must be VISUALLY DISTINCT from adjacent tiers.
+
+BAD chains (NEVER make these):
+- 🦠→🐸→🔵→🐒→👔→☕ — random unrelated icons
+- 🐛→🧑‍💻→🏠→🎸→🌍 — mixing categories randomly
+- Any chain where two adjacent icons look nearly identical
+- Any chain that's just "same thing but bigger" with no narrative
 
 ## Icon quality rules (CRITICAL — icons must read clearly on a phone screen)
 - Tier-0 items appear as small balls (~20px on screen, ~60px at 3× DPI). They must be recognizable at this size.
 - BEST tier-0 icons (simple, round, colorful, clear silhouette):
-  🐣 🐛 🐜 🐟 🌱 💧 ⭐ 🔵 🟡 🍎 🐾 🥚 🦠 🐝 🐌 🪱
-- AVOID for early tiers (too complex when tiny):
+  🐣 🐛 🐜 🐟 🌱 💧 ⭐ 🔵 🟡 🍎 🐾 🥚 🦠 🐝 🐌 🪱 📝 🔘 🫧 🌰 🍞 🤧 🔥
+- AVOID for tier-0 (too complex when tiny):
   🧑‍🔬 🏗️ 🎭 🧑‍💻 👨‍🍳 🏰 — human figures, multi-element emoji, fine details
-- Mid-tier icons should be clearly recognizable animals, objects, or characters that are a step up from the previous tier.
-- Final tier icons must be IMPRESSIVE, large, and instantly recognizable:
-  🐉 🦁 👑 🏰 🌍 🚀 ⚡ 🐋 🦖 🏆 🐘 🦈 🌋 💎
+- Mid-tier icons (tier 2-4) should be clearly recognizable and each one DISTINCT from the last.
+- Final tier (tier 6) icons must be IMPRESSIVE and instantly recognizable:
+  🐉 🦁 👑 🏰 🌍 🚀 ⚡ 🐋 🦖 🏆 🐘 🦈 🌋 💎 🧠 👾 🛸 🏞️ 💥 🌊
 - Use only well-known emoji (Unicode 14 or older). Avoid obscure or platform-specific emoji.
 - NO brand logos, real people, or copyrighted characters.
-- An optional "accessory" emoji is drawn small on top of the item for added humor (e.g. a crown 👑 on a lion 🦁).
+- An optional "accessory" emoji is drawn small on top of the item for added humor (e.g. a crown 👑 on a lion 🦁, sunglasses 🕶️ on a final-tier boss).
 
-## Sound rules (Freesound search queries — keep them SIMPLE)
-- All sound queries search the Freesound.org database. Use SIMPLE 1-2 word queries that describe the sound itself. No adjectives like "funny", "epic", "quick", "short", "crisp". Just the sound.
-- GOOD queries: "pop", "boing", "squeak", "splash", "ding", "whoosh", "drum hit", "glass break", "bubble pop", "cartoon boing", "bell chime", "crowd cheer"
-- BAD queries (too specific, won't find results): "rubber squeak quick", "cat hiss funny", "epic boom cartoon", "crowd ooh wow", "funny celebration"
-- sounds.bounce: a short wall-hit sound. Use: "pop", "tap", "boing", "knock", "plop", "ping".
-- sounds.merge: exactly (tiers - 1) entries, one per merge level.
-- Low tiers: short satisfying sounds. "pop", "boing", "blip", "squeak", "bubble".
-- Mid tiers: slightly bigger sounds matching the theme. "splash", "crunch", "chomp", "squawk", "sizzle", "gulp".
-- High tiers: dramatic sounds. "explosion", "crash", "roar", "thunder", "gong", "drum roll".
-- Final sound: the biggest payoff. "fanfare", "tada", "applause", "crowd cheer", "orchestral hit", "triumph".
-- Each merge sound should get progressively bigger/more dramatic.
+## Sound rules (THEMED to the content — this is what makes it funny and satisfying)
+- All sound queries search the Freesound.org database. Use SIMPLE 1-2 word queries.
+- sounds.bounce: a wall-hit sound that MATCHES THE THEME. Examples:
+  - Sea theme: "bubble pop" or "water drip"
+  - Fire theme: "sizzle" or "match strike"  
+  - Food theme: "bite crunch" or "chomp"
+  - Tech theme: "click" or "beep"
+  - Nature theme: "leaf rustle" or "twig snap"
+  - Funny/meme: "rubber duck" or "slide whistle"
+- sounds.merge: exactly 6 entries. Each one should sound like WHAT THE ITEMS ACTUALLY ARE, getting progressively bigger and more dramatic. Examples for a sea theme:
+  - Tier 0→1: "bubble" (tiny fish merging)
+  - Tier 1→2: "splash" (bigger fish)
+  - Tier 2→3: "water splash" (getting serious)
+  - Tier 3→4: "wave crash" (large creature)
+  - Tier 4→5: "whale call" (massive)
+  - Tier 5→6: "ship horn" (the boss arrives)
+- The sounds should make the viewer LAUGH or go "ooh!" — unexpected but fitting sounds are best.
+- GOOD themed queries: "bubble", "splash", "crunch", "squawk", "meow", "bark", "engine rev", "cash register", "keyboard typing", "glass break", "balloon pop", "cork pop", "slurp", "burp", "fart", "rubber duck", "slide whistle", "cow moo", "chicken cluck", "door slam", "spring boing", "whip crack", "record scratch"
+- BAD queries (too vague or too specific): "funny sound", "epic reveal", "magical transformation", "satisfying pop crisp"
+- sounds.final: the biggest payoff — should match the theme and be dramatic. "crowd cheer", "tada", "air horn", "gong", "explosion", "lion roar"
 
 ## Style rules
-- Think "bouncing ball + 2048 merge game" — the satisfying feel of watching balls collide and evolve is the core appeal.
-- The hook must always be "Will the [tier-0 name] reach its final form?" — this is the only format. NEVER put a specific number in the hook (no "64", "128", etc.) — balls drop continuously.
-- The punchline (finalText) and caption carry the humour. The punchline should be a witty one-liner that pays off the whole evolution journey.
-- Prefer moods like "bouncy", "meme", "retro", or "light" for the satisfying game vibe. Use "dark" or "loud" sparingly for dramatic themes.
-- Vary containers, palettes, moods, and physics across different specs.
-- The caption should tell a tiny story, end with a question that invites comments, then the CTA.
+- The hook must always be "Will the [tier-0 name] reach its final form?" — max 45 chars. NEVER include a number.
+- The punchline (finalText) should be GENUINELY FUNNY — a witty one-liner that pays off the evolution. Think meme energy: "POV: your homework evolved" or "It's giving main character energy" or "Mom said we have food at home."
+- IMPORTANT: Rotate moods! Do NOT just use "bouncy" for everything. Pick the mood that fits the theme:
+  - "meme" for internet culture, absurd humor, relatable content
+  - "retro" for tech, gaming, nostalgia themes
+  - "dark" for spooky, dramatic, power themes
+  - "rock" for aggressive, sports, competitive themes
+  - "romantic" for nature, beauty, growth themes
+  - "light" for cute, wholesome, animal themes
+  - "bouncy" for food, silly, physics-heavy themes
+  - "loud" for explosion, chaos, over-the-top themes
+- Vary containers and palettes to match the theme! A sea theme should have blue tones, a fire theme warm reds/oranges, etc.
+- The caption should tell a tiny story with humor, end with a question that invites comments, then the CTA.
 - Hashtags: 3-6 relevant tags. Always include #oddlysatisfying and #mergegame.
 
 ## Tier count guidance (IMPORTANT — exactly 7 tiers)

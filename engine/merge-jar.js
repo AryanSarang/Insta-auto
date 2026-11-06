@@ -478,16 +478,18 @@
     return;
   }
 
-  /* ── Slow-mo + extended hold — fit within maxDur ── */
-  var slomoStart = Math.max(0, Math.floor((doneT - 1.2) * FPS));
+  /* ── Slow-mo + extended hold — satisfying final transformation ── */
+  var slomoWindow = 2.0;
+  var slomoStart = Math.max(0, Math.floor((doneT - slomoWindow) * FPS));
   var doneFrame = Math.min(Math.floor(doneT * FPS), frames.length - 1);
   var mapped = [];
   for (var i = 0; i < Math.min(slomoStart, frames.length); i++) mapped.push(i);
   var normalDur = mapped.length / FPS;
   var slomoFrameCount = doneFrame - slomoStart + 1;
-  var slomoMult = 5;
-  if (normalDur + slomoFrameCount * slomoMult / FPS + 2 > maxDur) {
-    slomoMult = Math.max(2, Math.floor((maxDur - normalDur - 3) * FPS / slomoFrameCount));
+  var slomoMult = 6;
+  var minHold = 3.0;
+  if (normalDur + slomoFrameCount * slomoMult / FPS + minHold > maxDur) {
+    slomoMult = Math.max(3, Math.floor((maxDur - normalDur - minHold - 0.5) * FPS / slomoFrameCount));
   }
   for (var i = slomoStart; i <= doneFrame; i++) {
     for (var rep = 0; rep < slomoMult; rep++) mapped.push(i);
@@ -495,9 +497,9 @@
   var holdIdx = Math.min(doneFrame + 1, frames.length - 1);
   var minDur = SPEC.minSeconds || 30;
   var currentDur = mapped.length / FPS;
-  var holdSec = Math.min(5.0, Math.max(2.0, maxDur - currentDur - 0.5));
+  var holdSec = Math.min(5.0, Math.max(minHold, maxDur - currentDur - 0.5));
   if (currentDur >= maxDur) holdSec = 0;
-  else if (holdSec < 0.5) holdSec = 0;
+  else if (holdSec < 1.0) holdSec = 1.0;
   for (var h = 0; h < Math.round(holdSec * FPS); h++) mapped.push(holdIdx);
 
   /* Pad to minDur if needed */
