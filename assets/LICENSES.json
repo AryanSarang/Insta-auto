@@ -3926,5 +3926,53 @@
     "author": "AudioPapkin",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-06T02:43:40.178Z"
+  },
+  {
+    "file": "assets/icons/1f33c.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-06T16:40:51.084Z"
+  },
+  {
+    "file": "assets/icons/1f36f.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-06T16:40:51.229Z"
+  },
+  {
+    "file": "assets/sfx/398486.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Wakerone/sounds/398486/",
+    "author": "Wakerone",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-06T16:40:59.439Z"
+  },
+  {
+    "file": "assets/sfx/445983.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Breviceps/sounds/445983/",
+    "author": "Breviceps",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-06T16:41:00.769Z"
+  },
+  {
+    "file": "assets/sfx/397355.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/plasterbrain/sounds/397355/",
+    "author": "plasterbrain",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-06T16:41:01.682Z"
+  },
+  {
+    "file": "assets/sfx/476340.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/nolhananas/sounds/476340/",
+    "author": "nolhananas",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-06T16:41:03.024Z"
   }
 ]
