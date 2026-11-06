@@ -1,0 +1,101 @@
+{
+  "title": "Yeast to Dough Volcano",
+  "hook": "Will the Yeast reach its final form?",
+  "tiers": [
+    {
+      "name": "Yeast",
+      "icon": "🦠"
+    },
+    {
+      "name": "Fizzy Bubbles",
+      "icon": "🫧"
+    },
+    {
+      "name": "Starter Jar",
+      "icon": "🥣"
+    },
+    {
+      "name": "Loaf",
+      "icon": "🍞"
+    },
+    {
+      "name": "Croissant",
+      "icon": "🥐"
+    },
+    {
+      "name": "Party Cake",
+      "icon": "🎂"
+    },
+    {
+      "name": "Dough Volcano",
+      "icon": "🌋"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "dough squish",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "bubble pop",
+        "style": "pop"
+      },
+      {
+        "query": "fizz",
+        "style": "magic"
+      },
+      {
+        "query": "dough slap",
+        "style": "impact"
+      },
+      {
+        "query": "oven ding",
+        "style": "cartoon"
+      },
+      {
+        "query": "crunch",
+        "style": "squeak"
+      },
+      {
+        "query": "cork pop",
+        "style": "boing"
+      }
+    ],
+    "final": {
+      "query": "volcano eruption",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "bowl",
+    "color": "#F5DEB3",
+    "label": "PROOFING"
+  },
+  "palette": {
+    "bg": "#3B2314",
+    "text": "#FFF3D6",
+    "accent": "#FF8C42"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "It was just rising to the occasion.",
+  "mood": "bouncy",
+  "caption": "Plot twist: yeast is ALIVE, and it has been plotting this whole time. One tiny fizzy microbe turns into bubbles, a starter, a loaf, a flaky croissant, a party cake and then... a full-on dough volcano. Nobody told the baker it would rise THIS much. Watch every merge go pop, fizz and ding. What would you put inside the dough volcano? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#asmr",
+    "#satisfying",
+    "#baking"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-06T22:48:27.688Z"
+  }
+}

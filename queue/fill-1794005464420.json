@@ -1,0 +1,101 @@
+{
+  "title": "Bead to Galaxy Brain",
+  "hook": "Will the Bead reach its final form?",
+  "tiers": [
+    {
+      "name": "Bead",
+      "icon": "🟡"
+    },
+    {
+      "name": "Abacus",
+      "icon": "🧮"
+    },
+    {
+      "name": "Fax Machine",
+      "icon": "📠"
+    },
+    {
+      "name": "Laptop",
+      "icon": "💻"
+    },
+    {
+      "name": "Smartphone",
+      "icon": "📱"
+    },
+    {
+      "name": "Robot",
+      "icon": "🤖"
+    },
+    {
+      "name": "Galaxy Brain",
+      "icon": "🧠"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "click",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "wooden bead",
+        "style": "pop"
+      },
+      {
+        "query": "fax machine",
+        "style": "cartoon"
+      },
+      {
+        "query": "keyboard typing",
+        "style": "impact"
+      },
+      {
+        "query": "phone notification",
+        "style": "pop"
+      },
+      {
+        "query": "robot beep",
+        "style": "boing"
+      },
+      {
+        "query": "dial up modem",
+        "style": "magic"
+      }
+    ],
+    "final": {
+      "query": "tada",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "box",
+    "color": "#2b3a67",
+    "label": "LOADING..."
+  },
+  "palette": {
+    "bg": "#0f1226",
+    "text": "#f5f7ff",
+    "accent": "#39ff9c"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "Big brain time. Still can't find the TV remote.",
+  "mood": "retro",
+  "caption": "It started as one tiny bead just trying to count to ten. Then it got a fax machine, a laptop, a phone with 47 unread notifications, and a robot best friend. Now it's a galaxy brain that knows everything except where it put its charger. Technology really said 'upgrade' and never stopped. Which tech tier would you never give up: the laptop, the phone, or the robot? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#asmr",
+    "#technology",
+    "#satisfyingvideos"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-06T22:51:04.420Z"
+  }
+}
