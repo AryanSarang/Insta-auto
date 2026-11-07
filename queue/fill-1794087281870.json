@@ -1,0 +1,102 @@
+{
+  "title": "Abacus to Glitch Overlord",
+  "hook": "Will the Abacus reach its final form?",
+  "tiers": [
+    {
+      "name": "Abacus",
+      "icon": "🧮"
+    },
+    {
+      "name": "Pager",
+      "icon": "📟"
+    },
+    {
+      "name": "Game Console",
+      "icon": "🎮"
+    },
+    {
+      "name": "Laptop",
+      "icon": "💻"
+    },
+    {
+      "name": "Smartphone",
+      "icon": "📱"
+    },
+    {
+      "name": "Robot",
+      "icon": "🤖"
+    },
+    {
+      "name": "Glitch Overlord",
+      "icon": "👾"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "click",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "wooden click",
+        "style": "pop"
+      },
+      {
+        "query": "beep",
+        "style": "squeak"
+      },
+      {
+        "query": "coin",
+        "style": "cartoon"
+      },
+      {
+        "query": "keyboard typing",
+        "style": "impact"
+      },
+      {
+        "query": "notification",
+        "style": "magic"
+      },
+      {
+        "query": "robot voice",
+        "style": "voice"
+      }
+    ],
+    "final": {
+      "query": "glitch",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "box",
+    "color": "#39ff88",
+    "label": "LOADING..."
+  },
+  "palette": {
+    "bg": "#0b1026",
+    "text": "#e8fff3",
+    "accent": "#39ff88"
+  },
+  "physics": {
+    "bounciness": 0.7,
+    "gravity": "normal"
+  },
+  "finalText": "Updating... please do not touch grass.",
+  "mood": "retro",
+  "caption": "We started with beads on sticks and somehow ended up with a pixelated overlord that wants us to accept its cookies. Every merge is a software update nobody asked for, but the clicks, beeps and pings are way too satisfying to skip. Watch the tech tree level up from counting frames to a full-on glitch boss. Which upgrade would you never give up? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#asmr",
+    "#technology",
+    "#retro",
+    "#satisfying"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 5,
+    "enqueuedAt": "2026-11-07T21:34:41.870Z"
+  }
+}

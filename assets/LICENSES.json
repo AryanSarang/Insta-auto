@@ -4230,5 +4230,117 @@
     "author": "grvmusic",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-07T11:13:52.713Z"
+  },
+  {
+    "file": "assets/icons/1f476.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-07T21:29:42.322Z"
+  },
+  {
+    "file": "assets/icons/1f9d2.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-07T21:29:42.487Z"
+  },
+  {
+    "file": "assets/icons/1f474.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-07T21:29:42.568Z"
+  },
+  {
+    "file": "assets/icons/1f9d9.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-07T21:29:42.690Z"
+  },
+  {
+    "file": "assets/sfx/846605.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/CAT-FOX_ALEX/sounds/846605/",
+    "author": "CAT-FOX_ALEX",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T21:29:49.369Z"
+  },
+  {
+    "file": "assets/sfx/416702.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/FunWithSound/sounds/416702/",
+    "author": "FunWithSound",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T21:29:50.100Z"
+  },
+  {
+    "file": "assets/sfx/416696.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/FunWithSound/sounds/416696/",
+    "author": "FunWithSound",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T21:29:50.837Z"
+  },
+  {
+    "file": "assets/sfx/672965.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/WalliumVA/sounds/672965/",
+    "author": "WalliumVA",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T21:29:51.390Z"
+  },
+  {
+    "file": "assets/sfx/446573.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Nicolas4677/sounds/446573/",
+    "author": "Nicolas4677",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T21:29:51.969Z"
+  },
+  {
+    "file": "assets/sfx/252240.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Reitanna/sounds/252240/",
+    "author": "Reitanna",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T21:29:52.694Z"
+  },
+  {
+    "file": "assets/sfx/846659.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/trapgodboris/sounds/846659/",
+    "author": "trapgodboris",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T21:29:53.915Z"
+  },
+  {
+    "file": "assets/sfx/789800.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/MonkeyKongCounty/sounds/789800/",
+    "author": "MonkeyKongCounty",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T21:29:54.956Z"
+  },
+  {
+    "file": "assets/sfx/677298.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/allaskas/sounds/677298/",
+    "author": "allaskas",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T21:32:24.490Z"
+  },
+  {
+    "file": "assets/sfx/847651.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/CVLTIV8R/sounds/847651/",
+    "author": "CVLTIV8R",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T21:32:29.340Z"
   }
 ]

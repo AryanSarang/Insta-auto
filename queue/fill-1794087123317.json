@@ -1,0 +1,101 @@
+{
+  "title": "Toddler to Grandma Boss",
+  "hook": "Will the Baby reach its final form?",
+  "tiers": [
+    {
+      "name": "Baby",
+      "icon": "👶"
+    },
+    {
+      "name": "Crawler",
+      "icon": "🐛"
+    },
+    {
+      "name": "Kid",
+      "icon": "🧒"
+    },
+    {
+      "name": "Teen",
+      "icon": "🧑"
+    },
+    {
+      "name": "Adult",
+      "icon": "🧔"
+    },
+    {
+      "name": "Grandpa",
+      "icon": "👴"
+    },
+    {
+      "name": "Ancient Wizard",
+      "icon": "🧙"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "rubber duck",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "baby giggle",
+        "style": "voice"
+      },
+      {
+        "query": "kid yay",
+        "style": "voice"
+      },
+      {
+        "query": "slide whistle",
+        "style": "cartoon"
+      },
+      {
+        "query": "alarm clock",
+        "style": "impact"
+      },
+      {
+        "query": "cough",
+        "style": "squeak"
+      },
+      {
+        "query": "magic spell",
+        "style": "magic"
+      }
+    ],
+    "final": {
+      "query": "wizard magic fanfare",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "bowl",
+    "color": "#f4b6c2",
+    "label": "LIFE"
+  },
+  "palette": {
+    "bg": "#2b1b3d",
+    "text": "#fff4e0",
+    "accent": "#ffb347"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "Plot twist: you become the Wi-Fi wizard",
+  "mood": "meme",
+  "caption": "It starts with a tiny baby bouncing around. Then it's crawling, then it's a kid, then a teen who won't leave the room, then an adult who is already tired. Somehow it all ends with a wizard who explains the Wi-Fi to the whole family. Life is wild when you merge it on fast forward. Which stage of life would you skip if you could? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#evolution",
+    "#asmr",
+    "#lifecycle"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-07T21:32:03.317Z"
+  }
+}
