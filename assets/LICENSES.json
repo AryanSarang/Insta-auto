@@ -4158,5 +4158,77 @@
     "author": "metrostock99",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-07T02:10:56.003Z"
+  },
+  {
+    "file": "assets/icons/1f924.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-07T11:13:40.056Z"
+  },
+  {
+    "file": "assets/icons/1f371.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-07T11:13:40.348Z"
+  },
+  {
+    "file": "assets/icons/1f634.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-07T11:13:40.492Z"
+  },
+  {
+    "file": "assets/sfx/786693.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Sadiquecat/sounds/786693/",
+    "author": "Sadiquecat",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T11:13:47.874Z"
+  },
+  {
+    "file": "assets/sfx/33912.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Necrosensual/sounds/33912/",
+    "author": "Necrosensual",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T11:13:48.538Z"
+  },
+  {
+    "file": "assets/sfx/617417.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/xavierrrangel/sounds/617417/",
+    "author": "xavierrrangel",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T11:13:49.903Z"
+  },
+  {
+    "file": "assets/sfx/389463.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/lzmraul/sounds/389463/",
+    "author": "lzmraul",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T11:13:50.778Z"
+  },
+  {
+    "file": "assets/sfx/420250.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/RedRoxPeterPepper/sounds/420250/",
+    "author": "RedRoxPeterPepper",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T11:13:51.486Z"
+  },
+  {
+    "file": "assets/sfx/717952.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/grvmusic/sounds/717952/",
+    "author": "grvmusic",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T11:13:52.713Z"
   }
 ]
