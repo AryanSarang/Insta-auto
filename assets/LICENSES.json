@@ -4134,5 +4134,29 @@
     "author": "rubberduck9999",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-06T22:48:50.590Z"
+  },
+  {
+    "file": "assets/sfx/628247.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/asiekierka/sounds/628247/",
+    "author": "asiekierka",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T02:10:51.770Z"
+  },
+  {
+    "file": "assets/sfx/625861.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/nfrae/sounds/625861/",
+    "author": "nfrae",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T02:10:52.452Z"
+  },
+  {
+    "file": "assets/sfx/345072.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/metrostock99/sounds/345072/",
+    "author": "metrostock99",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-07T02:10:56.003Z"
   }
 ]
