@@ -4430,5 +4430,69 @@
     "author": "zevcuk",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-08T01:42:31.118Z"
+  },
+  {
+    "file": "assets/icons/1f32b.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-08T11:25:26.086Z"
+  },
+  {
+    "file": "assets/icons/1f308.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-08T11:25:26.386Z"
+  },
+  {
+    "file": "assets/sfx/863461.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Robo9418/sounds/863461/",
+    "author": "Robo9418",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-08T11:25:34.094Z"
+  },
+  {
+    "file": "assets/sfx/742903.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Sadiquecat/sounds/742903/",
+    "author": "Sadiquecat",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-08T11:25:35.777Z"
+  },
+  {
+    "file": "assets/sfx/710735.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Justjooning/sounds/710735/",
+    "author": "Justjooning",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-08T11:25:36.937Z"
+  },
+  {
+    "file": "assets/sfx/545748.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Logicogonist/sounds/545748/",
+    "author": "Logicogonist",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-08T11:25:37.588Z"
+  },
+  {
+    "file": "assets/sfx/853424.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/floomatic/sounds/853424/",
+    "author": "floomatic",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-08T11:25:38.768Z"
+  },
+  {
+    "file": "assets/sfx/804681.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/johnjohnfm/sounds/804681/",
+    "author": "johnjohnfm",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-08T11:25:40.222Z"
   }
 ]
