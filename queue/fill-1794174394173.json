@@ -1,0 +1,103 @@
+{
+  "title": "Fly to Food Chain Boss",
+  "hook": "Will the Fly reach its final form?",
+  "tiers": [
+    {
+      "name": "Fly",
+      "icon": "🪰"
+    },
+    {
+      "name": "Spider",
+      "icon": "🕷️"
+    },
+    {
+      "name": "Frog",
+      "icon": "🐸"
+    },
+    {
+      "name": "Snake",
+      "icon": "🐍"
+    },
+    {
+      "name": "Eagle",
+      "icon": "🦅"
+    },
+    {
+      "name": "Bear",
+      "icon": "🐻"
+    },
+    {
+      "name": "T-Rex",
+      "icon": "🦖",
+      "accessory": "🕶️"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "fly buzz",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "bug squish",
+        "style": "squeak"
+      },
+      {
+        "query": "gulp",
+        "style": "cartoon"
+      },
+      {
+        "query": "frog ribbit",
+        "style": "boing"
+      },
+      {
+        "query": "snake hiss",
+        "style": "impact"
+      },
+      {
+        "query": "eagle screech",
+        "style": "impact"
+      },
+      {
+        "query": "bear growl",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "dinosaur roar",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "jar",
+    "color": "#6b8e23",
+    "label": "FOOD CHAIN"
+  },
+  "palette": {
+    "bg": "#1f2a17",
+    "text": "#f4f1de",
+    "accent": "#9ccc3c"
+  },
+  "physics": {
+    "bounciness": 0.7,
+    "gravity": "normal"
+  },
+  "finalText": "Top of the food chain. Still can't cook.",
+  "mood": "meme",
+  "caption": "It started as one annoying fly buzzing around your kitchen. Then a spider ate it. Then a frog ate the spider. Then everybody kept eating each other until a T-Rex in sunglasses showed up like he owned the place. Nature is wild, and this jar is basically a buffet with a plot twist. Which link in the food chain would you NOT want to meet in a dark alley? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#foodchain",
+    "#asmr",
+    "#satisfyingvideos",
+    "#evolution"
+  ],
+  "seed": 482916,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-08T21:46:34.173Z"
+  }
+}

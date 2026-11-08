@@ -1,0 +1,102 @@
+{
+  "title": "Charger Cable to Tangled Cable Apocalypse",
+  "hook": "Will the Spark reach its final form?",
+  "tiers": [
+    {
+      "name": "Spark",
+      "icon": "⭐"
+    },
+    {
+      "name": "Plug",
+      "icon": "🔌"
+    },
+    {
+      "name": "Battery",
+      "icon": "🔋"
+    },
+    {
+      "name": "Phone",
+      "icon": "📱"
+    },
+    {
+      "name": "Laptop",
+      "icon": "💻"
+    },
+    {
+      "name": "Satellite",
+      "icon": "📡"
+    },
+    {
+      "name": "Glitch Alien",
+      "icon": "👾"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "click",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "static zap",
+        "style": "pop"
+      },
+      {
+        "query": "plug in",
+        "style": "squeak"
+      },
+      {
+        "query": "phone notification",
+        "style": "cartoon"
+      },
+      {
+        "query": "keyboard typing",
+        "style": "impact"
+      },
+      {
+        "query": "modem dial",
+        "style": "magic"
+      },
+      {
+        "query": "robot voice",
+        "style": "voice"
+      }
+    ],
+    "final": {
+      "query": "error alarm",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "glass",
+    "color": "#7DF9FF",
+    "label": "1% BATTERY"
+  },
+  "palette": {
+    "bg": "#0B0F2A",
+    "text": "#E8F1FF",
+    "accent": "#39FF14"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "Update available. Humanity declined 47 times.",
+  "mood": "retro",
+  "caption": "It started as one tiny spark of electricity. Then it found a plug, got a battery, learned to doomscroll on a phone, took over a laptop, launched itself into orbit and somehow ended up as a glitchy space alien asking you to accept cookies. Honestly, that's just a Tuesday for your tech. Which device in this chain would you hate to lose the most? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#technology",
+    "#asmr",
+    "#satisfyingvideos",
+    "#evolution"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-08T21:48:30.854Z"
+  }
+}
