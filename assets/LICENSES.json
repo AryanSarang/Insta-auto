@@ -4630,5 +4630,61 @@
     "author": "waveplaySFX",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-09T01:51:09.089Z"
+  },
+  {
+    "file": "assets/icons/1f4e3.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-09T13:09:29.817Z"
+  },
+  {
+    "file": "assets/icons/1f45f.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-09T13:09:30.002Z"
+  },
+  {
+    "file": "assets/icons/1f4a5.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-09T13:09:30.093Z"
+  },
+  {
+    "file": "assets/sfx/137106.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/chaosportal/sounds/137106/",
+    "author": "chaosportal",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-09T13:09:35.718Z"
+  },
+  {
+    "file": "assets/sfx/548549.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/LudwigMueller/sounds/548549/",
+    "author": "LudwigMueller",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-09T13:09:36.870Z"
+  },
+  {
+    "file": "assets/sfx/742905.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Sadiquecat/sounds/742905/",
+    "author": "Sadiquecat",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-09T13:09:37.946Z"
+  },
+  {
+    "file": "assets/sfx/447463.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/florianreichelt/sounds/447463/",
+    "author": "florianreichelt",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-09T13:09:40.136Z"
   }
 ]
