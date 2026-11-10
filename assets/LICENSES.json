@@ -4686,5 +4686,69 @@
     "author": "florianreichelt",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-09T13:09:40.136Z"
+  },
+  {
+    "file": "assets/icons/1f6b6.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-10T01:14:13.254Z"
+  },
+  {
+    "file": "assets/sfx/843477.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/TheKingOfGeeks360/sounds/843477/",
+    "author": "TheKingOfGeeks360",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-10T01:14:21.735Z"
+  },
+  {
+    "file": "assets/sfx/640803.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/DSISStudios/sounds/640803/",
+    "author": "DSISStudios",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-10T01:14:23.720Z"
+  },
+  {
+    "file": "assets/icons/1f96b.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-10T01:16:42.922Z"
+  },
+  {
+    "file": "assets/icons/1f47d.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-10T01:16:43.265Z"
+  },
+  {
+    "file": "assets/sfx/69919.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Ayliffe/sounds/69919/",
+    "author": "Ayliffe",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-10T01:16:50.278Z"
+  },
+  {
+    "file": "assets/sfx/448743.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/LilMati/sounds/448743/",
+    "author": "LilMati",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-10T01:16:53.371Z"
+  },
+  {
+    "file": "assets/sfx/592634.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/eben-frostey/sounds/592634/",
+    "author": "eben-frostey",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-10T01:16:54.521Z"
   }
 ]

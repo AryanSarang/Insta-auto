@@ -1,0 +1,102 @@
+{
+  "title": "Fish to Couch Potato",
+  "hook": "Will the Fish reach its final form?",
+  "tiers": [
+    {
+      "name": "Fish",
+      "icon": "🐟"
+    },
+    {
+      "name": "Frog",
+      "icon": "🐸"
+    },
+    {
+      "name": "Lizard",
+      "icon": "🦎"
+    },
+    {
+      "name": "Monkey",
+      "icon": "🐒"
+    },
+    {
+      "name": "Caveman",
+      "icon": "🧔"
+    },
+    {
+      "name": "Commuter",
+      "icon": "🚶"
+    },
+    {
+      "name": "Couch Potato",
+      "icon": "🛋️",
+      "accessory": "📱"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "bubble pop",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "splash",
+        "style": "pop"
+      },
+      {
+        "query": "frog ribbit",
+        "style": "cartoon"
+      },
+      {
+        "query": "lizard hiss",
+        "style": "squeak"
+      },
+      {
+        "query": "monkey chatter",
+        "style": "voice"
+      },
+      {
+        "query": "caveman grunt",
+        "style": "voice"
+      },
+      {
+        "query": "alarm clock",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "sigh relief",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "bowl",
+    "color": "#4fa3a5",
+    "label": "Evolution"
+  },
+  "palette": {
+    "bg": "#14313a",
+    "text": "#f4f1de",
+    "accent": "#f2a65a"
+  },
+  "physics": {
+    "bounciness": 0.7,
+    "gravity": "normal"
+  },
+  "finalText": "4 billion years of evolution for this.",
+  "mood": "meme",
+  "caption": "It took 4 billion years: gills, legs, fur, fire, taxes... and the grand finale is lying on a couch scrolling. Honestly, evolution peaked. Which stage of this chain are you in right now? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#evolution",
+    "#asmr",
+    "#satisfying"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 5,
+    "enqueuedAt": "2026-11-10T01:16:28.966Z"
+  }
+}

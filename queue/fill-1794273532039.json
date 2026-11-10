@@ -1,0 +1,102 @@
+{
+  "title": "Tin Can to Alien Left-on-Read",
+  "hook": "Will the Tin Can reach its final form?",
+  "tiers": [
+    {
+      "name": "Tin Can",
+      "icon": "🥫"
+    },
+    {
+      "name": "Landline",
+      "icon": "☎️"
+    },
+    {
+      "name": "Fax Machine",
+      "icon": "📠"
+    },
+    {
+      "name": "Smartphone",
+      "icon": "📱"
+    },
+    {
+      "name": "Satellite Dish",
+      "icon": "📡"
+    },
+    {
+      "name": "Satellite",
+      "icon": "🛰️"
+    },
+    {
+      "name": "Aliens",
+      "icon": "👽"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "tin can",
+      "style": "impact"
+    },
+    "merge": [
+      {
+        "query": "phone ring",
+        "style": "cartoon"
+      },
+      {
+        "query": "fax machine",
+        "style": "squeak"
+      },
+      {
+        "query": "notification",
+        "style": "pop"
+      },
+      {
+        "query": "radio static",
+        "style": "magic"
+      },
+      {
+        "query": "sonar ping",
+        "style": "boing"
+      },
+      {
+        "query": "alien",
+        "style": "voice"
+      }
+    ],
+    "final": {
+      "query": "ufo",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "jar",
+    "color": "#7CFFB2",
+    "label": "Can you hear me?"
+  },
+  "palette": {
+    "bg": "#0B1D2A",
+    "text": "#E8FFF3",
+    "accent": "#39FF88"
+  },
+  "physics": {
+    "bounciness": 0.7,
+    "gravity": "normal"
+  },
+  "finalText": "Aliens saw our call and left us on read 👀",
+  "mood": "retro",
+  "caption": "We started with two cans and a string. Then came landlines, fax machines, phones, and satellites beaming messages across the sky. And the final boss? Aliens who saw our message and just... left us on read. Rude. Every merge here is a tiny upgrade in how we say hello to the universe. Who would you text first if the aliens finally replied? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#satisfying",
+    "#asmr",
+    "#technology",
+    "#aliens"
+  ],
+  "seed": 482913,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-10T01:18:52.039Z"
+  }
+}
