@@ -4750,5 +4750,69 @@
     "author": "eben-frostey",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-10T01:16:54.521Z"
+  },
+  {
+    "file": "assets/icons/1f40e.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-10T04:15:05.290Z"
+  },
+  {
+    "file": "assets/icons/26ea.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-10T04:15:05.423Z"
+  },
+  {
+    "file": "assets/icons/1f478.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-10T04:15:05.557Z"
+  },
+  {
+    "file": "assets/sfx/546119.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/el_boss/sounds/546119/",
+    "author": "el_boss",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-10T04:15:14.039Z"
+  },
+  {
+    "file": "assets/sfx/171755.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/2887679652/sounds/171755/",
+    "author": "2887679652",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-10T04:15:15.536Z"
+  },
+  {
+    "file": "assets/sfx/466272.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/proolsen/sounds/466272/",
+    "author": "proolsen",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-10T04:15:16.207Z"
+  },
+  {
+    "file": "assets/sfx/353924.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/dr_skitz/sounds/353924/",
+    "author": "dr_skitz",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-10T04:15:17.861Z"
+  },
+  {
+    "file": "assets/sfx/454716.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/G_M_D_THREE/sounds/454716/",
+    "author": "G_M_D_THREE",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-10T04:15:19.116Z"
   }
 ]
