@@ -4814,5 +4814,45 @@
     "author": "G_M_D_THREE",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-10T04:15:19.116Z"
+  },
+  {
+    "file": "assets/icons/1f9fa.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-10T12:50:25.622Z"
+  },
+  {
+    "file": "assets/sfx/494797.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/brandondelehoy/sounds/494797/",
+    "author": "brandondelehoy",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-10T12:50:32.529Z"
+  },
+  {
+    "file": "assets/sfx/447910.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Breviceps/sounds/447910/",
+    "author": "Breviceps",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-10T12:50:33.076Z"
+  },
+  {
+    "file": "assets/sfx/710116.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/pfranzen/sounds/710116/",
+    "author": "pfranzen",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-10T12:50:34.884Z"
+  },
+  {
+    "file": "assets/sfx/683100.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/florianreichelt/sounds/683100/",
+    "author": "florianreichelt",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-10T12:50:35.468Z"
   }
 ]
