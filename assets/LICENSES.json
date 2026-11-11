@@ -4854,5 +4854,37 @@
     "author": "florianreichelt",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-10T12:50:35.468Z"
+  },
+  {
+    "file": "assets/sfx/137086.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/chaosportal/sounds/137086/",
+    "author": "chaosportal",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-11T02:04:34.848Z"
+  },
+  {
+    "file": "assets/sfx/188032.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/AntumDeluge/sounds/188032/",
+    "author": "AntumDeluge",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-11T02:04:35.811Z"
+  },
+  {
+    "file": "assets/sfx/423990.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/AmishRob/sounds/423990/",
+    "author": "AmishRob",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-11T02:04:36.792Z"
+  },
+  {
+    "file": "assets/sfx/133277.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Leszek_Szary/sounds/133277/",
+    "author": "Leszek_Szary",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-11T02:04:38.088Z"
   }
 ]
