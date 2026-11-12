@@ -1,0 +1,102 @@
+{
+  "title": "Egg to Hangry Rooster Landlord",
+  "hook": "Will the Egg reach its final form?",
+  "tiers": [
+    {
+      "name": "Egg",
+      "icon": "🥚"
+    },
+    {
+      "name": "Cracked Hatchling",
+      "icon": "🐣"
+    },
+    {
+      "name": "Fluffy Chick",
+      "icon": "🐥"
+    },
+    {
+      "name": "Awkward Teen Bird",
+      "icon": "🐤"
+    },
+    {
+      "name": "Farm Hen",
+      "icon": "🐔"
+    },
+    {
+      "name": "Fried Chicken Drumstick",
+      "icon": "🍗"
+    },
+    {
+      "name": "Dino Ancestor Returns",
+      "icon": "🦖"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "chicken cluck",
+      "style": "squeak"
+    },
+    "merge": [
+      {
+        "query": "egg crack",
+        "style": "pop"
+      },
+      {
+        "query": "chick peep",
+        "style": "squeak"
+      },
+      {
+        "query": "duck quack",
+        "style": "cartoon"
+      },
+      {
+        "query": "chicken squawk",
+        "style": "boing"
+      },
+      {
+        "query": "frying sizzle",
+        "style": "impact"
+      },
+      {
+        "query": "dinosaur roar",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "t rex roar",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "bowl",
+    "color": "#F4C27A",
+    "label": "Chicken or egg?"
+  },
+  "palette": {
+    "bg": "#FFF1D0",
+    "text": "#5A2D0C",
+    "accent": "#E8542B"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "Plot twist: chickens were dinosaurs all along",
+  "mood": "meme",
+  "caption": "We hatched an egg and it grew up, got a job at the farm, got fried, and then came back as a T. rex for revenge. Science says birds really are living dinosaurs, so honestly this checks out. Which came first: the egg, the chicken, or the dinosaur? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#evolution",
+    "#asmr",
+    "#dinosaur",
+    "#satisfyingvideo"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-12T23:17:55.832Z"
+  }
+}

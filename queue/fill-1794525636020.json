@@ -1,0 +1,102 @@
+{
+  "title": "Ping to Inbox Apocalypse",
+  "hook": "Will the Ping reach its final form?",
+  "tiers": [
+    {
+      "name": "Ping",
+      "icon": "🔔"
+    },
+    {
+      "name": "Text",
+      "icon": "💬"
+    },
+    {
+      "name": "Email",
+      "icon": "📧"
+    },
+    {
+      "name": "Phone",
+      "icon": "📱"
+    },
+    {
+      "name": "Laptop",
+      "icon": "💻"
+    },
+    {
+      "name": "Satellite",
+      "icon": "🛰️"
+    },
+    {
+      "name": "Server Meltdown",
+      "icon": "💥",
+      "accessory": "🕶️"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "notification",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "text message",
+        "style": "pop"
+      },
+      {
+        "query": "email whoosh",
+        "style": "cartoon"
+      },
+      {
+        "query": "ringtone",
+        "style": "boing"
+      },
+      {
+        "query": "keyboard typing",
+        "style": "impact"
+      },
+      {
+        "query": "radar beep",
+        "style": "magic"
+      },
+      {
+        "query": "error buzzer",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "explosion",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "box",
+    "color": "#2b2f4a",
+    "label": "Unread: 99,999+"
+  },
+  "palette": {
+    "bg": "#0f1226",
+    "text": "#f2f5ff",
+    "accent": "#00e5ff"
+  },
+  "physics": {
+    "bounciness": 0.7,
+    "gravity": "normal"
+  },
+  "finalText": "Reply-all was a mistake. The server is gone.",
+  "mood": "meme",
+  "caption": "It started with one innocent little ping. Then a text. Then an email with 'per my last message' in it. Then someone hit reply-all and now an entire satellite is stressed out and the server has left the chat in a ball of fire. 🔔➡️💥 Technology really said 'we should circle back.' What's the most cursed notification you've ever gotten? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#asmr",
+    "#satisfyingvideos",
+    "#technology"
+  ],
+  "seed": 482915,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-12T23:20:36.020Z"
+  }
+}
