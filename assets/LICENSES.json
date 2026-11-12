@@ -4990,5 +4990,21 @@
     "author": "RadioCounseling",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-12T03:15:03.986Z"
+  },
+  {
+    "file": "assets/icons/1f956.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-12T13:00:46.177Z"
+  },
+  {
+    "file": "assets/sfx/816237.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/qubodup/sounds/816237/",
+    "author": "qubodup",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-12T13:00:53.818Z"
   }
 ]
