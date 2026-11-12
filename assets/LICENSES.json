@@ -4958,5 +4958,37 @@
     "author": "TILIADESIGN",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-12T00:09:48.316Z"
+  },
+  {
+    "file": "assets/sfx/150479.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/davdud101/sounds/150479/",
+    "author": "davdud101",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-12T03:15:00.235Z"
+  },
+  {
+    "file": "assets/sfx/133449.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/chaosportal/sounds/133449/",
+    "author": "chaosportal",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-12T03:15:01.889Z"
+  },
+  {
+    "file": "assets/sfx/322404.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Glitchedtones/sounds/322404/",
+    "author": "Glitchedtones",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-12T03:15:02.448Z"
+  },
+  {
+    "file": "assets/sfx/635110.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/RadioCounseling/sounds/635110/",
+    "author": "RadioCounseling",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-12T03:15:03.986Z"
   }
 ]
