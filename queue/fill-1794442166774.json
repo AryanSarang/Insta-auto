@@ -1,0 +1,102 @@
+{
+  "title": "Bee to National Park Drama",
+  "hook": "Will the Bee reach its final form?",
+  "tiers": [
+    {
+      "name": "Bee",
+      "icon": "🐝"
+    },
+    {
+      "name": "Flower",
+      "icon": "🌼"
+    },
+    {
+      "name": "Honey Jar",
+      "icon": "🍯"
+    },
+    {
+      "name": "Honey Thief Bear",
+      "icon": "🐻"
+    },
+    {
+      "name": "Campsite",
+      "icon": "🏕️"
+    },
+    {
+      "name": "Ranger Chopper",
+      "icon": "🚁"
+    },
+    {
+      "name": "National Park",
+      "icon": "🏞️"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "bee buzz",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "bubble pop",
+        "style": "pop"
+      },
+      {
+        "query": "honey drip",
+        "style": "squeak"
+      },
+      {
+        "query": "slurp",
+        "style": "cartoon"
+      },
+      {
+        "query": "bear growl",
+        "style": "voice"
+      },
+      {
+        "query": "zipper",
+        "style": "impact"
+      },
+      {
+        "query": "helicopter",
+        "style": "impact"
+      }
+    ],
+    "final": {
+      "query": "crowd cheer",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "jar",
+    "color": "#F5A623",
+    "label": "Honey Jar"
+  },
+  "palette": {
+    "bg": "#2E1F0F",
+    "text": "#FFF3D6",
+    "accent": "#FFB703"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "One bee stole honey. Now it's a national park.",
+  "mood": "romantic",
+  "caption": "We just wanted a tiny bee. Then the flower showed up, then the honey, and then a bear with ZERO respect for boundaries walked in. Next thing you know there's a campsite, a ranger helicopter, and an entire national park. Nature really said 'let's escalate.' Which stage of this evolution is the most satisfying merge for you? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#satisfying",
+    "#asmr",
+    "#bees",
+    "#physicssim"
+  ],
+  "seed": 482913,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-12T00:09:26.774Z"
+  }
+}

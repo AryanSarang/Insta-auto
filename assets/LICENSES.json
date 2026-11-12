@@ -4886,5 +4886,77 @@
     "author": "Leszek_Szary",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-11T02:04:38.088Z"
+  },
+  {
+    "file": "assets/icons/1f3d5.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-12T00:07:07.504Z"
+  },
+  {
+    "file": "assets/icons/1f3de.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-12T00:07:07.615Z"
+  },
+  {
+    "file": "assets/sfx/215363.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Reitanna/sounds/215363/",
+    "author": "Reitanna",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-12T00:07:16.273Z"
+  },
+  {
+    "file": "assets/sfx/536232.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Rudmer_Rotteveel/sounds/536232/",
+    "author": "Rudmer_Rotteveel",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-12T00:07:18.803Z"
+  },
+  {
+    "file": "assets/sfx/741360.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Mish7913/sounds/741360/",
+    "author": "Mish7913",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-12T00:07:19.538Z"
+  },
+  {
+    "file": "assets/icons/1f535.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-12T00:09:40.090Z"
+  },
+  {
+    "file": "assets/icons/1f3a7.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-12T00:09:40.188Z"
+  },
+  {
+    "file": "assets/sfx/539136.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/ristooooo1/sounds/539136/",
+    "author": "ristooooo1",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-12T00:09:47.635Z"
+  },
+  {
+    "file": "assets/sfx/517368.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/TILIADESIGN/sounds/517368/",
+    "author": "TILIADESIGN",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-12T00:09:48.316Z"
   }
 ]

@@ -1,0 +1,103 @@
+{
+  "title": "Blue Dot to Wi-Fi Mothership",
+  "hook": "Will the Blue Dot reach its final form?",
+  "tiers": [
+    {
+      "name": "Blue Dot",
+      "icon": "🔵"
+    },
+    {
+      "name": "Earbud",
+      "icon": "🎧"
+    },
+    {
+      "name": "Smartwatch",
+      "icon": "⌚"
+    },
+    {
+      "name": "Phone",
+      "icon": "📱"
+    },
+    {
+      "name": "Laptop",
+      "icon": "💻"
+    },
+    {
+      "name": "Satellite",
+      "icon": "📡"
+    },
+    {
+      "name": "Wi-Fi Mothership",
+      "icon": "🛸",
+      "accessory": "📶"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "click",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "beep",
+        "style": "pop"
+      },
+      {
+        "query": "notification",
+        "style": "magic"
+      },
+      {
+        "query": "camera shutter",
+        "style": "cartoon"
+      },
+      {
+        "query": "ringtone",
+        "style": "boing"
+      },
+      {
+        "query": "keyboard typing",
+        "style": "impact"
+      },
+      {
+        "query": "radar ping",
+        "style": "magic"
+      }
+    ],
+    "final": {
+      "query": "ufo",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "glass",
+    "color": "#4da3ff",
+    "label": "Pairing..."
+  },
+  "palette": {
+    "bg": "#0b1230",
+    "text": "#ffffff",
+    "accent": "#3ea6ff"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "Your Wi-Fi is now fast. The aliens pay the bill.",
+  "mood": "meme",
+  "caption": "It started as one tiny blue dot looking for something to pair with. Then it found earbuds. Then a watch. Then a phone that is 3% charged and screaming. Somehow the chain ended with a laptop, a satellite, and a Wi-Fi mothership that just wants to know if you can hear it now. We have all been there: one device is never enough. What device did you buy 'just one' of and now own twelve? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#satisfying",
+    "#asmr",
+    "#technology",
+    "#physicssim"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-12T00:11:56.265Z"
+  }
+}
