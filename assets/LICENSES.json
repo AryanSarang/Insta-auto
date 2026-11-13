@@ -5094,5 +5094,37 @@
     "author": "Jacco18",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-12T23:18:16.083Z"
+  },
+  {
+    "file": "assets/icons/1f9a5.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-13T02:48:08.503Z"
+  },
+  {
+    "file": "assets/sfx/827666.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/qubodup/sounds/827666/",
+    "author": "qubodup",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-13T02:48:16.239Z"
+  },
+  {
+    "file": "assets/sfx/627927.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/pandartb3d/sounds/627927/",
+    "author": "pandartb3d",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-13T02:48:17.212Z"
+  },
+  {
+    "file": "assets/sfx/108519.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/bsmacbride/sounds/108519/",
+    "author": "bsmacbride",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-13T02:48:20.235Z"
   }
 ]
