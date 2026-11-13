@@ -5126,5 +5126,53 @@
     "author": "bsmacbride",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-13T02:48:20.235Z"
+  },
+  {
+    "file": "assets/icons/1f7e2.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-13T12:27:41.921Z"
+  },
+  {
+    "file": "assets/icons/1f9eb.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-13T12:27:42.033Z"
+  },
+  {
+    "file": "assets/icons/1f48a.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-13T12:27:42.133Z"
+  },
+  {
+    "file": "assets/sfx/589772.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/MrFossy/sounds/589772/",
+    "author": "MrFossy",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-13T12:27:48.970Z"
+  },
+  {
+    "file": "assets/sfx/734238.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/NoisyRedFox/sounds/734238/",
+    "author": "NoisyRedFox",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-13T12:27:50.891Z"
+  },
+  {
+    "file": "assets/sfx/460153.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/AudioWay/sounds/460153/",
+    "author": "AudioWay",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-13T12:27:51.658Z"
   }
 ]
