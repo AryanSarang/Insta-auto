@@ -1,0 +1,101 @@
+{
+  "title": "Sourdough Starter to Bread God",
+  "hook": "Will the Yeast Bubble reach its final form?",
+  "tiers": [
+    {
+      "name": "Yeast Bubble",
+      "icon": "🫧"
+    },
+    {
+      "name": "Sourdough Blob",
+      "icon": "🥯"
+    },
+    {
+      "name": "Pet Starter Jar",
+      "icon": "🫙"
+    },
+    {
+      "name": "Baguette Beast",
+      "icon": "🥖"
+    },
+    {
+      "name": "Croissant Cultist",
+      "icon": "🥐"
+    },
+    {
+      "name": "Bakery Sorcerer",
+      "icon": "🧙"
+    },
+    {
+      "name": "Bread God",
+      "icon": "🍞"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "bubble pop",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "bubble",
+        "style": "pop"
+      },
+      {
+        "query": "dough slap",
+        "style": "squeak"
+      },
+      {
+        "query": "jar open",
+        "style": "boing"
+      },
+      {
+        "query": "bread crunch",
+        "style": "impact"
+      },
+      {
+        "query": "oven ding",
+        "style": "cartoon"
+      },
+      {
+        "query": "choir angel",
+        "style": "magic"
+      }
+    ],
+    "final": {
+      "query": "angel choir",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "bowl",
+    "color": "#f5deb3",
+    "label": "Day 7 Starter"
+  },
+  "palette": {
+    "bg": "#3b2314",
+    "text": "#fff4e0",
+    "accent": "#f4a73b"
+  },
+  "physics": {
+    "bounciness": 0.7,
+    "gravity": "normal"
+  },
+  "finalText": "Flour power. Bow to the loaf.",
+  "mood": "bouncy",
+  "caption": "It started as one sad little bubble in a jar. Then it got fed, got a name, and now it has followers. Nobody asked for a bread cult but here we are, bowing to a loaf. Watch the yeast rise from basic bubble to full carb deity. Which tier would you worship the most?\n\nFollow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#sourdough",
+    "#asmr",
+    "#satisfyingvideo"
+  ],
+  "seed": 482917,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 6,
+    "enqueuedAt": "2026-11-13T23:20:27.646Z"
+  }
+}

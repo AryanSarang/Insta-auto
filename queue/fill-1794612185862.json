@@ -1,0 +1,102 @@
+{
+  "title": "Smoke Signal to Satellite Spam",
+  "hook": "Will the Smoke Puff reach its final form?",
+  "tiers": [
+    {
+      "name": "Smoke Puff",
+      "icon": "💨"
+    },
+    {
+      "name": "Drum",
+      "icon": "🥁"
+    },
+    {
+      "name": "Carrier Pigeon",
+      "icon": "🕊️"
+    },
+    {
+      "name": "Landline",
+      "icon": "☎️"
+    },
+    {
+      "name": "TV",
+      "icon": "📺"
+    },
+    {
+      "name": "Smartphone",
+      "icon": "📱"
+    },
+    {
+      "name": "Satellite",
+      "icon": "🛰️"
+    }
+  ],
+  "sounds": {
+    "bounce": {
+      "query": "wind whoosh",
+      "style": "pop"
+    },
+    "merge": [
+      {
+        "query": "drum hit",
+        "style": "impact"
+      },
+      {
+        "query": "pigeon coo",
+        "style": "cartoon"
+      },
+      {
+        "query": "telephone ring",
+        "style": "squeak"
+      },
+      {
+        "query": "tv static",
+        "style": "magic"
+      },
+      {
+        "query": "notification ding",
+        "style": "pop"
+      },
+      {
+        "query": "radar ping",
+        "style": "magic"
+      }
+    ],
+    "final": {
+      "query": "airhorn",
+      "style": "fanfare"
+    }
+  },
+  "container": {
+    "shape": "glass",
+    "color": "#6c8cff",
+    "label": "SIGNAL: 1 BAR"
+  },
+  "palette": {
+    "bg": "#0f1230",
+    "text": "#ffffff",
+    "accent": "#39f0c0"
+  },
+  "physics": {
+    "bounciness": 0.75,
+    "gravity": "normal"
+  },
+  "finalText": "Still can't get a text to send.",
+  "mood": "meme",
+  "caption": "It started as a tiny puff of smoke saying 'hello?' and ended up as a satellite blasting memes across the planet. Along the way it learned to drum, hire a pigeon, ring your landline, take over the TV and live in your pocket. Meanwhile your text still says 'Not Delivered'. Which step of the signal evolution would you bring back? Follow to see what evolves next!",
+  "hashtags": [
+    "#oddlysatisfying",
+    "#mergegame",
+    "#satisfying",
+    "#asmr",
+    "#technology",
+    "#evolution"
+  ],
+  "seed": 482916,
+  "_meta": {
+    "source": "fill-queue",
+    "reviewed": true,
+    "reviewScore": 8,
+    "enqueuedAt": "2026-11-13T23:23:05.862Z"
+  }
+}
