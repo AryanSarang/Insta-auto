@@ -5302,5 +5302,61 @@
     "author": "DasWaff",
     "license": "http://creativecommons.org/publicdomain/zero/1.0/",
     "fetchedAt": "2026-11-14T02:37:14.300Z"
+  },
+  {
+    "file": "assets/icons/1fab3.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-14T11:40:17.389Z"
+  },
+  {
+    "file": "assets/icons/1f99d.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-14T11:40:17.565Z"
+  },
+  {
+    "file": "assets/icons/1f9a8.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-14T11:40:17.695Z"
+  },
+  {
+    "file": "assets/icons/1f5d1.png",
+    "source": "fluent-emoji",
+    "url": "https://github.com/microsoft/fluentui-emoji",
+    "author": "Microsoft",
+    "license": "MIT",
+    "fetchedAt": "2026-11-14T11:40:17.799Z"
+  },
+  {
+    "file": "assets/sfx/127148.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Daphne_in_Wonderland/sounds/127148/",
+    "author": "Daphne_in_Wonderland",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-14T11:40:24.072Z"
+  },
+  {
+    "file": "assets/sfx/146963.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/Zabuhailo/sounds/146963/",
+    "author": "Zabuhailo",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-14T11:40:26.753Z"
+  },
+  {
+    "file": "assets/sfx/397354.mp3",
+    "source": "freesound",
+    "url": "https://freesound.org/people/plasterbrain/sounds/397354/",
+    "author": "plasterbrain",
+    "license": "http://creativecommons.org/publicdomain/zero/1.0/",
+    "fetchedAt": "2026-11-14T11:40:28.105Z"
   }
 ]
